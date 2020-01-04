@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Ameen - Bootstrap Admin Dashboard HTML Template</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
     <!-- Custom Stylesheet -->
-    <link href="/assets/css/style.css" rel="stylesheet">
-    <script src="/assets/js/modernizr-3.6.0.min.js"></script>
+    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+    <script src="{{asset('assets/js/modernizr-3.6.0.min.js')}}"></script>
 </head>
 
 <body class="h-100">
@@ -28,21 +28,25 @@
                             <div class="card-body">
                                 <div class="logo text-center">
                                     <a href="index.html">
-                                        <img src="/assets/images/unismuh.png" width="50" height="50" alt="">
+                                        <img src="{{asset('assets/images/f-logo.png')}}" alt="">
                                     </a>
                                 </div>
                                 <h4 class="text-center m-t-15">Log into Your Account</h4>
-                                <form class="m-t-30 m-b-30">
+                                <form class="m-t-30 m-b-30" action="/postlogin" method="post">
+                                {{csrf_field()}}
                                     <div class="form-group">
                                         <label>Username</label>
-                                        <input type="text" class="form-control" placeholder="Username">
+                                        <input type="text" class="form-control" name="username" placeholder="Username">
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" class="form-control" placeholder="Password">
+                                        <input type="password" class="form-control" name="password" placeholder="Password">
                                     </div>
+                                    @if ($message = Session::get('error'))
+                                        <p style="color:red;" >{{ $message }}</p>
+                                    @endif
                                     <div class="text-center m-b-15 m-t-15">
-                                        <button type="submit" class="btn btn-primary">Sign in</button>
+                                        <button type="submit" class="btn btn-primary">Masuk</button>
                                     </div>
                                 </form>
                             </div>
@@ -54,9 +58,9 @@
     </div>
     <!-- #/ container -->
     <!-- Common JS -->
-    <script src="/assets/plugins/common/common.min.js"></script>
+    <script src="{{asset('assets/plugins/common/common.min.js')}}"></script>
     <!-- Custom script -->
-    <script src="/assets/js/custom+mini-nav.js"></script>
+    <script src="{{asset('assets/js/custom.min.js')}}"></script>
 </body>
 
 </html>
