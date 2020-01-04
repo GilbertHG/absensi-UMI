@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('admin.layouts.master');
-});
+Route::get('/', 'AbsensiController@index')->middleware('auth');
 
 //Sistem Login
 Route::get('/login', 'AuthController@login')->name('login');
