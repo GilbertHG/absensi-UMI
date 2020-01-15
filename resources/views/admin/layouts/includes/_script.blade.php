@@ -1,7 +1,7 @@
         <!-- footer -->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright &copy; <a href="#">Ameen</a> 2018</p>
+                <p>Copyright &copy; <a>Aplikasi Monitoring Absensi Universitas Muhammadiyah Makassar</a> 2020</p>
             </div>
         </div>
         <!-- #/ footer -->
