@@ -37,21 +37,7 @@
                 </div>
                 <div class="header-right">
                     <ul>
-                        <li class="icons"><a href="javascript:void(0)"><i class="mdi mdi-account f-s-20" aria-hidden="true"></i></a>
-                            <div class="drop-down dropdown-profile animated bounceInDown">
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <li><a href="#"><i class="mdi mdi-email"></i> <span>Inbox</span></a>
-                                        </li>
-                                        <li><a href="#"><i class="mdi mdi-settings"></i> <span>Setting</span></a>
-                                        </li>
-                                        <li><a href="#"><i class="icon-lock"></i> <span>Lock Screen</span></a>
-                                        </li>
-                                        <li><a href="/logout"><i class="icon-power"></i> <span>Logout</span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <li class="icons"><a href="/logout"><i class="mdi mdi-power f-s-25" aria-hidden="true"></i></a>
                         </li>
                     </ul>
                 </div>

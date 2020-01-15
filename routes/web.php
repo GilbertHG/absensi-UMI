@@ -17,3 +17,6 @@ Route::get('/', 'AbsensiController@index')->middleware('auth');
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/postlogin', 'AuthController@postlogin');
 Route::get('/logout', 'AuthController@logout');
+
+//Database
+Route::get('/db-dosen', 'AbsensiController@dosen')->middleware('auth');
