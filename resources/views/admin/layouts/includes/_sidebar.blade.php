@@ -6,7 +6,7 @@
                     </li>
                     <li><a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-table"></i> <span class="nav-text">Database</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="#">Dosen</a>
+                            <li><a href="/dbdosen">Dosen</a>
                             </li>
                             <li><a href="#">Mahasiswa</a>
                             </li>

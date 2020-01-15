@@ -13,4 +13,7 @@ class AbsensiController extends Controller
     public function index(){
     	return view('admin.dashboard.index');
     }
+    public function dbdosen(){
+        return view('admin.dashbord.dosen');
+    }
 }
