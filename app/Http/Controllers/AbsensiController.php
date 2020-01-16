@@ -16,4 +16,10 @@ class AbsensiController extends Controller
     public function dosen(){
         return view('admin.dashboard.dosen');
     }
+    public function mk(){
+        return view('admin.dashboard.mk');
+    }
+    public function ta(){
+        return view('admin.dashboard.ta');
+    }
 }
