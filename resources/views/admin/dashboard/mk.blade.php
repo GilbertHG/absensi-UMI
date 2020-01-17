@@ -42,7 +42,7 @@
                                             <td style="vertical-align:middle;">12.00-13.00</td>
                                             <td style="vertical-align:middle;">dosen</td>
                                             <td style="vertical-align:middle; text-align:center;">
-                                                <button type="button" class="btn btn-twitter btn-sm" data-toggle="modal" data-target="#editModal"><i class="mdi mdi-lead-pencil"></i></button>
+                                                <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#editModal"><i class="mdi mdi-lead-pencil"></i></button>
                                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal"><i class="mdi mdi-delete"></i></button>
                                             </td>
                                         </tr>
@@ -156,8 +156,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                        <button type="button" class="btn btn-whatsapp">Tambah Data</button>
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary">Tambah Data</button>
                     </div>
                 </form>
             </div>
@@ -261,8 +261,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                        <button type="button" class="btn btn-twitter">Tambah Data</button>
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-secondary">Tambah Data</button>
                     </div>
                 </form>
             </div>
@@ -283,7 +283,7 @@
                         Anda yakin ingin menghapus data ini?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-whatsapp" data-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
                         <button type="button" class="btn btn-danger">Hapus</button>
                     </div>
                 </form>

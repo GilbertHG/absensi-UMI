@@ -48,7 +48,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Tambah Data Dosen</h5>
+                        <h5 class="modal-title">Tambah Tahun Ajaran</h5>
                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                         </button>
                     </div>
@@ -61,7 +61,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                            <button type="button" class="btn btn-whatsapp">Tambah Data</button>
+                            <button type="button" class="btn btn-success">Tambah Data</button>
                         </div>
                     </form>
                 </div>
@@ -72,7 +72,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Edit Data Dosen</h5>
+                        <h5 class="modal-title">Edit Tahun Ajaran</h5>
                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                         </button>
                     </div>
@@ -84,8 +84,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-dannger" data-dismiss="modal">Batal</button>
-                            <button type="button" class="btn btn-twitter">Ubah Data</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                            <button type="button" class="btn btn-secondary">Ubah Data</button>
                         </div>
                     </form>
                 </div>
@@ -105,7 +105,7 @@
                             Anda yakin ingin menghapus data ini?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-whatsapp" data-dismiss="modal">Batal</button>
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Batal</button>
                             <button type="button" class="btn btn-danger">Hapus</button>
                         </div>
                     </form>
