@@ -27,8 +27,6 @@ class AbsensiController extends Controller
 
     public function dosenAdd(UserStoreRequest $request){
 
-    	$validated = $request->validated();
-
     	//Insert table User
     	$user = new \App\User;
     	$user->role = 'Dosen';

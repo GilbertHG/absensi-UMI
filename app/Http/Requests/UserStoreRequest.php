@@ -24,7 +24,7 @@ class UserStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'foto' => 'required_with:nim_mahasiswa|image|mimes:jpeg,png,jpg|max:2048',
             'nim_mahasiswa' => 'unique:mahasiswa,nim_mahasiswa',
             'nip_nbm_dosen' => 'unique:dosen,nip_nbm_dosen',
         ];
@@ -35,7 +35,7 @@ class UserStoreRequest extends FormRequest
         return [
             'nip_nbm_dosen.unique' => 'NIP / NBM Sudah Ada Sebelumnya!',
             'nim_mahasiswa.unique' => 'NIM Sudah Ada Sebelumnya!',
-            'foto.required' => 'Harap Masukan Foto!',
+            'foto.required_with' => 'Harap Masukan Foto!',
             'foto.mimes' => 'Format Foto Anda Salah!',
             'foto.max' => 'Ukuran Foto Terlalu Besar!',
         ];
