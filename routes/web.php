@@ -20,3 +20,5 @@ Route::get('/logout', 'AuthController@logout');
 
 //Database
 Route::get('/db-dosen', 'AbsensiController@dosen')->middleware('auth');
+Route::get('/db-mk', 'AbsensiController@mk')->middleware('auth');
+Route::get('/tahun-ajaran', 'AbsensiController@ta')->middleware('auth');

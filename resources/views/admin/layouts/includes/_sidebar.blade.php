@@ -12,7 +12,7 @@
                                 <a class="dropdown-item" href="#">Awal 2019/2020</a>
                             </div>
                         </div>
-                    </div>
+                </div>
                 <ul class="metismenu" id="menu">
                     <li><a href="#"><i class=" mdi mdi-view-dashboard"></i> <span class="nav-text">Dashboard</span></a>
                     </li>
@@ -24,7 +24,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="#"><i class="mdi mdi-clipboard-text"></i> <span class="nav-text">Tambah Mata Kuliah</span></a>
+                    <li><a href="/db-mk"><i class="mdi mdi-clipboard-text"></i> <span class="nav-text">Tambah Mata Kuliah</span></a>
                     </li>
                     <li><a href="#"><i class="mdi mdi-square-edit-outline"></i> <span class="nav-text">KRS Mahasiswa</span></a>
                     </li>
