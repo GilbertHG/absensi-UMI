@@ -17,8 +17,8 @@ class CreateDosenTable extends Migration
             $table->bigIncrements('id');
             $table->string('nama_dosen');
             $table->integer('user_id');
-            $table->string('nip_dosen')->unique()->nullable();
-            $table->string('nbm_dosen')->unique()->nullable();
+            $table->string('nip_nbm_dosen');
+            $table->string('kode_dosen');
             $table->timestamps();
         });
     }
