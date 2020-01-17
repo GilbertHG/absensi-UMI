@@ -27,3 +27,7 @@ Route::get('/db-mahasiswa', 'AbsensiController@mahasiswa')->middleware('auth');
 Route::post('/db-mahasiswa/add', 'AbsensiController@mahasiswaAdd')->middleware('auth');
 Route::post('/db-mahasiswa/edit/{id}', 'AbsensiController@mahasiswaEdit')->middleware('auth');
 Route::post('/db-mahasiswa/delete/{id}', 'AbsensiController@mahasiswaDelete')->middleware('auth');
+
+//Database Mata Kuliah
+Route::get('/db-mk', 'AbsensiController@mk')->middleware('auth');
+Route::get('/tahun-ajaran', 'AbsensiController@ta')->middleware('auth');

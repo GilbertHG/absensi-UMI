@@ -166,4 +166,10 @@ class AbsensiController extends Controller
 
     	return redirect('/db-mahasiswa')->with('sukses', "Data Mahasiswa berhasil di hapus.");
     }
+    public function mk(){
+        return view('admin.dashboard.mk');
+    }
+    public function ta(){
+        return view('admin.dashboard.ta');
+    }
 }
