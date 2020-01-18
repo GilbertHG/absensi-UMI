@@ -165,9 +165,35 @@ class AbsensiController extends Controller
     	return redirect('/db-mahasiswa')->with('sukses', "Data Mahasiswa berhasil di hapus.");
     }
     public function mk(){
-        return view('admin.dashboard.mk');
+        return view('admin.dashboard.mk', [
+        	'title'				=> 'Mata Kuliah | Aplikasi Monitoring Absensi' 
+        	]);
     }
     public function ta(){
-        return view('admin.dashboard.ta');
+    	$data_tahunAjaran = \App\TahunAjaran::all();
+        return view('admin.dashboard.ta', [
+        	'title'					=> 'Tahun Ajaran | Aplikasi Monitoring Absensi',
+        	'data_tahunAjaran'		=> $data_tahunAjaran
+        	]);
+    }
+
+    public function taAdd(UserStoreRequest $request){
+    	$tahunAjaran = \App\TahunAjaran::create($request->all());
+
+        return redirect('/tahun-ajaran')->with('sukses', "Tahun Ajaran berhasil di tambahkan.");
+    }
+
+    public function taEdit(UserUpdateRequest $request, $id){
+    	$tahunAjaran = \App\TahunAjaran::find($id);
+    	$tahunAjaran->update($request->all());
+
+    	return redirect('/tahun-ajaran')->with('sukses', "Tahun Ajaran berhasil di ubah.");
+    }
+
+    public function taDelete(Request $request, $id){
+    	$tahunAjaran = \App\TahunAjaran::find($id);
+    	$tahunAjaran->delete();
+
+    	return redirect('/tahun-ajaran')->with('sukses', "Tahun Ajaran berhasil di hapus.");
     }
 }

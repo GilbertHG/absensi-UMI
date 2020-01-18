@@ -26,6 +26,7 @@ class UserUpdateRequest extends FormRequest
         return [
             'nim_mahasiswa' => 'unique:mahasiswa,nim_mahasiswa,'.\Request::instance()->id,
             'nip_nbm_dosen' => 'unique:dosen,nip_nbm_dosen,'.\Request::instance()->id,
+            'tahun_ajaran'  => 'unique:tahun_ajaran,tahun_ajaran,'.\Request::instance()->id,
         ];
     }
 
@@ -34,6 +35,7 @@ class UserUpdateRequest extends FormRequest
         return [
             'nip_nbm_dosen.unique' => 'NIP / NBM Sudah Ada Sebelumnya!',
             'nim_mahasiswa.unique' => 'NIM Sudah Ada Sebelumnya!',
+            'tahun_ajaran.unique'  => 'Tahun Ajaran Sudah Ada',
         ];
     }
 }
