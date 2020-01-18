@@ -9,12 +9,15 @@
                     @if($message = Session::get('sukses'))
                         <div class="alert alert-success">{{$message}}</div>
                     @endif
-                    @error('nip_nbm_dosen')
+                    @error('foto')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    @error('nim_mahasiswa')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     <div class="card">
                         <div class="card-body">
-                            <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20"> Data Dosen</h4></div>
+                            <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20"> Data Mahasiswa</h4></div>
                             <div class="floatright">
                                     <div class="bootstrap-modal">
                                             <!-- Button trigger modal -->
@@ -25,29 +28,25 @@
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Nama Dosen</th>
-                                            <th>NIP</th>
-                                            <th>NBM</th>
+                                            <th>Nama Mahasiswa</th>
+                                            <th>NIM</th>
+                                            <th>Konsentrasi</th>
+                                            <th>Foto</th>
                                             <th style="vertical-align:middle; text-align:center;">Edit | Hapus</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php $no = 1 ?>
-                                    @foreach($data_dosen as $dosen)
+                                    @foreach($data_mahasiswa as $mahasiswa)
                                         <tr>
                                             <td style="vertical-align:middle; text-align:center;">{{$no++}}</td>
-                                            <td style="vertical-align:middle;">{{$dosen->nama_dosen}}</td>
-                                            @if($dosen->kode_dosen == 'NIP')
-                                            <td style="vertical-align:middle;">{{$dosen->nip_nbm_dosen}}</td>
-                                            <td style="vertical-align:middle;"></td>
-                                            @endif
-                                            @if($dosen->kode_dosen == 'NBM')
-                                            <td style="vertical-align:middle;"></td>
-                                            <td style="vertical-align:middle;">{{$dosen->nip_nbm_dosen}}</td>
-                                            @endif
+                                            <td style="vertical-align:middle;">{{$mahasiswa->nama_mahasiswa}}</td>
+                                            <td style="vertical-align:middle;">{{$mahasiswa->nim_mahasiswa}}</td>
+                                            <td style="vertical-align:middle;">{{$mahasiswa->konsentrasi_mahasiswa}}</td>
+                                            <td style="vertical-align:middle;"><img src="{{asset('storage/profil_images/'.$mahasiswa->foto_mahasiswa)}}" class="img-responsive" style="max-height: 160px; max-width: 140px;"></td>
                                             <td style="vertical-align:middle; text-align:center;">
-                                                <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#editModal{{$dosen->id}}"><i class="mdi mdi-lead-pencil"></i></button>
-                                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal{{$dosen->id}}"><i class="mdi mdi-delete"></i></button>
+                                                <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#editModal{{$mahasiswa->id}}"><i class="mdi mdi-lead-pencil"></i></button>
+                                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal{{$mahasiswa->id}}"><i class="mdi mdi-delete"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -67,32 +66,29 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Tambah Data Dosen</h5>
+                        <h5 class="modal-title">Tambah Data Mahasiswa</h5>
                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                         </button>
                     </div>
-                    <form method="post" action="/db-dosen/add">
+                    <form method="post" action="/db-mahasiswa/add" enctype="multipart/form-data">
                     {{csrf_field()}}
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Nama</label>
-                                <input type="text" class="form-control mb-2 mr-sm-2" required name="nama_dosen">
+                                <input type="text" class="form-control mb-2 mr-sm-2" required name="nama_mahasiswa">
                             </div>
-                            <label>NIP / NBM</label>
-                            <div class="row">
-                                <div class="form-group col-md-9 sm-6">
-                                    <input type="text" class="form-control mb-2 mr-sm-2" required name="nip_nbm_dosen">
-                                </div>
-                                <div class="form-group col-md-3 ml-auto">
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" required value="NIP" name="kode_dosen"> NIP</label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" value="NBM" name="kode_dosen"> NBM</label>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label>NIM</label>
+                                <input type="text" class="form-control mb-2 mr-sm-2" required name="nim_mahasiswa">
+                            </div>
+                            <div class="form-group">
+                                <label>Konsentrasi</label>
+                                <input type="text" class="form-control mb-2 mr-sm-2" name="konsentrasi_mahasiswa">
+                            </div>
+                            <div class="form-group">
+                                <label>Foto</label>
+                                <input type="file" class="form-control-file mb-2 mr-sm-2" name="foto">
+                                <div style="font-size: 10px">File hanya JPG, PNG dan JPEG dengan ukuran Maks. 2048 Kb</div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -104,42 +100,41 @@
             </div>
         </div>
         <!-- Modal Edit -->
-        @foreach($data_dosen as $dosen)
-        <div class="modal fade" id="editModal{{$dosen->id}}" style="margin-top: 50px;">
+        @foreach($data_mahasiswa as $mahasiswa)
+        <div class="modal fade" id="editModal{{$mahasiswa->id}}" style="margin-top: 50px;">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Edit Data Dosen</h5>
+                        <h5 class="modal-title">Edit Data Mahasiswa</h5>
                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                         </button>
                     </div>
-                    <form method="post" action="/db-dosen/edit/{{$dosen->id}}">
+                    <form method="post" action="/db-mahasiswa/edit/{{$mahasiswa->id}}">
                     {{csrf_field()}}
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Nama</label>
-                                <input type="text" value="{{$dosen->nama_dosen}}" required="" class="form-control mb-2 mr-sm-2" name="nama_dosen">
+                                <input type="text" value="{{$mahasiswa->nama_mahasiswa}}" class="form-control mb-2 mr-sm-2" required name="nama_mahasiswa">
                             </div>
-                            <label>NIP / NBM</label>
-                            <div class="row">
-                                <div class="form-group col-md-9 sm-6">
-                                    <input type="text" value="{{$dosen->nip_nbm_dosen}}" class="form-control mb-2 mr-sm-2" required name="nip_nbm_dosen">
-                                </div>
-                                <div class="form-group col-md-3 ml-auto">
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" value="NIP" required name="kode_dosen" {{ $dosen->kode_dosen == 'NIP' ? 'checked' : '' }}> NIP</label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" value="NBM" name="kode_dosen" {{ $dosen->kode_dosen == 'NBM' ? 'checked' : '' }}> NBM</label>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label>NIM</label>
+                                <input type="text" value="{{$mahasiswa->nim_mahasiswa}}" class="form-control mb-2 mr-sm-2" required name="nim_mahasiswa">
+                            </div>
+                            <div class="form-group">
+                                <label>Konsentrasi</label>
+                                <input type="text" value="{{$mahasiswa->kosentrasi_mahasiswa}}" class="form-control mb-2 mr-sm-2" name="konsentrasi_mahasiswa">
+                            </div>
+                            <div class="form-group">
+                                <label>Foto</label>
+                                <input type="file" class="form-control-file mb-2 mr-sm-2" name="foto">
+                                <div style="font-size: 10px">File hanya JPG, PNG dan JPEG dengan ukuran Maks. 2048 Kb</div>
+                                <img src="{{asset('storage/profil_images/'.$mahasiswa->foto_mahasiswa)}}" class="img-responsive" style="max-height:160px; max-width: 140px;"s>
                             </div>
                         </div>
+                        <input type="hidden" name="foto_lama" value="{{$mahasiswa->foto_mahasiswa}}">
                         <div class="modal-footer">
                             <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-secondary">Ubah Data</button>
+                            <button type="submit" class="btn btn-primary">Ubah Data</button>
                         </div>
                     </form>
                 </div>
@@ -147,8 +142,8 @@
         </div>
         @endforeach
         <!-- Modal Hapus -->
-        @foreach($data_dosen as $dosen)
-        <div class="modal fade" id="hapusModal{{$dosen->id}}" style="margin-top: 50px;">
+        @foreach($data_mahasiswa as $mahasiswa)
+        <div class="modal fade" id="hapusModal{{$mahasiswa->id}}" style="margin-top: 50px;">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -156,11 +151,12 @@
                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                         </button>
                     </div>
-                    <form method="post" action="/db-dosen/delete/{{$dosen->id}}">
+                    <form method="post" action="/db-mahasiswa/delete/{{$mahasiswa->id}}">
                     {{csrf_field()}}
                         <div class="modal-body">
                             Anda yakin ingin menghapus data ini?
                         </div>
+                        <input type="hidden" name="foto" value="{{$mahasiswa->foto_mahasiswa}}">
                         <div class="modal-footer">
                             <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
                             <button type="submit" class="btn btn-danger">Hapus</button>
