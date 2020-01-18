@@ -1754,6 +1754,7 @@ svg.pulse-svg .third-circle {
   .mini-nav .nav-header .brand-logo b img {
     margin-top: 0px;
     display: block;
+    margin-left: 10px;
   }
   .mini-nav .nav-header .brand-title {
     display: none;
