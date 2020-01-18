@@ -60,8 +60,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                            <button type="button" class="btn btn-success">Tambah Data</button>
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
+                            <button type="button" class="btn btn-primary">Tambah Data</button>
                         </div>
                     </form>
                 </div>
@@ -84,7 +84,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
                             <button type="button" class="btn btn-secondary">Ubah Data</button>
                         </div>
                     </form>
@@ -105,7 +105,7 @@
                             Anda yakin ingin menghapus data ini?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" data-dismiss="modal">Batal</button>
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
                             <button type="button" class="btn btn-danger">Hapus</button>
                         </div>
                     </form>

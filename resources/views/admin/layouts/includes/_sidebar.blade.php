@@ -1,8 +1,13 @@
        <!-- sidebar -->
         <div class="nk-sidebar">
             <div class="nk-nav-scroll">
-                <div class="nav-text" style="text-align:center; margin-top:20px; border-bottom: 1px solid #f1f1f1; padding-bottom: 20px;"><img src="{{asset('assets/images/unismuh.png')}}" height="100" width="100" alt=""></div>
-                <div class="col nav-text" style="text-align:center; margin-top:20px; border-bottom: 1px solid #f1f1f1; padding-bottom: 10px;">
+                <div class="nav-text" style="text-align:center; margin-top:10px; border-bottom: 1px solid #f1f1f1; padding-bottom: 5px;">
+                    <img src="{{asset('assets/images/unismuh.png')}}" height="100" width="100" alt="">
+                    <div style="margin-top:10px;">
+                        Aplikasi Monitoring Absensi Univeristas Muhammadiyah Makassar
+                    </div>
+                </div>
+                <div class="col nav-text" style="text-align:center; margin-top:10px; border-bottom: 1px solid #f1f1f1; margin-bottom: 10px;">
                         <div class="dropdown custom-dropdown">
                             <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="dropdown">Semester<i class="fa fa-angle-down m-l-5"></i>
                             </button>
