@@ -195,7 +195,6 @@ class AbsensiController extends Controller
     	$tahunAjaran->delete();
 
     	return redirect('/tahun-ajaran')->with('sukses', "Tahun Ajaran berhasil di hapus.");
-		]);
     }
 
 }
