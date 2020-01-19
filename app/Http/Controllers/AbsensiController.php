@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use File;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Requests\UserStoreRequest;
+use Session;
 
 class AbsensiController extends Controller
 {
@@ -164,11 +165,7 @@ class AbsensiController extends Controller
 
     	return redirect('/db-mahasiswa')->with('sukses', "Data Mahasiswa berhasil di hapus.");
     }
-    public function mk(){
-        return view('admin.dashboard.mk', [
-        	'title'				=> 'Mata Kuliah | Aplikasi Monitoring Absensi' 
-        	]);
-    }
+
     public function ta(){
     	$data_tahunAjaran = \App\TahunAjaran::all();
         return view('admin.dashboard.ta', [
@@ -195,6 +192,19 @@ class AbsensiController extends Controller
     	$tahunAjaran->delete();
 
     	return redirect('/tahun-ajaran')->with('sukses', "Tahun Ajaran berhasil di hapus.");
+    }
+
+    public function tahunajaran(Request $request){
+    	\Session::put('tahunajaran', $request->tahunajaran);
+
+    	return redirect('/'.$request->url);
+    	
+    }
+
+    public function mk(){
+        return view('admin.dashboard.mk', [
+        	'title'				=> 'Mata Kuliah | Aplikasi Monitoring Absensi' 
+        	]);
     }
 
 }

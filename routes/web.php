@@ -34,3 +34,5 @@ Route::get('/tahun-ajaran', 'AbsensiController@ta')->middleware('auth');
 Route::post('/tahun-ajaran/add', 'AbsensiController@taAdd')->middleware('auth');
 Route::post('/tahun-ajaran/edit/{id}', 'AbsensiController@taEdit')->middleware('auth');
 Route::post('/tahun-ajaran/delete/{id}', 'AbsensiController@taDelete')->middleware('auth');
+
+Route::post('/tahunajaran', 'AbsensiController@tahunajaran')->middleware('auth');
