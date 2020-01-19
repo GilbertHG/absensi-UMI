@@ -6,6 +6,9 @@
             <!-- row -->
             <div class="row">
                 <div class="col-12">
+                 @if($message = Session::get('sukses'))
+                        <div class="alert alert-success">{{$message}}</div>
+                    @endif
                     <div class="card">
                         <div class="card-body">   
                             <h4 class="card-title mdi mdi-image-filter-none f-s-20"> Data Mata Kuliah</h4>
@@ -33,19 +36,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php $no = 1 ?>
+                                    @foreach($data_mataKuliah as $mataKuliah)
                                         <tr>
-                                            <td style="vertical-align:middle; text-align:center;">1.</td>
-                                            <td style="vertical-align:middle;">Customer Support</td>
-                                            <td style="vertical-align:middle;">New York</td>
-                                            <td style="vertical-align:middle;">A</td>
-                                            <td style="vertical-align:middle;">Senin</td>
-                                            <td style="vertical-align:middle;">12.00-13.00</td>
-                                            <td style="vertical-align:middle;">dosen</td>
+                                            <td style="vertical-align:middle; text-align:center;">{{$no++}}</td>
+                                            <td style="vertical-align:middle;">{{$mataKuliah->kode_mk}}</td>
+                                            <td style="vertical-align:middle;">{{$mataKuliah->nama_mk}}</td>
+                                            <td style="vertical-align:middle;">{{$mataKuliah->kelas_mk}}</td>
+                                            <td style="vertical-align:middle;">{{$mataKuliah->hari_mk}}</td>
+                                            <td style="vertical-align:middle;">{{\Carbon\Carbon::parse($mataKuliah->jam_mulai)->format('H:i')}} - {{\Carbon\Carbon::parse($mataKuliah->jam_selesai)->format('H:i')}}</td>
+                                            <td style="vertical-align:middle;">{{$mataKuliah->dosen_mk}}</td>
                                             <td style="vertical-align:middle; text-align:center;">
-                                                <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#editModal"><i class="mdi mdi-lead-pencil"></i></button>
-                                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal"><i class="mdi mdi-delete"></i></button>
+                                                <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#editModal{{$mataKuliah->id}}"><i class="mdi mdi-lead-pencil"></i></button>
+                                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal{{$mataKuliah->id}}"><i class="mdi mdi-delete"></i></button>
                                             </td>
                                         </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -68,48 +74,49 @@
                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                     </button>
                 </div>
-                <form>
+                <form method="post" action="/db-mk/add">
+                {{csrf_field()}}
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Kode Mata Kuliah</label>
-                            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2">
+                            <input type="text" class="form-control mb-2 mr-sm-2" name="kode_mk">
                         </div>
                         <div class="form-group">
                             <label>Nama Mata Kuliah</label>
-                            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2">
+                            <input type="text" class="form-control mb-2 mr-sm-2" name="nama_mk">
                         </div>
                         <div class="form-group">
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
                                     <label>Kelas</label>
-                                    <select class="custom-select mb-2 mr-sm-2" id="inlineFormCustomSelect">
+                                    <select class="custom-select mb-2 mr-sm-2" name="kelas_mk">
                                         <option selected>...</option>
-                                        <option value="1">A</option>
-                                        <option value="2">B</option>
-                                        <option value="3">C</option>
-                                        <option value="4">D</option>
-                                        <option value="5">E</option>
-                                        <option value="6">F</option>
-                                        <option value="7">G</option>
-                                        <option value="8">H</option>
-                                        <option value="9">I</option>
-                                        <option value="10">J</option>
-                                        <option value="11">K</option>
-                                        <option value="12">L</option>
-                                        <option value="13">M</option>
-                                        <option value="14">N</option>
-                                        <option value="15">O</option>
-                                        <option value="16">P</option>
-                                        <option value="17">Q</option>
-                                        <option value="18">R</option>
-                                        <option value="19">S</option>
-                                        <option value="20">T</option>
-                                        <option value="21">U</option>
-                                        <option value="22">V</option>
-                                        <option value="23">W</option>
-                                        <option value="24">X</option>
-                                        <option value="25">Y</option>
-                                        <option value="26">Z</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                        <option value="F">F</option>
+                                        <option value="G">G</option>
+                                        <option value="H">H</option>
+                                        <option value="I">I</option>
+                                        <option value="J">J</option>
+                                        <option value="K">K</option>
+                                        <option value="L">L</option>
+                                        <option value="M">M</option>
+                                        <option value="N">N</option>
+                                        <option value="O">O</option>
+                                        <option value="P">P</option>
+                                        <option value="Q">Q</option>
+                                        <option value="R">R</option>
+                                        <option value="S">S</option>
+                                        <option value="T">T</option>
+                                        <option value="U">U</option>
+                                        <option value="V">V</option>
+                                        <option value="W">W</option>
+                                        <option value="X">X</option>
+                                        <option value="Y">Y</option>
+                                        <option value="Z">Z</option>
                                     </select>
                                 </div>
                             </div>
@@ -118,15 +125,15 @@
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
                                     <label>Hari</label>
-                                    <select class="custom-select mb-2 mr-sm-2" id="inlineFormCustomSelect">
+                                    <select class="custom-select mb-2 mr-sm-2" name="hari_mk">
                                         <option selected>...</option>
-                                        <option value="1">Senin</option>
-                                        <option value="2">Selasa</option>
-                                        <option value="3">Rabu</option>
-                                        <option value="4">Kamis</option>
-                                        <option value="5">Jumat</option>
-                                        <option value="6">Sabtu</option>
-                                        <option value="7">Minggu</option>
+                                        <option value="Senin">Senin</option>
+                                        <option value="Selasa">Selasa</option>
+                                        <option value="Rabu">Rabu</option>
+                                        <option value="Kamis">Kamis</option>
+                                        <option value="Jumat">Jumat</option>
+                                        <option value="Sabtu">Sabtu</option>
+                                        <option value="Minggu">Minggu</option>
                                     </select>
                                 </div>
                             </div>
@@ -135,29 +142,31 @@
                             <div class="form-group col-8 col-sm-6">
                                 <label>Waktu Mulai</label>
                                 <div class="input-group clockpicker" data-placement="top" data-align="top" data-autoclose="true">
-                                    <input type="text" class="form-control" value="00.00"> <span class="input-group-append"><span class="input-group-text"><i class="fa fa-clock-o"></i></span></span>
+                                    <input type="text" class="form-control" value="00.00" name="jam_mulai"> <span class="input-group-append"><span class="input-group-text"><i class="fa fa-clock-o"></i></span></span>
                                 </div>
                             </div>
                             <div class="form-group col-md-6 ml-auto">
                                 <label>Waktu Berakhir</label>
                                 <div class="input-group clockpicker" data-placement="top" data-align="top" data-autoclose="true">
-                                    <input type="text" class="form-control" value="00.00"> <span class="input-group-append"><span class="input-group-text"><i class="fa fa-clock-o"></i></span></span>
+                                    <input type="text" class="form-control" value="00.00" name="jam_selesai"> <span class="input-group-append"><span class="input-group-text"><i class="fa fa-clock-o"></i></span></span>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-row align-items-center">
                                 <label>Nama Dosen</label>
-                                <select class="custom-select mb-2 mr-sm-2" id="inlineFormCustomSelect">
+                                <select class="custom-select mb-2 mr-sm-2" name="dosen_mk">
                                     <option selected>...</option>
-                                    <option value="1">Prof. Dr. </option>
+                                    @foreach(dropdownds() as $ds)
+                                    <option value="{{$ds->nama_dosen}}">{{$ds->nama_dosen}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
-                        <button type="button" class="btn btn-primary">Tambah Data</button>
+                        <button type="submit" class="btn btn-primary">Tambah Data</button>
                     </div>
                 </form>
             </div>
@@ -165,7 +174,8 @@
     </div>
 
     <!-- Modal Edit -->
-    <div class="modal fade" id="editModal" style="margin-top: 50px;">
+    @foreach($data_mataKuliah as $mataKuliah)
+    <div class="modal fade" id="editModal{{$mataKuliah->id}}" style="margin-top: 50px;">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -173,48 +183,49 @@
                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                     </button>
                 </div>
-                <form>
+                <form method="post" action="/db-mk/edit/{{$mataKuliah->id}}">
+                {{csrf_field()}}
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Kode Mata Kuliah</label>
-                            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2">
+                            <input type="text" class="form-control mb-2 mr-sm-2" name="kode_mk" value="{{$mataKuliah->kode_mk}}">
                         </div>
                         <div class="form-group">
                             <label>Nama Mata Kuliah</label>
-                            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2">
+                            <input type="text" class="form-control mb-2 mr-sm-2" name="nama_mk" value="{{$mataKuliah->nama_mk}}">
                         </div>
                         <div class="form-group">
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
                                     <label>Kelas</label>
-                                    <select class="custom-select mb-2 mr-sm-2" id="inlineFormCustomSelect">
+                                    <select class="custom-select mb-2 mr-sm-2" name="kelas_mk">
                                         <option selected>...</option>
-                                        <option value="1">A</option>
-                                        <option value="2">B</option>
-                                        <option value="3">C</option>
-                                        <option value="4">D</option>
-                                        <option value="5">E</option>
-                                        <option value="6">F</option>
-                                        <option value="7">G</option>
-                                        <option value="8">H</option>
-                                        <option value="9">I</option>
-                                        <option value="10">J</option>
-                                        <option value="11">K</option>
-                                        <option value="12">L</option>
-                                        <option value="13">M</option>
-                                        <option value="14">N</option>
-                                        <option value="15">O</option>
-                                        <option value="16">P</option>
-                                        <option value="17">Q</option>
-                                        <option value="18">R</option>
-                                        <option value="19">S</option>
-                                        <option value="20">T</option>
-                                        <option value="21">U</option>
-                                        <option value="22">V</option>
-                                        <option value="23">W</option>
-                                        <option value="24">X</option>
-                                        <option value="25">Y</option>
-                                        <option value="26">Z</option>
+                                        <option @if($mataKuliah->kelas_mk == 'A') selected @endif value="A">A</option>
+                                        <option @if($mataKuliah->kelas_mk == 'B') selected @endif value="B">B</option>
+                                        <option @if($mataKuliah->kelas_mk == 'C') selected @endif value="C">C</option>
+                                        <option @if($mataKuliah->kelas_mk == 'D') selected @endif value="D">D</option>
+                                        <option @if($mataKuliah->kelas_mk == 'E') selected @endif value="E">E</option>
+                                        <option @if($mataKuliah->kelas_mk == 'F') selected @endif value="F">F</option>
+                                        <option @if($mataKuliah->kelas_mk == 'G') selected @endif value="G">G</option>
+                                        <option @if($mataKuliah->kelas_mk == 'H') selected @endif value="H">H</option>
+                                        <option @if($mataKuliah->kelas_mk == 'I') selected @endif value="I">I</option>
+                                        <option @if($mataKuliah->kelas_mk == 'J') selected @endif value="J">J</option>
+                                        <option @if($mataKuliah->kelas_mk == 'K') selected @endif value="K">K</option>
+                                        <option @if($mataKuliah->kelas_mk == 'L') selected @endif value="L">L</option>
+                                        <option @if($mataKuliah->kelas_mk == 'M') selected @endif value="M">M</option>
+                                        <option @if($mataKuliah->kelas_mk == 'N') selected @endif value="N">N</option>
+                                        <option @if($mataKuliah->kelas_mk == 'O') selected @endif value="O">O</option>
+                                        <option @if($mataKuliah->kelas_mk == 'P') selected @endif value="P">P</option>
+                                        <option @if($mataKuliah->kelas_mk == 'Q') selected @endif value="Q">Q</option>
+                                        <option @if($mataKuliah->kelas_mk == 'R') selected @endif value="R">R</option>
+                                        <option @if($mataKuliah->kelas_mk == 'S') selected @endif value="S">S</option>
+                                        <option @if($mataKuliah->kelas_mk == 'T') selected @endif value="T">T</option>
+                                        <option @if($mataKuliah->kelas_mk == 'U') selected @endif value="U">U</option>
+                                        <option @if($mataKuliah->kelas_mk == 'V') selected @endif value="V">V</option>
+                                        <option @if($mataKuliah->kelas_mk == 'W') selected @endif value="W">W</option>
+                                        <option @if($mataKuliah->kelas_mk == 'X') selected @endif value="X">X</option>
+                                        <option @if($mataKuliah->kelas_mk == 'Y') selected @endif value="Y">Y</option>
+                                        <option @if($mataKuliah->kelas_mk == 'Z') selected @endif value="Z">Z</option>
                                     </select>
                                 </div>
                             </div>
@@ -223,15 +234,15 @@
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
                                     <label>Hari</label>
-                                    <select class="custom-select mb-2 mr-sm-2" id="inlineFormCustomSelect">
+                                    <select class="custom-select mb-2 mr-sm-2" name="hari_mk">
                                         <option selected>...</option>
-                                        <option value="1">Senin</option>
-                                        <option value="2">Selasa</option>
-                                        <option value="3">Rabu</option>
-                                        <option value="4">Kamis</option>
-                                        <option value="5">Jumat</option>
-                                        <option value="6">Sabtu</option>
-                                        <option value="7">Minggu</option>
+                                        <option @if($mataKuliah->hari_mk == 'Senin') selected @endif value="Senin">Senin</option>
+                                        <option @if($mataKuliah->hari_mk == 'Selasa') selected @endif value="Selasa">Selasa</option>
+                                        <option @if($mataKuliah->hari_mk == 'Rabu') selected @endif value="Rabu">Rabu</option>
+                                        <option @if($mataKuliah->hari_mk == 'Kamis') selected @endif value="Kamis">Kamis</option>
+                                        <option @if($mataKuliah->hari_mk == 'Jumat') selected @endif value="Jumat">Jumat</option>
+                                        <option @if($mataKuliah->hari_mk == 'Sabtu') selected @endif value="Sabtu">Sabtu</option>
+                                        <option @if($mataKuliah->hari_mk == 'Minggu') selected @endif value="Minggu">Minggu</option>
                                     </select>
                                 </div>
                             </div>
@@ -240,37 +251,41 @@
                             <div class="form-group col-8 col-sm-6">
                                 <label>Waktu Mulai</label>
                                 <div class="input-group clockpicker" data-placement="top" data-align="top" data-autoclose="true">
-                                    <input type="text" class="form-control" value="00.00"> <span class="input-group-append"><span class="input-group-text"><i class="fa fa-clock-o"></i></span></span>
+                                    <input type="text" class="form-control" value="{{\Carbon\Carbon::parse($mataKuliah->jam_mulai)->format('H:i')}}" name="jam_mulai"> <span class="input-group-append"><span class="input-group-text"><i class="fa fa-clock-o"></i></span></span>
                                 </div>
                             </div>
                             <div class="form-group col-md-6 ml-auto">
                                 <label>Waktu Berakhir</label>
                                 <div class="input-group clockpicker" data-placement="top" data-align="top" data-autoclose="true">
-                                    <input type="text" class="form-control" value="00.00"> <span class="input-group-append"><span class="input-group-text"><i class="fa fa-clock-o"></i></span></span>
+                                    <input type="text" class="form-control" value="{{\Carbon\Carbon::parse($mataKuliah->jam_selesai)->format('H:i')}}" name="jam_selesai"> <span class="input-group-append"><span class="input-group-text"><i class="fa fa-clock-o"></i></span></span>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-row align-items-center">
                                 <label>Nama Dosen</label>
-                                <select class="custom-select mb-2 mr-sm-2" id="inlineFormCustomSelect">
+                                <select class="custom-select mb-2 mr-sm-2" name="dosen_mk">
                                     <option selected>...</option>
-                                    <option value="1">Prof. Dr. </option>
+                                    @foreach(dropdownds() as $ds)
+                                    <option @if($mataKuliah->dosen_mk == $ds->nama_dosen) selected @endif value="{{$ds->nama_dosen}}">{{$ds->nama_dosen}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
-                        <button type="button" class="btn btn-secondary">Tambah Data</button>
+                        <button type="submit" class="btn btn-secondary">Ubah Data</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    @endforeach
 
     <!-- Modal Hapus -->
-    <div class="modal fade" id="hapusModal" style="margin-top: 50px;">
+    @foreach($data_mataKuliah as $mataKuliah)
+    <div class="modal fade" id="hapusModal{{$mataKuliah->id}}" style="margin-top: 50px;">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -278,18 +293,20 @@
                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                     </button>
                 </div>
-                <form>
+                <form method="post" action="/db-mk/delete/{{$mataKuliah->id}}">
+                {{csrf_field()}}
                     <div class="modal-body">
                         Anda yakin ingin menghapus data ini?
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
-                        <button type="button" class="btn btn-danger">Hapus</button>
+                        <button type="submit" class="btn btn-danger">Hapus</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    @endforeach
 
     
 

@@ -8,15 +8,21 @@
                     </div>
                 </div>
                 <div class="col nav-text" style="text-align:center; margin-top:10px; border-bottom: 1px solid #f1f1f1; margin-bottom: 10px;">
-                        <div class="dropdown custom-dropdown">
-                            <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="dropdown">Semester<i class="fa fa-angle-down m-l-5"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#">Awal 2018/2019</a> 
-                                <a class="dropdown-item" href="#">Akhir 2018/2019</a> 
-                                <a class="dropdown-item" href="#">Awal 2019/2020</a>
-                            </div>
-                        </div>
+                        <form method="post" action="/tahunajaran">
+                        {{csrf_field()}}
+                        <select onchange="this.form.submit()" name="tahunajaran" class="btn btn-sm btn-outline-primary"><i class="fa fa-angle-down m-l-5"></i>
+                        <option class="dropdown-item" value="" style="background-color:white">Tahun Ajaran</option>
+                        @foreach(dropdownta() as $dd)
+                            @if(Session::get('tahunajaran') == $dd->tahun_ajaran)
+                            <option class="dropdown-item" selected value="{{$dd->tahun_ajaran}}" style="background-color:white">{{$dd->tahun_ajaran}}</option>
+                            @else
+                            <option class="dropdown-item" value="{{$dd->tahun_ajaran}}" style="background-color:white">{{$dd->tahun_ajaran}}</option>
+                            @endif
+                        @endforeach
+                        </select>
+                        <input type="hidden" name="url" value="{{Request::segment(1)}}">
+                        <noscript><input type="submit" value="Submit"></noscript>
+                        </form>
                 </div>
                 <ul class="metismenu" id="menu">
                     <li><a href="#"><i class=" mdi mdi-view-dashboard"></i> <span class="nav-text">Dashboard</span></a>

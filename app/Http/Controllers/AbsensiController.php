@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use File;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Requests\UserStoreRequest;
+use Session;
 
 class AbsensiController extends Controller
 {
@@ -164,11 +165,51 @@ class AbsensiController extends Controller
 
     	return redirect('/db-mahasiswa')->with('sukses', "Data Mahasiswa berhasil di hapus.");
     }
-    public function mk(){
-        return view('admin.dashboard.mk', [
-			'title'					=> 'Tambah Mata Kuliah | Aplikasi Monitoring Absensi'
-		]);
+
+    public function ta(){
+    	$data_tahunAjaran = \App\TahunAjaran::all();
+        return view('admin.dashboard.ta', [
+        	'title'					=> 'Tahun Ajaran | Aplikasi Monitoring Absensi',
+        	'data_tahunAjaran'		=> $data_tahunAjaran
+        	]);
     }
+
+    public function taAdd(UserStoreRequest $request){
+    	$tahunAjaran = \App\TahunAjaran::create($request->all());
+
+        return redirect('/tahun-ajaran')->with('sukses', "Tahun Ajaran berhasil di tambahkan.");
+    }
+
+    public function taEdit(UserUpdateRequest $request, $id){
+    	$tahunAjaran = \App\TahunAjaran::find($id);
+    	$tahunAjaran->update($request->all());
+
+    	return redirect('/tahun-ajaran')->with('sukses', "Tahun Ajaran berhasil di ubah.");
+    }
+
+    public function taDelete(Request $request, $id){
+    	$tahunAjaran = \App\TahunAjaran::find($id);
+    	$tahunAjaran->delete();
+
+    	return redirect('/tahun-ajaran')->with('sukses', "Tahun Ajaran berhasil di hapus.");
+    }
+
+    public function tahunajaran(Request $request){
+    	\Session::put('tahunajaran', $request->tahunajaran);
+
+    	return redirect('/'.$request->url);
+    	
+    }
+
+    public function mk(){
+    	$filterta = \Session::get('tahunajaran');
+    	$data_mataKuliah = \App\MataKuliah::where('tahun_ajaran', $filterta)->get();
+        return view('admin.dashboard.mk', [
+        	'data_mataKuliah'		=> $data_mataKuliah,
+        	'title'					=> 'Mata Kuliah | Aplikasi Monitoring Absensi' 
+        	]);
+    }
+<<<<<<< HEAD
     public function ta(){
         return view('admin.dashboard.ta', [
 			'title'					=> 'Tahun Ajaran | Aplikasi Monitoring Absensi'
@@ -186,4 +227,35 @@ class AbsensiController extends Controller
 			'title'					=> 'Tahun Ajaran | Aplikasi Monitoring Absensi'
 		]);
 	}
+=======
+
+    public function mkAdd(Request $request){
+    	$filterta = \Session::get('tahunajaran');
+    	$dosen = \App\Dosen::where('nama_dosen', $request->dosen_mk)->first();
+
+    	$request->request->add(['id_dosen' => $dosen->id]);
+    	$request->request->add(['tahun_ajaran' => $filterta]);
+    	$mataKuliah = \App\MataKuliah::create($request->all());
+
+        return redirect('/db-mk')->with('sukses', "Mata Kuliah berhasil di tambahkan.");
+    }
+
+    public function mkEdit(Request $request, $id){
+    	$dosen = \App\Dosen::where('nama_dosen', $request->dosen_mk)->first();
+    	$mataKuliah = \App\MataKuliah::find($id);
+
+    	$request->request->add(['id_dosen' => $dosen->id]);
+    	$mataKuliah->update($request->all());
+
+    	return redirect('/db-mk')->with('sukses', "Mata Kuliah berhasil di ubah.");
+    }
+
+    public function mkDelete(Request $request, $id){
+    	$mataKuliah = \App\MataKuliah::find($id);
+    	$mataKuliah->delete();
+
+    	return redirect('/db-mk')->with('sukses', "Mata Kuliah berhasil di hapus.");
+    }
+
+>>>>>>> 32ff9fcaf8968295a64626dd44f7fffbaf5961eb
 }

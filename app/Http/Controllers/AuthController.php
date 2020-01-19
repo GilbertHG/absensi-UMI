@@ -18,8 +18,9 @@ class AuthController extends Controller
     	return redirect('/login')->with(['error' => 'Username atau Password salah!!']);
     }
 
-    public function logout(){
+    public function logout(Request $request){
     	Auth::logout();
+        $request->session()->forget('tahunajaran');
     	return redirect('/login');
     }
 }

@@ -27,6 +27,7 @@ class UserStoreRequest extends FormRequest
             'foto' => 'required_with:nim_mahasiswa|image|mimes:jpeg,png,jpg|max:2048',
             'nim_mahasiswa' => 'unique:mahasiswa,nim_mahasiswa',
             'nip_nbm_dosen' => 'unique:dosen,nip_nbm_dosen',
+            'tahun_ajaran'  => 'unique:tahun_ajaran,tahun_ajaran',
         ];
     }
 
@@ -38,6 +39,7 @@ class UserStoreRequest extends FormRequest
             'foto.required_with' => 'Harap Masukan Foto!',
             'foto.mimes' => 'Format Foto Anda Salah!',
             'foto.max' => 'Ukuran Foto Terlalu Besar!',
+            'tahun_ajaran.unique' => 'Tahun Ajaran Telah Ada',
         ];
     }
 }
