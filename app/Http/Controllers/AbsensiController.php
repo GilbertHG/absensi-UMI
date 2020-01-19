@@ -173,5 +173,17 @@ class AbsensiController extends Controller
         return view('admin.dashboard.ta', [
 			'title'					=> 'Tahun Ajaran | Aplikasi Monitoring Absensi'
 		]);
-    }
+	}
+	public function krsMahasiswa(){
+		$data_mahasiswa = \App\Mahasiswa::all();
+        return view('admin.dashboard.krs', [
+			'data_mahasiswa'		=> $data_mahasiswa,
+			'title'					=> 'KRS Mahasiswa | Aplikasi Monitoring Absensi'
+		]);
+	}
+	public function dataKrsMahasiswa(){
+        return view('admin.dashboard.dataKrs', [
+			'title'					=> 'Tahun Ajaran | Aplikasi Monitoring Absensi'
+		]);
+	}
 }

@@ -262,6 +262,11 @@ h6 {
 .content-body .container {
   padding: 45px 30px 0px;
 }
+
+.content-body .container-profile {
+  padding-top: 60px;
+}
+
 .content-body .container-fluid {
   padding: 30px 30px 0px;
 }
