@@ -202,9 +202,40 @@ class AbsensiController extends Controller
     }
 
     public function mk(){
+    	$filterta = \Session::get('tahunajaran');
+    	$data_mataKuliah = \App\MataKuliah::where('tahun_ajaran', $filterta)->get();
         return view('admin.dashboard.mk', [
-        	'title'				=> 'Mata Kuliah | Aplikasi Monitoring Absensi' 
+        	'data_mataKuliah'		=> $data_mataKuliah,
+        	'title'					=> 'Mata Kuliah | Aplikasi Monitoring Absensi' 
         	]);
+    }
+
+    public function mkAdd(Request $request){
+    	$filterta = \Session::get('tahunajaran');
+    	$dosen = \App\Dosen::where('nama_dosen', $request->dosen_mk)->first();
+
+    	$request->request->add(['id_dosen' => $dosen->id]);
+    	$request->request->add(['tahun_ajaran' => $filterta]);
+    	$mataKuliah = \App\MataKuliah::create($request->all());
+
+        return redirect('/db-mk')->with('sukses', "Mata Kuliah berhasil di tambahkan.");
+    }
+
+    public function mkEdit(Request $request, $id){
+    	$dosen = \App\Dosen::where('nama_dosen', $request->dosen_mk)->first();
+    	$mataKuliah = \App\MataKuliah::find($id);
+
+    	$request->request->add(['id_dosen' => $dosen->id]);
+    	$mataKuliah->update($request->all());
+
+    	return redirect('/db-mk')->with('sukses', "Mata Kuliah berhasil di ubah.");
+    }
+
+    public function mkDelete(Request $request, $id){
+    	$mataKuliah = \App\MataKuliah::find($id);
+    	$mataKuliah->delete();
+
+    	return redirect('/db-mk')->with('sukses', "Mata Kuliah berhasil di hapus.");
     }
 
 }
