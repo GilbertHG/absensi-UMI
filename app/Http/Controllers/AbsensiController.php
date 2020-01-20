@@ -248,7 +248,12 @@ class AbsensiController extends Controller
 	}
 	public function dataKrsMahasiswa(){
         return view('admin.dashboard.dataKrs', [
-			'title'					=> 'Tahun Ajaran | Aplikasi Monitoring Absensi'
+			'title'					=> 'Data KRS Mahasiswa | Aplikasi Monitoring Absensi'
+		]);
+	}
+	public function isiKrsMahasiswa(){
+        return view('admin.dashboard.isiKrs', [
+			'title'					=> 'Isi KRS Mahasiswa | Aplikasi Monitoring Absensi'
 		]);
 	}
 

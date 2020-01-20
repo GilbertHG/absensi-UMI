@@ -8,7 +8,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20"> Daftar Mahasiswa</h4></div>
+                            <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20"> Tabel KRS Mahasiswa</h4></div>
                             <div class="floatright">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration">
@@ -19,7 +19,6 @@
                                             <th>NIM</th>
                                             <th>Konsentrasi</th>
                                             <th>Foto</th>
-                                            <th style="vertical-align:middle; text-align:center;">Edit | Hapus</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -27,14 +26,10 @@
                                     @foreach($data_mahasiswa as $mahasiswa)
                                         <tr>
                                             <td style="vertical-align:middle; text-align:center;">{{$no++}}</td>
-                                            <td style="vertical-align:middle;">{{$mahasiswa->nama_mahasiswa}}</td>
+                                            <td style="vertical-align:middle;"><a href="/data-krs-mahasiswa">{{$mahasiswa->nama_mahasiswa}}</a></td>
                                             <td style="vertical-align:middle;">{{$mahasiswa->nim_mahasiswa}}</td>
                                             <td style="vertical-align:middle;">{{$mahasiswa->konsentrasi_mahasiswa}}</td>
-                                            <td style="vertical-align:middle;"><img src="{{asset('storage/profil_images/'.$mahasiswa->foto_mahasiswa)}}" class="img-responsive" style="max-height: 160px; max-width: 140px;"></td>
-                                            <td style="vertical-align:middle; text-align:center;">
-                                                <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#editModal{{$mahasiswa->id}}"><i class="mdi mdi-lead-pencil"></i></button>
-                                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal{{$mahasiswa->id}}"><i class="mdi mdi-delete"></i></button>
-                                            </td>
+                                            <td style="vertical-align:middle;"><img src="{{asset('storage/profil_images/'.$mahasiswa->foto_mahasiswa)}}" class="img-responsive" style="max-height: 130px; max-width: 95px;"></td>
                                         </tr>
                                     @endforeach
                                     </tbody>
