@@ -294,5 +294,35 @@ class AbsensiController extends Controller
         $saran->delete();
 
         return redirect('/saran-masuk')->with('sukses', "Pesan Berhasil Di Hapus.");
-    }
+	}
+	
+	public function daftarHadir(){
+		//$jadwalajar = \App\MkMahasiswa::with('mata_kuliah','mahasiswa')->where('id_dosen', '=', $data)->where('tahun_ajaran', $filterta)->get();
+		$filterta = \Session::get('tahunajaran');
+		$data = \Auth::user()->id;
+		// $daftarhadir = \App\MataKuliah::whereHas("mkmahasiswas", function($q){
+		// 	$q->where("id_mk","=","id");
+		// })->where('id_dosen', '=', $data)->where('tahun_ajaran', $filterta)->get();
+		$daftarhadir = \App\MataKuliah::with('mkmahasiswas')->where('id_dosen', '=', $data)->where('tahun_ajaran', $filterta)->get();
+		return view('admin.dashboard.daftarhadir',[
+			'title'                 => 'Daftar Hadir Mahasiswa | Aplikasi Monitoring Absensi',
+			'daftarhadir'			=> $daftarhadir
+		]);
+	}
+
+	public function listpeserta(Request $request){
+		$data = $request->mk;
+		$listpeserta = \App\MkMahasiswa::with('mahasiswa')->where('id_mk', '=', $data)->get();
+		$matkul = \App\MkMahasiswa::with('mata_kuliah')->where('id_mk', '=', $data)->first();
+		return view('admin.dashboard.listpeserta',[
+			'title'                 => 'Daftar Hadir Mahasiswa | Aplikasi Monitoring Absensi',
+			'listpeserta'			=> $listpeserta,
+			'matkul'				=> $matkul
+		]);
+
+	}
+
+	public function absen(Request $request){
+		return 'wik wik wik';
+	}
 }
