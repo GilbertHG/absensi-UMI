@@ -199,7 +199,7 @@ class AbsensiController extends Controller
 
     	return redirect('/'.$request->url);
     	
-    }
+    }//PENTING!!!
 
     public function mk(){
     	$filterta = \Session::get('tahunajaran');
@@ -212,7 +212,7 @@ class AbsensiController extends Controller
 
     public function mkAdd(Request $request){
     	$filterta = \Session::get('tahunajaran');
-    	$dosen = \App\Dosen::where('nama_dosen', $request->dosen_mk)->first();
+    	$dosen = \App\Dosen::where('nama_dosen', $request->dosen_mk)->first()	;
 
     	$request->request->add(['id_dosen' => $dosen->id]);
     	$request->request->add(['tahun_ajaran' => $filterta]);
@@ -248,6 +248,17 @@ class AbsensiController extends Controller
 	public function dataKrsMahasiswa(){
         return view('admin.dashboard.dataKrs', [
 			'title'					=> 'Tahun Ajaran | Aplikasi Monitoring Absensi'
+		]);
+	}
+
+	public function jadwalajar(){
+		$filterta = \Session::get('tahunajaran');
+		$data = \Auth::user()->id;
+		$jadwalajar = \App\MataKuliah::where('id_dosen', '=', $data)->where('tahun_ajaran', $filterta)->get();
+		
+		return view('admin.dashboard.jadwalajar',[
+			'title'				=> 'Tahun Ajaran | Aplikasi Monitoring Absensi',
+			'jadwalajar'		=> $jadwalajar,
 		]);
 	}
 }

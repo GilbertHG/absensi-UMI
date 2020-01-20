@@ -39,7 +39,7 @@
                     </li>
                     <li><a href="/krs-mahasiswa"><i class="mdi mdi-square-edit-outline"></i> <span class="nav-text">KRS Mahasiswa</span></a>
                     </li>
-                    <li><a href="#"><i class="mdi mdi-calendar-blank"></i> <span class="nav-text">Jadwal Mengajar</span></a>
+                    <li><a href="/jadwal-ajar"><i class="mdi mdi-calendar-blank"></i> <span class="nav-text">Jadwal Mengajar</span></a>
                     </li>
                     <li><a href="#"><i class="mdi mdi-checkbox-marked-circle-outline"></i> <span class="nav-text">Daftar Hadir Mahasiswa</span></a>
                     </li>
