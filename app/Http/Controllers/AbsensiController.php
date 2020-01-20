@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use File;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\MkStoreRequest;
 use Session;
 
 class AbsensiController extends Controller
@@ -210,7 +211,7 @@ class AbsensiController extends Controller
         	]);
     }
 
-    public function mkAdd(Request $request){
+    public function mkAdd(MkStoreRequest $request){
     	$filterta = \Session::get('tahunajaran');
     	$dosen = \App\Dosen::where('nama_dosen', $request->dosen_mk)->first();
 
@@ -250,4 +251,32 @@ class AbsensiController extends Controller
 			'title'					=> 'Tahun Ajaran | Aplikasi Monitoring Absensi'
 		]);
 	}
+
+    public function saran(){
+        return view('admin.dashboard.saran', [
+            'title'                 => 'Saran | Aplikasi Monitoring Absensi'
+        ]);
+    }
+
+    public function saranAdd(UserStoreRequest $request){
+        $saran = \App\Saran::create($request->all());
+
+        return redirect('/saran')->with('sukses', "Saran Berhasil Di Kirim.");
+    }
+
+    public function saranMasuk(){
+        $user = auth()->user()->name;
+        $saran = \App\Saran::where('kepada', $user)->get();
+        return view('admin.dashboard.saranMasuk', [
+            'data_saran'            => $saran,
+            'title'                 => 'Saran Masuk | Aplikasi Monitoring Absensi'
+        ]);       
+    }
+
+    public function saranMasukDelete(Request $request, $id){
+        $saran = \App\Saran::find($id);
+        $saran->delete();
+
+        return redirect('/saran-masuk')->with('sukses', "Pesan Berhasil Di Hapus.");
+    }
 }

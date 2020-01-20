@@ -27,7 +27,7 @@
                 <ul class="metismenu" id="menu">
                     <li><a href="#"><i class=" mdi mdi-view-dashboard"></i> <span class="nav-text">Dashboard</span></a>
                     </li>
-                    <li class="{{ (request()->is('db-dosen*'))  || (request()->is('db-mahasiswa*')) ? 'active' : '' }}"><a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-table"></i> <span class="nav-text">Database</span></a>
+                    <li><a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-table"></i> <span class="nav-text">Database</span></a>
                         <ul aria-expanded="false">
                             <li><a href="/db-dosen">Dosen</a>
                             </li>
@@ -43,11 +43,11 @@
                     </li>
                     <li><a href="#"><i class="mdi mdi-checkbox-marked-circle-outline"></i> <span class="nav-text">Daftar Hadir Mahasiswa</span></a>
                     </li>
-                    <li><a href="#"><i class="mdi mdi-message-processing"></i> <span class="nav-text">Saran Masuk</span></a>
+                    <li><a href="/saran-masuk"><i class="mdi mdi-message-processing"></i> <span class="nav-text">Saran Masuk</span></a>
                     </li>
                     <li><a href="#"><i class="mdi mdi-calendar-blank"></i> <span class="nav-text">Jadwal Mata Kuliah</span></a>
                     </li>
-                    <li><a href="#"><i class="mdi mdi-message-reply"></i> <span class="nav-text">Saran</span></a>
+                    <li><a href="/saran"><i class="mdi mdi-message-reply"></i> <span class="nav-text">Saran</span></a>
                     </li>
                     <li><a href="#"><i class="mdi mdi-account-key"></i> <span class="nav-text">Ganti Password</span></a>
                     </li>

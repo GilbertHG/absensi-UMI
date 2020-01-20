@@ -42,3 +42,9 @@ Route::post('/tahunajaran', 'AbsensiController@tahunajaran')->middleware('auth')
 //Isi KRS
 Route::get('/krs-mahasiswa', 'AbsensiController@krsMahasiswa')->middleware('auth');
 Route::get('/data-krs-mahasiswa', 'AbsensiController@dataKrsMahasiswa')->middleware('auth');
+
+//Saran
+Route::get('/saran', 'AbsensiController@saran')->middleware('auth');
+Route::post('/saran/add', 'AbsensiController@saranAdd')->middleware('auth');
+Route::get('/saran-masuk', 'AbsensiController@saranMasuk')->middleware('auth');
+Route::post('/saran-masuk/delete/{id}', 'AbsensiController@saranMasukDelete')->middleware('auth');
