@@ -9,6 +9,15 @@
                  @if($message = Session::get('sukses'))
                         <div class="alert alert-success">{{$message}}</div>
                     @endif
+                    @error('dosen_mk')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    @error('kelas_mk')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    @error('hari_mk')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     <div class="card">
                         <div class="card-body">   
                             <h4 class="card-title mdi mdi-image-filter-none f-s-20"> Data Mata Kuliah</h4>
@@ -79,18 +88,18 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Kode Mata Kuliah</label>
-                            <input type="text" class="form-control mb-2 mr-sm-2" name="kode_mk">
+                            <input type="text" class="form-control mb-2 mr-sm-2" required name="kode_mk">
                         </div>
                         <div class="form-group">
                             <label>Nama Mata Kuliah</label>
-                            <input type="text" class="form-control mb-2 mr-sm-2" name="nama_mk">
+                            <input type="text" class="form-control mb-2 mr-sm-2" required name="nama_mk">
                         </div>
                         <div class="form-group">
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
                                     <label>Kelas</label>
                                     <select class="custom-select mb-2 mr-sm-2" name="kelas_mk">
-                                        <option selected>...</option>
+                                        <option disabled selected>...</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
                                         <option value="C">C</option>
@@ -126,7 +135,7 @@
                                 <div class="col-auto my-1">
                                     <label>Hari</label>
                                     <select class="custom-select mb-2 mr-sm-2" name="hari_mk">
-                                        <option selected>...</option>
+                                        <option disabled selected>...</option>
                                         <option value="Senin">Senin</option>
                                         <option value="Selasa">Selasa</option>
                                         <option value="Rabu">Rabu</option>
@@ -156,7 +165,7 @@
                             <div class="form-row align-items-center">
                                 <label>Nama Dosen</label>
                                 <select class="custom-select mb-2 mr-sm-2" name="dosen_mk">
-                                    <option selected>...</option>
+                                    <option disabled selected>...</option>
                                     @foreach(dropdownds() as $ds)
                                     <option value="{{$ds->nama_dosen}}">{{$ds->nama_dosen}}</option>
                                     @endforeach
@@ -188,18 +197,18 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Kode Mata Kuliah</label>
-                            <input type="text" class="form-control mb-2 mr-sm-2" name="kode_mk" value="{{$mataKuliah->kode_mk}}">
+                            <input type="text" class="form-control mb-2 mr-sm-2" name="kode_mk" required value="{{$mataKuliah->kode_mk}}">
                         </div>
                         <div class="form-group">
                             <label>Nama Mata Kuliah</label>
-                            <input type="text" class="form-control mb-2 mr-sm-2" name="nama_mk" value="{{$mataKuliah->nama_mk}}">
+                            <input type="text" class="form-control mb-2 mr-sm-2" required name="nama_mk" value="{{$mataKuliah->nama_mk}}">
                         </div>
                         <div class="form-group">
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
                                     <label>Kelas</label>
                                     <select class="custom-select mb-2 mr-sm-2" name="kelas_mk">
-                                        <option selected>...</option>
+                                        <option disabled selected>...</option>
                                         <option @if($mataKuliah->kelas_mk == 'A') selected @endif value="A">A</option>
                                         <option @if($mataKuliah->kelas_mk == 'B') selected @endif value="B">B</option>
                                         <option @if($mataKuliah->kelas_mk == 'C') selected @endif value="C">C</option>
@@ -235,7 +244,7 @@
                                 <div class="col-auto my-1">
                                     <label>Hari</label>
                                     <select class="custom-select mb-2 mr-sm-2" name="hari_mk">
-                                        <option selected>...</option>
+                                        <option disabled selected>...</option>
                                         <option @if($mataKuliah->hari_mk == 'Senin') selected @endif value="Senin">Senin</option>
                                         <option @if($mataKuliah->hari_mk == 'Selasa') selected @endif value="Selasa">Selasa</option>
                                         <option @if($mataKuliah->hari_mk == 'Rabu') selected @endif value="Rabu">Rabu</option>
@@ -265,7 +274,7 @@
                             <div class="form-row align-items-center">
                                 <label>Nama Dosen</label>
                                 <select class="custom-select mb-2 mr-sm-2" name="dosen_mk">
-                                    <option selected>...</option>
+                                    <option disabled selected>...</option>
                                     @foreach(dropdownds() as $ds)
                                     <option @if($mataKuliah->dosen_mk == $ds->nama_dosen) selected @endif value="{{$ds->nama_dosen}}">{{$ds->nama_dosen}}</option>
                                     @endforeach
