@@ -209,25 +209,6 @@ class AbsensiController extends Controller
         	'title'					=> 'Mata Kuliah | Aplikasi Monitoring Absensi' 
         	]);
     }
-<<<<<<< HEAD
-    public function ta(){
-        return view('admin.dashboard.ta', [
-			'title'					=> 'Tahun Ajaran | Aplikasi Monitoring Absensi'
-		]);
-	}
-	public function krsMahasiswa(){
-		$data_mahasiswa = \App\Mahasiswa::all();
-        return view('admin.dashboard.krs', [
-			'data_mahasiswa'		=> $data_mahasiswa,
-			'title'					=> 'KRS Mahasiswa | Aplikasi Monitoring Absensi'
-		]);
-	}
-	public function dataKrsMahasiswa(){
-        return view('admin.dashboard.dataKrs', [
-			'title'					=> 'Tahun Ajaran | Aplikasi Monitoring Absensi'
-		]);
-	}
-=======
 
     public function mkAdd(Request $request){
     	$filterta = \Session::get('tahunajaran');
@@ -257,5 +238,16 @@ class AbsensiController extends Controller
     	return redirect('/db-mk')->with('sukses', "Mata Kuliah berhasil di hapus.");
     }
 
->>>>>>> 32ff9fcaf8968295a64626dd44f7fffbaf5961eb
+    public function krsMahasiswa(){
+		$data_mahasiswa = \App\Mahasiswa::all();
+        return view('admin.dashboard.krs', [
+			'data_mahasiswa'		=> $data_mahasiswa,
+			'title'					=> 'KRS Mahasiswa | Aplikasi Monitoring Absensi'
+		]);
+	}
+	public function dataKrsMahasiswa(){
+        return view('admin.dashboard.dataKrs', [
+			'title'					=> 'Tahun Ajaran | Aplikasi Monitoring Absensi'
+		]);
+	}
 }
