@@ -49,7 +49,9 @@ Route::post('/changePassword','AuthController@changePassword')->name('changePass
 //Isi KRS
 Route::get('/krs-mahasiswa', 'AbsensiController@krsMahasiswa')->middleware('auth');
 Route::get('/data-krs-mahasiswa/{id}', 'AbsensiController@dataKrsMahasiswa')->middleware('auth');
-Route::get('/isi-krs-mahasiswa', 'AbsensiController@isiKrsMahasiswa')->middleware('auth');
+Route::post('/data-krs-mahasiswa/delete/{id}', 'AbsensiController@dataKrsMahasiswaDelete')->middleware('auth');
+Route::get('/isi-krs-mahasiswa/{id}', 'AbsensiController@isiKrsMahasiswa')->middleware('auth');
+Route::post('/isi-krs-mahasiswa/add', 'AbsensiController@isiKrsMahasiswaAdd')->middleware('auth');
 
 //Saran
 Route::get('/saran', 'AbsensiController@saran')->middleware('auth');

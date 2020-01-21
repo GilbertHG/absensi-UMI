@@ -247,10 +247,45 @@ class AbsensiController extends Controller
 		]);
 	}
 	public function dataKrsMahasiswa(Request $request, $id){
+        $data_mahasiswa = \App\Mahasiswa::where('id', $id)->first();
+        $data_matkul    = \App\MkMahasiswa::with('mata_kuliah')->where('id_mahasiswa', $id)->get();
         return view('admin.dashboard.dataKrs', [
+            'mahasiswa'             => $data_mahasiswa,
+            'matkul'                => $data_matkul,
 			'title'					=> 'Data KRS Mahasiswa | Aplikasi Monitoring Absensi'
 		]);
 	}
+
+    public function dataKrsMahasiswaDelete(Request $request, $id){
+        $mataKuliah = \App\MkMahasiswa::find($id);
+        $mataKuliah->delete();
+
+        return redirect('/data-krs-mahasiswa/'.$request->id_mahasiswa)->with('sukses', "Mata Kuliah berhasil di hapus.");
+    }
+
+    public function isiKrsMahasiswa(Request $request, $id){
+        $data_mahasiswa = \App\Mahasiswa::where('id', $id)->first();
+        $filterta = \Session::get('tahunajaran');
+        $data_mataKuliah = \App\MataKuliah::where('tahun_ajaran', $filterta)->get();
+        return view('admin.dashboard.isiKrs', [
+            'mahasiswa'             => $data_mahasiswa,
+            'matkul'                => $data_mataKuliah,
+            'title'                 => 'Isi KRS Mahasiswa | Aplikasi Monitoring Absensi'
+        ]);
+    }
+
+    public function isiKrsMahasiswaAdd(Request $request, $id){
+        $mataKuliah = $request->mataKuliah;
+
+        foreach ($mataKuliah as $mataKuliah_id) {
+            $mk = new App\MkMahasisiswa;
+            $mk->id_mk = $mataKuliah_id;
+            $mk->id_mahasiswa = $request->id_mahasiswa;
+            $mk->save();
+        } 
+        return redirect('/data-krs-mahasiswa/'.$request->id_mahasiswa)->with('sukses', "Mata Kuliah berhasil di tambah.");
+
+    }
 
 	public function jadwalajar(){
 		$filterta = \Session::get('tahunajaran');
@@ -260,11 +295,6 @@ class AbsensiController extends Controller
 		return view('admin.dashboard.jadwalajar',[
 			'title'				=> 'Tahun Ajaran | Aplikasi Monitoring Absensi',
 			'jadwalajar'		=> $jadwalajar,
-		]);
-	}
-	public function isiKrsMahasiswa(){
-        return view('admin.dashboard.isiKrs', [
-			'title'					=> 'Isi KRS Mahasiswa | Aplikasi Monitoring Absensi'
 		]);
 	}
 

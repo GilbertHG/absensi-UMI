@@ -9,7 +9,7 @@ use App\Mahasiswa;
 class MkMahasiswa extends Model
 {
     protected $table = 'mk_diambil';
-    protected $guarded = [];
+    protected $fillable = ['id_mk', 'id_mahasiswa', 'persentase',];
 
     public $timestamps = false;
 

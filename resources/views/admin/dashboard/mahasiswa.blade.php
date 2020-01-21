@@ -123,7 +123,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Konsentrasi</label>
-                                <input type="text" value="{{$mahasiswa->kosentrasi_mahasiswa}}" class="form-control mb-2 mr-sm-2" name="konsentrasi_mahasiswa">
+                                <input type="text" value="{{$mahasiswa->konsentrasi_mahasiswa}}" class="form-control mb-2 mr-sm-2" name="konsentrasi_mahasiswa">
                             </div>
                             <div class="form-group">
                                 <label>Foto</label>
