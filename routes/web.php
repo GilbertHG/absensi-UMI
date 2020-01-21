@@ -41,7 +41,8 @@ Route::post('/tahunajaran', 'AbsensiController@tahunajaran')->middleware('auth')
 Route::get('/jadwal-ajar', 'AbsensiController@jadwalajar')->middleware('auth');
 Route::get('/daftar-hadir', 'AbsensiController@daftarhadir')->middleware('auth');
 Route::get('/daftar-hadir/list-peserta/', 'AbsensiController@listpeserta')->name('persentase')->middleware('auth');   
-Route::get('/daftar-hadir/list-peserta/absen', 'AbsensiController@absen')->name('absen')->middleware('auth');   
+Route::get('/daftar-hadir/list-peserta/absen', 'AbsensiController@absen')->name('absen')->middleware('auth');
+Route::get('/daftar-hadir/list-peserta/absen/input', 'AbsensiController@inputabsen')->name('absen')->middleware('auth');
 
 //Isi KRS
 Route::get('/krs-mahasiswa', 'AbsensiController@krsMahasiswa')->middleware('auth');

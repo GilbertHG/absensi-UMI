@@ -12,14 +12,16 @@
                     @error('nip_nbm_dosen')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror --}}
+                    <form method="POST" action="">
                     <div class="card">
                         <div class="card-body">
                             <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20">Daftar Hadir Mahasiswa</h4></div>
                             <div class="floatright">
                                 <select name="pertemuan" class="btn btn-sm btn-outline-primary float-right"><i class="fa fa-angle-down m-l-5"></i>
-                                    <option class="dropdown-item" value="1" style="background-color:white">Pertemuan</option>
-                                    <option class="dropdown-item" value="2" style="background-color:white">1</option>
-                                    <option class="dropdown-item" value="3" style="background-color:white">2</option>
+                                    <option class="dropdown-item" value="" style="background-color:white">Pertemuan</option>
+                                    <option class="dropdown-item" value="1" style="background-color:white">1</option>
+                                    <option class="dropdown-item" value="2" style="background-color:white">2</option>
+                                    <option class="dropdown-item" value="3" style="background-color:white">3</option>
                                     <option class="dropdown-item" value="4" style="background-color:white">4</option>
                                     <option class="dropdown-item" value="5" style="background-color:white">5</option>
                                     <option class="dropdown-item" value="6" style="background-color:white">6</option>
@@ -58,13 +60,18 @@
                                             <td style="vertical-align:middle;"><img src="{{asset('storage/profil_images/'.$data->mahasiswa->foto_mahasiswa)}}"></td>
                                             <td style="vertical-align:middle;">
                                                 <select name="kehadiran" class="btn btn-sm btn-outline-primary float-right"><i class="fa fa-angle-down m-l-5"></i>
-                                                    <option class="dropdown-item" value="1" style="background-color:white">Pertemuan</option>
+                                                    <option class="dropdown-item" value="" style="background-color:white">Status</option>
+                                                    <option class="dropdown-item" value="Tidak Hadir" style="background-color:white">Tidak Hadir</option>
+                                                    <option class="dropdown-item" value="Izin" style="background-color:white">Izin</option>
+                                                    <option class="dropdown-item" value="Sakit" style="background-color:white">Sakit</option>
                                                 </select>
                                             </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
-                                </table>
+                                </table><br>
+                                <button type="submit" class="btn btn-secondary btn-sm">Masukkan Absen</button>
+                            </form>
                             </div>
                         </div>
                     </div>
