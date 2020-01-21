@@ -30,7 +30,7 @@
                                     </table>
                                 </div>
                                 <div class="col-2" style="margin:auto;">
-                                    <img src="../../assets/images/users/2.jpg" class="rounded w-300px" alt="">
+                                    <img src="../../assets/images/users/2.jpg" class="rounded" style="height: 170px; width: 130px;" alt="">
                                 </div>
                                 <!-- /# card -->
                             </div>
