@@ -13,7 +13,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-8 table-responsive" style="margin:auto;">
+                                <div class="col table-responsive" style="margin:auto;">
                                     <table class="table table-hover">
                                             <tr>
                                                 <td>Nama</td>
@@ -29,8 +29,8 @@
                                             </tr>
                                     </table>
                                 </div>
-                                <div class="col-2" style="margin:auto;">
-                                    <img src="../../assets/images/users/2.jpg" class="rounded" style="height: 170px; width: 130px;" alt="">
+                                <div class="col-3 img-profile" style="margin:auto;">
+                                    <img src="../../assets/images/users/2.jpg" class="rounded" style="max-height: 170px; max-width: 130px;" alt="">
                                 </div>
                                 <!-- /# card -->
                             </div>

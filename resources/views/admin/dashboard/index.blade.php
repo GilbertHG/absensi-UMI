@@ -9,11 +9,11 @@
                     </div>
                     <!-- profile -->
                     <div class="card-body" style="padding-bottom:60px;">
-                        <div class="text-center">
-                            <img src="../../assets/images/users/2.jpg" class="rounded-circle m-t-15 w-75px  text-center" alt="">
+                        <div class="text-center container-profile">
+                            <img src="../../assets/images/users/2.jpg" class="rounded-circle m-t-15 w-75px" alt="">
                             <h4 class="m-t-15 m-b-2">Paul Custard</h4>
                             <p class="text-muted">Mahasiswa</p>
-                            <div class="row col-5" style="margin:auto;">
+                            <div class="row" style="margin:auto;">
                                 <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">NIM :</span> <span class="pull-right">D121171501</span>
                                 </div>
                                 <div class="col-12 p-t-10 p-b-10"><span class="pull-left f-w-600">Konsetrasi :</span> <span class="pull-right">Iot</span>
