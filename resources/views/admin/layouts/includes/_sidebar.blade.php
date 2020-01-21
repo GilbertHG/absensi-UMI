@@ -11,7 +11,6 @@
                         <form method="post" action="/tahunajaran">
                         {{csrf_field()}}
                         <select onchange="this.form.submit()" name="tahunajaran" class="btn btn-sm btn-outline-primary"><i class="fa fa-angle-down m-l-5"></i>
-                        <option class="dropdown-item" value="" style="background-color:white">Tahun Ajaran</option>
                         @foreach(dropdownta() as $dd)
                             @if(Session::get('tahunajaran') == $dd->tahun_ajaran)
                             <option class="dropdown-item" selected value="{{$dd->tahun_ajaran}}" style="background-color:white">{{$dd->tahun_ajaran}}</option>
@@ -20,7 +19,7 @@
                             @endif
                         @endforeach
                         </select>
-                        <input type="hidden" name="url" value="{{Request::segment(1)}}">
+                        <input type="hidden" name="url" value="{{Request::segment(1)}}/{{Request::segment(2)}}">
                         <noscript><input type="submit" value="Submit"></noscript>
                         </form>
                 </div>

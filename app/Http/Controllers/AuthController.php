@@ -12,6 +12,8 @@ class AuthController extends Controller
 
     public function postlogin(Request $request) {
     	if(Auth::attempt($request->only('username','password'))){
+            $tahun_ajaran = \App\TahunAjaran::all()->sortByDesc('id')->first();
+            \Session::put('tahunajaran', $tahun_ajaran->tahun_ajaran);
     		return redirect('/');
     	}
 

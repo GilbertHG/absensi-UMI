@@ -15,15 +15,15 @@
                                     <table class="table table-hover">
                                             <tr>
                                                 <td>Nama</td>
-                                                <td>: Bayu</td>
+                                                <td>: {{$mahasiswa->nama_mahasiswa}}</td>
                                             </tr>
                                             <tr>
                                                 <td>NIM</td>
-                                                <td>: 12345678</td>
+                                                <td>: {{$mahasiswa->nim_mahasiswa}}</td>
                                             </tr>
                                             <tr>
                                                 <td>Konsentrasi</td>
-                                                <td>: </td>
+                                                <td>: {{$mahasiswa->konsentrasi_mahasiswa}}</td>
                                             </tr>
                                     </table>
                                 </div>
@@ -38,32 +38,38 @@
                                             <th>Kode Mata Kuliah</th>
                                             <th>Nama Mata Kuliah</th>
                                             <th>Kelas</th>
-                                            <th>Tahun Ajaran</th>
+                                            <th>Ruangan</th>
                                             <th>Nama Dosen</th>
                                             <th>Waktu</th>
-                                            <th style="vertical-align:middle; text-align:center;">Hapus</th>
+                                            <th style="vertical-align:middle; text-align:center;">Pilih</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <form method="post" action="/isi-krs-mahasiswa/add">
+                                        <?php $no = 1 ?>
+                                        @foreach($matkul as $data)
                                         <tr>
-                                            <td style="vertical-align:middle; text-align:center;">1.</td>
-                                            <td style="vertical-align:middle;">12313124</td>
-                                            <td style="vertical-align:middle;">Customer Support</td>
-                                            <td style="vertical-align:middle;">A</td>
-                                            <td style="vertical-align:middle;">Awal 2019/2020</td>
-                                            <td style="vertical-align:middle;">Customer Support</td>
-                                            <td style="vertical-align:middle;">19.00-19.00</td>
+                                            <td style="vertical-align:middle; text-align:center;">{{$no++}}</td>
+                                            <td style="vertical-align:middle;">{{$data->kode_mk}}</td>
+                                            <td style="vertical-align:middle;">{{$data->nama_mk}}</td>
+                                            <td style="vertical-align:middle;">{{$data->kelas_mk}}</td>
+                                            <td style="vertical-align:middle;"></td>
+                                            <td style="vertical-align:middle;">{{$data->dosen_mk}}</td>
+                                            <td style="vertical-align:middle;">{{\Carbon\Carbon::parse($data->jam_mulai)->format('H:i')}} - {{\Carbon\Carbon::parse($data->jam_selesai)->format('H:i')}}</td>
                                             <td style="vertical-align:middle; text-align:center;">
-                                                <input type="checkbox" aria-label="Checkbox for following text input">
+                                                <input type="checkbox" name="mataKuliah[]" value="{{$data->id}}" aria-label="Checkbox for following text input">
+                                                <input type="hidden" value="{{$mahasiswa->id}}" name="id_mahasiswa">
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
                             <div class="row float-right" style="margin-top:20px;">
-                                <button type="button" class="col btn btn-outline-danger" style="margin-right:10px;">Batal</button>
-                                <button type="button" class="col btn btn-outline-primary" style="margin-right:40px;">Tambah</button>
+                                <button type="button" onclick="window.location.href='/data-krs-mahasiswa/{{$mahasiswa->id}}'" class="col btn btn-outline-danger" style="margin-right:10px;">Batal</button>
+                                <button type="button" onclick="window.location.href='/isi-krs-mahasiswa/add'" class="col btn btn-outline-primary" style="margin-right:40px;">Tambah</button>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>

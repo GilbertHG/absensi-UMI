@@ -17,7 +17,6 @@ class CreateMkdiambilTable extends Migration
             $table->bigIncrements('id');
             $table->integer('id_mk');
             $table->integer('id_mahasiswa');
-            $table->date('tanggal_diambil');
             $table->string('persentase')->nullable();
             $table->timestamps();
         });
