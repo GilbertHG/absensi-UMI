@@ -1,4 +1,4 @@
-       <!-- sidebar -->
+        <!-- sidebar -->
         <div class="nk-sidebar">
             <div class="nk-nav-scroll">
                 <div class="nav-text" style="text-align:center; margin-top:10px; border-bottom: 1px solid #f1f1f1; padding-bottom: 5px;">
@@ -24,7 +24,7 @@
                         </form>
                 </div>
                 <ul class="metismenu" id="menu">
-                    <li><a href="#"><i class=" mdi mdi-view-dashboard"></i> <span class="nav-text">Dashboard</span></a>
+                    <li><a href="/"><i class=" mdi mdi-view-dashboard"></i> <span class="nav-text">Dashboard</span></a>
                     </li>
                     <li><a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-table"></i> <span class="nav-text">Database</span></a>
                         <ul aria-expanded="false">

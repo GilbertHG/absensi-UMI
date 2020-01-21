@@ -264,7 +264,8 @@ h6 {
 }
 
 .content-body .container-profile {
-  padding-top: 60px;
+  margin-right: 300px;
+  margin-left: 300px;
 }
 
 .content-body .container-fluid {
@@ -275,6 +276,14 @@ h6 {
   .content-body .container {
     padding: 15px 15px 0px;
   }
+  .content-body .container-profile {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+  .content-body .img-profile{
+    display: none;
+  }
+
 }
 .c-pointer {
   cursor: pointer;
@@ -4649,18 +4658,6 @@ Input Style
 /*****************************************
   upload button styles
 ******************************************/
-.button-footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  padding: 1rem;
-}
 
 .file-upload {
   position: relative;

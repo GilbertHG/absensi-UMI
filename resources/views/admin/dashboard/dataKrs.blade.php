@@ -13,8 +13,10 @@
                         <div class="card-body">
                             <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20"> KRS Mahasiswa</h4></div>
                             <!-- /# column -->
-                            <div class="col-lg-8 container-profile">
-                                <div class="table-responsive">
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col table-responsive" style="margin:auto;">
                                     <table class="table table-hover">
                                             <tr>
                                                 <td>Nama</td>
@@ -24,11 +26,14 @@
                                                 <td>NIM</td>
                                                 <td>: {{$mahasiswa->nim_mahasiswa}}</td>
                                             </tr>
-                                            <tr>
+                                            <tr class="border-bottom-1">
                                                 <td>Konsentrasi</td>
                                                 <td>: {{$mahasiswa->konsentrasi_mahasiswa}} </td>
                                             </tr>
                                     </table>
+                                </div>
+                                <div class="col-3 img-profile" style="margin:auto;">
+                                    <img src="../../assets/images/users/2.jpg" class="rounded" style="max-height: 170px; max-width: 130px;" alt="">
                                 </div>
                                 <!-- /# card -->
                             </div>

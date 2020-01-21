@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\RedirectIfNotAdmin;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -62,6 +63,9 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'checkRole' => \App\Http\Middleware\CheckRole::class,
+        'admin'     => \App\Http\Middleware\RedirectIfNotAdmin::class,
+        'admin'     => \App\Http\Middleware\RedirectIfNotDosen::class,
+        'admin'     => \App\Http\Middleware\RedirectIfNotMahasiswa::class,
     ];
 
     /**
