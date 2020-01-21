@@ -6,20 +6,9 @@
             <!-- row -->
             <div class="row">
                 <div class="col-12">
-                    {{-- @if($message = Session::get('sukses'))
-                        <div class="alert alert-success">{{$message}}</div>
-                    @endif --}}
-                    {{-- @error('nip_nbm_dosen')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror --}}
                     <div class="card">
                         <div class="card-body">
-                            <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20">Jadwal Menagajar Dosen</h4></div>
-                            <div class="floatright">
-                                    <div class="bootstrap-modal">
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#tambahModal">Tambah</button>
-                                    </div>
+                            <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20"> Jadwal Mengajar</h4></div>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>
@@ -40,9 +29,9 @@
                                             <td style="vertical-align:middle; text-align:center;">{{$no++}}</td>
                                             <td style="vertical-align:middle;">{{$data->kode_mk}}</td>
                                             <td style="vertical-align:middle;">{{$data->nama_mk}}</td>
-                                            <td style="vertical-align:middle;">{{$data->kelas_mk}}</td>
-                                            <td style="vertical-align:middle;">{{$data->hari_mk}}</td>
-                                            <td style="vertical-align:middle;">{{$data->jam_mulai}}</td>
+                                            <td style="vertical-align:middle;text-align:center;">{{$data->kelas_mk}}</td>
+                                            <td style="vertical-align:middle;text-align:center;">{{$data->hari_mk}}</td>
+                                            <td style="vertical-align:middle;text-align:center;">{{\Carbon\Carbon::parse($data->jam_mulai)->format('H:i')}} - {{\Carbon\Carbon::parse($data->jam_selesai)->format('H:i')}}</td>
 
                                         </tr>
                                     @endforeach
