@@ -319,10 +319,16 @@ class AbsensiController extends Controller
 			'listpeserta'			=> $listpeserta,
 			'matkul'				=> $matkul
 		]);
-
 	}
 
 	public function absen(Request $request){
-		return 'wik wik wik';
+		$data = $request->mk;
+		$listpeserta = \App\MkMahasiswa::with('mahasiswa')->where('id_mk', '=', $data)->get();
+		$matkul = \App\MkMahasiswa::with('mata_kuliah')->where('id_mk', '=', $data)->first();
+		return view('admin.dashboard.absen',[
+			'title'                 => 'Daftar Hadir Mahasiswa | Aplikasi Monitoring Absensi',
+			'listpeserta'			=> $listpeserta,
+			'matkul'				=> $matkul
+		]);
 	}
 }
