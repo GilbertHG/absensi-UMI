@@ -30,7 +30,7 @@
                                     </table>
                                 </div>
                                 <div class="col-3 img-profile" style="margin:auto;">
-                                    <img src="../../assets/images/users/2.jpg" class="rounded" style="max-height: 170px; max-width: 130px;" alt="">
+                                    <img src="{{asset('storage/profil_images/'.$mahasiswa->foto_mahasiswa)}}" class="rounded" style="max-height: 170px; max-width: 130px;" alt="">
                                 </div>
                                 <!-- /# card -->
                             </div>
