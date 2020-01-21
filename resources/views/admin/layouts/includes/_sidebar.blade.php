@@ -25,7 +25,7 @@
                         </form>
                 </div>
                 <ul class="metismenu" id="menu">
-                    <li><a href="#"><i class=" mdi mdi-view-dashboard"></i> <span class="nav-text">Dashboard</span></a>
+                    <li><a href="/"><i class=" mdi mdi-view-dashboard"></i> <span class="nav-text">Dashboard</span></a>
                     </li>
                     <li><a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-table"></i> <span class="nav-text">Database</span></a>
                         <ul aria-expanded="false">
