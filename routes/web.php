@@ -43,6 +43,8 @@ Route::get('/daftar-hadir', 'AbsensiController@daftarhadir')->middleware('auth')
 Route::get('/daftar-hadir/list-peserta/', 'AbsensiController@listpeserta')->name('persentase')->middleware('auth');   
 Route::get('/daftar-hadir/list-peserta/absen', 'AbsensiController@absen')->name('absen')->middleware('auth');
 Route::get('/daftar-hadir/list-peserta/absen/input', 'AbsensiController@inputabsen')->name('absen')->middleware('auth');
+Route::get('/gantiPassword','AuthController@editPassword');
+Route::post('/changePassword','AuthController@changePassword')->name('changePassword');
 
 //Isi KRS
 Route::get('/krs-mahasiswa', 'AbsensiController@krsMahasiswa')->middleware('auth');
