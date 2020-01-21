@@ -12,6 +12,15 @@
                     @error('nip_nbm_dosen')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
+                    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
                     <div class="card">
                         <div class="card-body">
                             <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20"> Data Dosen</h4></div>

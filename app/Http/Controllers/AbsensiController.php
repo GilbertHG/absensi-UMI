@@ -246,7 +246,7 @@ class AbsensiController extends Controller
 			'title'					=> 'KRS Mahasiswa | Aplikasi Monitoring Absensi'
 		]);
 	}
-	public function dataKrsMahasiswa(){
+	public function dataKrsMahasiswa(Request $request, $id){
         return view('admin.dashboard.dataKrs', [
 			'title'					=> 'Data KRS Mahasiswa | Aplikasi Monitoring Absensi'
 		]);
@@ -299,11 +299,11 @@ class AbsensiController extends Controller
 	public function daftarHadir(){
 		//$jadwalajar = \App\MkMahasiswa::with('mata_kuliah','mahasiswa')->where('id_dosen', '=', $data)->where('tahun_ajaran', $filterta)->get();
 		$filterta = \Session::get('tahunajaran');
-		$data = \Auth::user()->id;
+		$data = \Auth::user()->name;
 		// $daftarhadir = \App\MataKuliah::whereHas("mkmahasiswas", function($q){
 		// 	$q->where("id_mk","=","id");
 		// })->where('id_dosen', '=', $data)->where('tahun_ajaran', $filterta)->get();
-		$daftarhadir = \App\MataKuliah::with('mkmahasiswas')->where('id_dosen', '=', $data)->where('tahun_ajaran', $filterta)->get();
+		$daftarhadir = \App\MataKuliah::with('mkmahasiswas')->where('dosen_mk', $data)->where('tahun_ajaran', $filterta)->get();
 		return view('admin.dashboard.daftarhadir',[
 			'title'                 => 'Daftar Hadir Mahasiswa | Aplikasi Monitoring Absensi',
 			'daftarhadir'			=> $daftarhadir
