@@ -254,8 +254,8 @@ class AbsensiController extends Controller
 
 	public function jadwalajar(){
 		$filterta = \Session::get('tahunajaran');
-		$data = \Auth::user()->id;
-		$jadwalajar = \App\MataKuliah::where('id_dosen', '=', $data)->where('tahun_ajaran', $filterta)->get();
+		$data = \Auth::user()->name;
+		$jadwalajar = \App\MataKuliah::where('dosen_mk', $data)->where('tahun_ajaran', $filterta)->get();
 		
 		return view('admin.dashboard.jadwalajar',[
 			'title'				=> 'Tahun Ajaran | Aplikasi Monitoring Absensi',
