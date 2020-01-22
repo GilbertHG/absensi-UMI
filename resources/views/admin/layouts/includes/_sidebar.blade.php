@@ -51,7 +51,7 @@
                     </li>
                     <li><a href="/saran"><i class="mdi mdi-message-reply"></i> <span class="nav-text">Saran</span></a>
                     </li>
-                    <li><a href="#"><i class="mdi mdi-account-key"></i> <span class="nav-text">Ganti Password</span></a>
+                    <li><a href="/gantiPassword"><i class="mdi mdi-account-key"></i> <span class="nav-text">Ganti Password</span></a>
                     </li>
                 </ul>
             </div>

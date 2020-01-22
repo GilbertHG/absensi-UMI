@@ -64,8 +64,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'checkRole' => \App\Http\Middleware\CheckRole::class,
         'admin'     => \App\Http\Middleware\RedirectIfNotAdmin::class,
-        'admin'     => \App\Http\Middleware\RedirectIfNotDosen::class,
-        'admin'     => \App\Http\Middleware\RedirectIfNotMahasiswa::class,
+        'dosen'     => \App\Http\Middleware\RedirectIfNotDosen::class,
+        'mahasiswa'     => \App\Http\Middleware\RedirectIfNotMahasiswa::class,
     ];
 
     /**

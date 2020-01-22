@@ -361,4 +361,8 @@ class AbsensiController extends Controller
 			'matkul'				=> $matkul
 		]);
 	}
+
+	public function inputabsen(Request $request){
+		
+	}
 }
