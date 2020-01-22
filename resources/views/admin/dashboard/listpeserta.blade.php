@@ -19,12 +19,17 @@
                             <div class="floatright">
                                     <div class="bootstrap-modal">
                                             <!-- Button trigger modal -->
-                                            <a href="{{route('absen',['mk' => $matkul->mata_kuliah->id]) || NULL}}" class="btn btn-outline-primary float-right">Isi Absen</a>
+                                            <a href="{{route('absen',['mk' => $matkul->mata_kuliah->id])}}" class="btn btn-outline-primary float-right">Isi Absen</a>
                                     </div>
                             <div class="table-responsive">
-                                <p class="text-sm-left">Kode Mata Kuliah : {{$matkul->mata_kuliah->kode_mk :: NULL}}    </p>
-                                <p class="text-sm-left">Nama Mata Kuliah : {{$matkul->mata_kuliah->nama_mk :: NULL}}    </p>
-                                <p class="text-sm-left">Kelas :            {{$matkul->mata_kuliah->kelas_mk :: NULL}}  </p>
+                                <p class="text-sm-left">Kode Mata Kuliah : {{$matkul->mata_kuliah->kode_mk}}    </p>
+                                <p class="text-sm-left">Nama Mata Kuliah : {{$matkul->mata_kuliah->nama_mk}}    </p>
+                                <p class="text-sm-left">Kelas :            {{$matkul->mata_kuliah->kelas_mk}}  </p>
+                                @else
+                                <div class="alert alert-danger" role="alert">
+                                    ANDA BELUM MEMILIKI MAHASISWA!
+                                </div>
+                                @endif
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>
                                         <tr>
@@ -48,12 +53,6 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                @else
-                                <div class="alert alert-danger" role="alert">
-                                    ANDA BELUM MEMILIKI SISWA!
-                                </div>
-                                @endif
-                                
                             </div>
                         </div>
                     </div>
