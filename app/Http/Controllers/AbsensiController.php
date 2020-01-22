@@ -363,6 +363,6 @@ class AbsensiController extends Controller
 	}
 
 	public function inputabsen(Request $request){
-		
+		//
 	}
 }
