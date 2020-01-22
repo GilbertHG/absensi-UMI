@@ -13,8 +13,14 @@ class AuthController extends Controller
     public function postlogin(Request $request) {
     	if(Auth::attempt($request->only('username','password'))){
             $tahun_ajaran = \App\TahunAjaran::all()->sortByDesc('id')->first();
-            \Session::put('tahunajaran', $tahun_ajaran->tahun_ajaran);
-    		return redirect('/');
+            if($tahun_ajaran != ''){
+                \Session::put('tahunajaran', $tahun_ajaran->tahun_ajaran);
+    		  return redirect('/');
+            }
+            else{
+                \Session::put('tahunajaran', 'kosong');
+                return redirect('/');
+            }
     	}
 
     	return redirect('/login')->with(['error' => 'Username atau Password salah!!']);
