@@ -51,7 +51,7 @@
                     </li>
                     <li><a href="/saran-masuk"><i class="mdi mdi-message-processing"></i> <span class="nav-text">Saran Masuk</span></a>
                     </li>
-                    <li><a href="#"><i class="mdi mdi-calendar-blank"></i> <span class="nav-text">Jadwal Mata Kuliah</span></a>
+                    <li><a href="/jadwal-mata-kuliah"><i class="mdi mdi-calendar-blank"></i> <span class="nav-text">Jadwal Mata Kuliah</span></a>
                     </li>
                     <li><a href="/saran"><i class="mdi mdi-message-reply"></i> <span class="nav-text">Saran</span></a>
                     </li>

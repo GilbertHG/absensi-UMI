@@ -366,4 +366,22 @@ class AbsensiController extends Controller
 	public function inputabsen(Request $request){
 		//
 	}
+
+	public function jadwalMK(Request $request) {
+		$filterta = \Session::get('tahunajaran');
+		$mahasiswa = \App\Mahasiswa::all();
+        $data_mataKuliah = \App\MataKuliah::where('tahun_ajaran', $filterta)->get();
+        return view('admin.dashboard.jadwalMK', [
+			'data_mataKuliah'		=> $data_mataKuliah,
+			'mahasiswa'				=> $mahasiswa,
+			'title'					=> 'Jadwal Mata Kuliah | Aplikasi Monitoring Absensi'
+		]);
+	}
+
+	public function kehadiran(Request $request) {
+        return view('admin.dashboard.kehadiran', [
+			'title'					=> 'Kehadiran | Aplikasi Monitoring Absensi'
+		]);
+	}
+
 }
