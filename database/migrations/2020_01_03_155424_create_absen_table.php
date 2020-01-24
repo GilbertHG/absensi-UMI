@@ -17,7 +17,7 @@ class CreateAbsenTable extends Migration
             $table->bigIncrements('id');
             $table->integer('id_mahasiswa');
             $table->integer('id_mk');
-            $table->integer('id_mk_diambil');
+            //$table->integer('id_mk_diambil');
             $table->string('pertemuan');
             $table->date('tanggal_kuliah');
             $table->string('status');

@@ -343,7 +343,7 @@ class AbsensiController extends Controller
 
 	public function listpeserta(Request $request){
 		$data = $request->mk;
-		$listpeserta = \App\MkMahasiswa::with('mahasiswa')->where('id_mk', '=', $data)->get();
+		$listpeserta = \App\MkMahasiswa::with('mahasiswa')->where('id_mk', '=', $data)->get(); //important
 		$matkul = \App\MkMahasiswa::with('mata_kuliah')->where('id_mk', $data)->first();
 		return view('admin.dashboard.listpeserta',[
 			'title'                 => 'Daftar Hadir Mahasiswa | Aplikasi Monitoring Absensi',
@@ -364,6 +364,6 @@ class AbsensiController extends Controller
 	}
 
 	public function inputabsen(Request $request){
-		
+		//
 	}
 }

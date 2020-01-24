@@ -4,7 +4,7 @@
     <div class="content-body">
         <div class="container">
             <!-- row -->
-            <div class="row">
+            <div class= "row">
                 <div class="col-12">
                     {{-- @if($message = Session::get('sukses'))
                         <div class="alert alert-success">{{$message}}</div>
@@ -14,6 +14,7 @@
                     @enderror --}}
                     <div class="card">
                         <div class="card-body">
+                            @if($matkul != NULL && $listpeserta != NULL)
                             <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20">Daftar Hadir Mahasiswa</h4></div>
                             <div class="floatright">
                                     <div class="bootstrap-modal">
@@ -24,6 +25,11 @@
                                 <p class="text-sm-left">Kode Mata Kuliah : {{$matkul->mata_kuliah->kode_mk}}    </p>
                                 <p class="text-sm-left">Nama Mata Kuliah : {{$matkul->mata_kuliah->nama_mk}}    </p>
                                 <p class="text-sm-left">Kelas :            {{$matkul->mata_kuliah->kelas_mk}}  </p>
+                                @else
+                                <div class="alert alert-danger" role="alert">
+                                    ANDA BELUM MEMILIKI MAHASISWA!
+                                </div>
+                                @endif
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>
                                         <tr>
