@@ -36,6 +36,8 @@
                             </div>
                             <!-- /# column -->
                             <div class="table-responsive">
+                            <form method="post" action="/isi-krs-mahasiswa/add">
+                            {{csrf_field()}}
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>
                                         <tr>
@@ -50,7 +52,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <form method="post" action="/isi-krs-mahasiswa/add">
                                         <?php $no = 1 ?>
                                         @foreach($matkul as $data)
                                         <tr>
@@ -72,7 +73,7 @@
                             </div>
                             <div class="row float-right" style="margin-top:20px;">
                                 <button type="button" onclick="window.location.href='/data-krs-mahasiswa/{{$mahasiswa->id}}'" class="col btn btn-outline-danger" style="margin-right:10px;">Batal</button>
-                                <button type="button" onclick="window.location.href='/isi-krs-mahasiswa/add'" class="col btn btn-outline-primary" style="margin-right:40px;">Tambah</button>
+                                <button type="submit" class="col btn btn-outline-primary" style="margin-right:40px;">Tambah</button>
                             </div>
                             </form>
                         </div>

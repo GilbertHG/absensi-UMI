@@ -22,7 +22,11 @@
                             @endif
                         @endforeach
                         </select>
+                        @if(request()->is('/'))
+                        <input type="hidden" name="url" value="{{Request::segment(1)}}">
+                        @else
                         <input type="hidden" name="url" value="{{Request::segment(1)}}/{{Request::segment(2)}}">
+                        @endif
                         <noscript><input type="submit" value="Submit"></noscript>
                         </form>
                 </div>

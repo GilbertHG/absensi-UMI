@@ -266,7 +266,8 @@ class AbsensiController extends Controller
     public function isiKrsMahasiswa(Request $request, $id){
         $data_mahasiswa = \App\Mahasiswa::where('id', $id)->first();
         $filterta = \Session::get('tahunajaran');
-        $data_mataKuliah = \App\MataKuliah::where('tahun_ajaran', $filterta)->get();
+        $krs = \App\MkMahasiswa::where('id_mahasiswa', $id)->pluck('id_mk');
+        $data_mataKuliah = \App\MataKuliah::whereNotIn('id', $krs)->where('tahun_ajaran', $filterta)->get();
         return view('admin.dashboard.isiKrs', [
             'mahasiswa'             => $data_mahasiswa,
             'matkul'                => $data_mataKuliah,
@@ -274,14 +275,14 @@ class AbsensiController extends Controller
         ]);
     }
 
-    public function isiKrsMahasiswaAdd(Request $request, $id){
+    public function isiKrsMahasiswaAdd(Request $request){
         $mataKuliah = $request->mataKuliah;
 
         foreach ($mataKuliah as $mataKuliah_id) {
-            $mk = new App\MkMahasisiswa;
-            $mk->id_mk = $mataKuliah_id;
-            $mk->id_mahasiswa = $request->id_mahasiswa;
-            $mk->save();
+            \App\MkMahasiswa::create([
+            'id_mk' => $mataKuliah_id,
+            'id_mahasiswa' => $request->id_mahasiswa,
+        ]);
         } 
         return redirect('/data-krs-mahasiswa/'.$request->id_mahasiswa)->with('sukses', "Mata Kuliah berhasil di tambah.");
 
