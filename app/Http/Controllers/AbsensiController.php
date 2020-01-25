@@ -10,6 +10,7 @@ use File;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\MkStoreRequest;
+use App\Http\Requests\AbsenRequest;
 use Session;
 
 class AbsensiController extends Controller
@@ -363,7 +364,11 @@ class AbsensiController extends Controller
 		]);
 	}
 
-	public function inputabsen(Request $request){
+	public function inputabsen(AbsenRequest $request){
+
+		// if(){
+			
+		// }
 		$idmahasiswa = $request->id_mahasiswa;
 		$status = $request->status;
 		$count = count($request->id_mahasiswa);
@@ -391,8 +396,10 @@ class AbsensiController extends Controller
 	public function kehadiran(Request $request, $id) {
         $data_mkDiambil = \App\MkMahasiswa::find($id);
         $data_matkul = \App\MataKuliah::where('id', $data_mkDiambil->id_mk)->first();
+        $data_mahasiswa = \App\Mahasiswa::where('id', $data_mkDiambil->id_mahasiswa)->first();
         $data_absen = \App\Absen::where('id_mahasiswa', $data_mkDiambil->id_mahasiswa)->where('id_mk', $data_mkDiambil->id_mk)->get();
         return view('admin.dashboard.kehadiran', [
+            'mahasiswa'             => $data_mahasiswa,
             'absen'                 => $data_absen,
             'matkul'                => $data_matkul,
 			'title'					=> 'Kehadiran | Aplikasi Monitoring Absensi'

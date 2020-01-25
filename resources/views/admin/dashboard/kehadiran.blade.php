@@ -13,23 +13,47 @@
                             <!-- /# column -->
                         </div>
                         <div class="card-body">
-                                <div class="col-8 table-responsive" style="margin:auto;">
+                            @if(auth()->user()->role == 'Mahasiswa')
+                            <div class="col-8 table-responsive" style="margin:auto;">
+                                <table class="table table-hover">
+                                    <tr>
+                                        <td>Kode Mata Kuliah</td>
+                                        <td>: {{$matkul->kode_mk}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nama Mata Kuliah</td>
+                                        <td>: {{$matkul->nama_mk}}</td>
+                                    </tr>
+                                    <tr class="border-bottom-1">
+                                        <td>Kelas</td>
+                                        <td>: {{$matkul->kelas_mk}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            @elseif(auth()->user()->role == 'Dosen')
+                            <div class="row">
+                                <div class="col table-responsive" style="margin:auto;">
                                     <table class="table table-hover">
-                                            <tr>
-                                                <td>Kode Mata Kuliah</td>
-                                                <td>: {{$matkul->kode_mk}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Nama Mata Kuliah</td>
-                                                <td>: {{$matkul->nama_mk}}</td>
-                                            </tr>
-                                            <tr class="border-bottom-1">
-                                                <td>Kelas</td>
-                                                <td>: {{$matkul->kelas_mk}}</td>
-                                            </tr>
+                                        <tr>
+                                            <td>Nama</td>
+                                            <td>: {{$mahasiswa->nama_mahasiswa}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NIM</td>
+                                            <td>: {{$mahasiswa->nim_mahasiswa}}</td>
+                                        </tr>
+                                        <tr class="border-bottom-1">
+                                            <td>Konsentrasi</td>
+                                            <td>: {{$mahasiswa->konsentrasi_mahasiswa}} </td>
+                                        </tr>
                                     </table>
                                 </div>
-                                <!-- /# card -->
+                                <div class="col-3 img-profile" style="margin:auto;">
+                                    <img src="{{asset('storage/profil_images/'.$mahasiswa->foto_mahasiswa)}}" class="rounded" style="max-height: 170px; max-width: 130px;" alt="">
+                                </div>
+                            </div>
+                            @endif
+                            <!-- /# card -->
                             <!-- /# column -->
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration">
