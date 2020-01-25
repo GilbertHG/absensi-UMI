@@ -39,6 +39,7 @@
                                             <th>Nama</th>
                                             <th>Kelas</th>
                                             <th>Hari</th>
+                                            <th>Ruangan</th>
                                             <th>waktu</th>
                                             <th>Dosen</th>
                                             <th style="vertical-align:middle; text-align:center;">Edit | Hapus</th>
@@ -53,6 +54,7 @@
                                             <td style="vertical-align:middle;">{{$mataKuliah->nama_mk}}</td>
                                             <td style="vertical-align:middle;">{{$mataKuliah->kelas_mk}}</td>
                                             <td style="vertical-align:middle;">{{$mataKuliah->hari_mk}}</td>
+                                            <td style="vertical-align:middle;">{{$mataKuliah->ruangan_mk}}</td>
                                             <td style="vertical-align:middle;">{{\Carbon\Carbon::parse($mataKuliah->jam_mulai)->format('H:i')}} - {{\Carbon\Carbon::parse($mataKuliah->jam_selesai)->format('H:i')}}</td>
                                             <td style="vertical-align:middle;">{{$mataKuliah->dosen_mk}}</td>
                                             <td style="vertical-align:middle; text-align:center;">
@@ -144,6 +146,14 @@
                                         <option value="Sabtu">Sabtu</option>
                                         <option value="Minggu">Minggu</option>
                                     </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row align-items-center">
+                                <div class="col-auto my-1">
+                                    <label>Ruangan</label>
+                                    <input type="text" name="ruangan_mk" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -253,6 +263,14 @@
                                         <option @if($mataKuliah->hari_mk == 'Sabtu') selected @endif value="Sabtu">Sabtu</option>
                                         <option @if($mataKuliah->hari_mk == 'Minggu') selected @endif value="Minggu">Minggu</option>
                                     </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row align-items-center">
+                                <div class="col-auto my-1">
+                                    <label>Ruangan</label>
+                                    <input value="{{$mataKuliah->ruangan_mk}}" type="text" name="ruangan_mk" class="form-control">
                                 </div>
                             </div>
                         </div>

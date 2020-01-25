@@ -46,6 +46,7 @@
                                             <th>Kode Mata Kuliah</th>
                                             <th>Nama Mata Kuliah</th>
                                             <th>Kelas</th>
+                                            <th>Ruangan</th>
                                             <th>Tahun Ajaran</th>
                                             <th>Nama Dosen</th>
                                             <th>Waktu</th>
@@ -62,6 +63,7 @@
                                             <td style="vertical-align:middle;">{{$data->mata_kuliah->kode_mk}}</td>
                                             <td style="vertical-align:middle;">{{$data->mata_kuliah->nama_mk}}</td>
                                             <td style="vertical-align:middle;">{{$data->mata_kuliah->kelas_mk}}</td>
+                                            <td style="vertical-align:middle;">{{$data->mata_kuliah->ruangan_mk}}</td>
                                             <td style="vertical-align:middle;">{{$data->mata_kuliah->tahun_ajaran}}</td>
                                             <td style="vertical-align:middle;">{{$data->mata_kuliah->dosen_mk}}</td>
                                             <td style="vertical-align:middle;">{{\Carbon\Carbon::parse($data->mata_kuliah->jam_mulai)->format('H:i')}} - {{\Carbon\Carbon::parse($data->mata_kuliah->jam_selesai)->format('H:i')}}</td>

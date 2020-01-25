@@ -368,18 +368,18 @@ class AbsensiController extends Controller
 	}
 
 	public function jadwalMK(Request $request) {
-		$filterta = \Session::get('tahunajaran');
-		$mahasiswa = \App\Mahasiswa::all();
-        $data_mataKuliah = \App\MataKuliah::where('tahun_ajaran', $filterta)->get();
+        $data_matkul    = \App\MkMahasiswa::with('mata_kuliah')->where('id_mahasiswa', userMahasiswa()->id)->get();
         return view('admin.dashboard.jadwalMK', [
-			'data_mataKuliah'		=> $data_mataKuliah,
-			'mahasiswa'				=> $mahasiswa,
+			'matkul'		        => $data_matkul,
 			'title'					=> 'Jadwal Mata Kuliah | Aplikasi Monitoring Absensi'
 		]);
 	}
 
-	public function kehadiran(Request $request) {
+	public function kehadiran(Request $request, $id) {
+        $data_mkDiambil = \App\MkMahasiswa::find($id);
+        $data_matkul = \App\MataKuliah::where('id', $data_mkDiambil->id_mk)->first();
         return view('admin.dashboard.kehadiran', [
+            'matkul'                => $data_matkul,
 			'title'					=> 'Kehadiran | Aplikasi Monitoring Absensi'
 		]);
 	}

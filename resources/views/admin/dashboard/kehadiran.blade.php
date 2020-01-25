@@ -16,15 +16,15 @@
                                     <table class="table table-hover">
                                             <tr>
                                                 <td>Kode Mata Kuliah</td>
-                                                <td>: 213132</td>
+                                                <td>: {{$matkul->kode_mk}}</td>
                                             </tr>
                                             <tr>
                                                 <td>Nama Mata Kuliah</td>
-                                                <td>: kecerdasan buatan</td>
+                                                <td>: {{$matkul->nama_mk}}</td>
                                             </tr>
                                             <tr class="border-bottom-1">
                                                 <td>Kelas</td>
-                                                <td>: A</td>
+                                                <td>: {{$matkul->kelas_mk}}</td>
                                             </tr>
                                     </table>
                                 </div>

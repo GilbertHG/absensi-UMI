@@ -59,7 +59,7 @@
                                             <td style="vertical-align:middle;">{{$data->kode_mk}}</td>
                                             <td style="vertical-align:middle;">{{$data->nama_mk}}</td>
                                             <td style="vertical-align:middle;">{{$data->kelas_mk}}</td>
-                                            <td style="vertical-align:middle;"></td>
+                                            <td style="vertical-align:middle;">{{$data->ruangan_mk}}</td>
                                             <td style="vertical-align:middle;">{{$data->dosen_mk}}</td>
                                             <td style="vertical-align:middle;">{{\Carbon\Carbon::parse($data->jam_mulai)->format('H:i')}} - {{\Carbon\Carbon::parse($data->jam_selesai)->format('H:i')}}</td>
                                             <td style="vertical-align:middle; text-align:center;">

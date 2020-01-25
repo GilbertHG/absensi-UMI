@@ -17,20 +17,20 @@
                                     <table class="table table-hover">
                                             <tr>
                                                 <td>Nama</td>
-                                                <td>: herul</td>
+                                                <td>: {{userMahasiswa()->nama_mahasiswa}}</td>
                                             </tr>
                                             <tr>
                                                 <td>NIM</td>
-                                                <td>: </td>
+                                                <td>: {{userMahasiswa()->nim_mahasiswa}}</td>
                                             </tr>
                                             <tr class="border-bottom-1">
                                                 <td>Konsentrasi</td>
-                                                <td>: </td>
+                                                <td>: {{userMahasiswa()->konsentrasi_mahasiswa}}</td>
                                             </tr>
                                     </table>
                                 </div>
                                 <div class="col-3 img-profile" style="margin:auto;">
-                                    <img src="{{asset('assets/images/member/5.jpg')}}" class="rounded" style="max-height: 170px; max-width: 130px;" alt="">
+                                    <img src="{{asset('storage/profil_images/'.userMahasiswa()->foto_mahasiswa)}}" class="rounded" style="max-height: 170px; max-width: 130px;" alt="">
                                 </div>
                                 <!-- /# card -->
                             </div>
@@ -43,25 +43,33 @@
                                             <th>Kode Mata Kuliah</th>
                                             <th>Nama Mata Kuliah</th>
                                             <th>Kelas</th>
+                                            <th>Ruangan</th>
                                             <th>Hari</th>
                                             <th>Nama Dosen</th>
                                             <th>Waktu</th>
-                                            <th style="vertical-align:middle; text-align:center;">Hapus</th>
+                                            <th style="vertical-align:middle; text-align:center;">Kehadiran</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php $no = 1 ?>
+                                    <?php $filterta = \Session::get('tahunajaran'); ?>
+                                    @foreach($matkul as $data)
+                                        @if($data->mata_kuliah->tahun_ajaran == $filterta)
                                         <tr>
-                                            <td style="vertical-align:middle; text-align:center;">1.</td>
-                                            <td style="vertical-align:middle;"></td>
-                                            <td style="vertical-align:middle;"></td>
-                                            <td style="vertical-align:middle;"></td>
-                                            <td style="vertical-align:middle;"></td>
-                                            <td style="vertical-align:middle;"></td>
-                                            <td style="vertical-align:middle;"></td>
+                                            <td style="vertical-align:middle; text-align:center;">{{$no++}}</td>
+                                            <td style="vertical-align:middle;">{{$data->mata_kuliah->kode_mk}}</td>
+                                            <td style="vertical-align:middle;">{{$data->mata_kuliah->nama_mk}}</td>
+                                            <td style="vertical-align:middle;">{{$data->mata_kuliah->kelas_mk}}</td>
+                                            <td style="vertical-align:middle;">{{$data->mata_kuliah->ruangan_mk}}</td>
+                                            <td style="vertical-align:middle;">{{$data->mata_kuliah->hari_mk}}</td>
+                                            <td style="vertical-align:middle;">{{$data->mata_kuliah->dosen_mk}}</td>
+                                            <td style="vertical-align:middle;">{{\Carbon\Carbon::parse($data->mata_kuliah->jam_mulai)->format('H:i')}} - {{\Carbon\Carbon::parse($data->mata_kuliah->jam_selesai)->format('H:i')}}</td>
                                             <td style="vertical-align:middle; text-align:center;">
-                                                <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/kehadiran'">Lihat Kehadiran</i></button>
+                                                <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/kehadiran/{{$data->id}}'">Lihat Kehadiran</i></button>
                                             </td>
                                         </tr>
+                                        @endif
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
