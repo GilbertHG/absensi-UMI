@@ -12,7 +12,8 @@
                     @error('nip_nbm_dosen')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror --}}
-                    <form method="POST" action="">
+                    <form method="POST" action="/daftar-hadir/list-peserta/absen/input">
+                    @csrf
                     <div class="card">
                         <div class="card-body">
                             <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20">Daftar Hadir Mahasiswa</h4></div>
@@ -35,8 +36,11 @@
                                     <option class="dropdown-item" value="14" style="background-color:white">14</option>
                                     <option class="dropdown-item" value="15" style="background-color:white">15</option>
                                     <option class="dropdown-item" value="16" style="background-color:white">16</option>
-                                </select>
+                                </select><br><br>
+
+                                <input type="date" class="float-right" name="tanggal_kuliah">
                             <div class="table-responsive">
+                                <input name="id_mk" type="hidden" value="{{$matkul->mata_kuliah->id}}">
                                 <p class="text-sm-left">Kode Mata Kuliah : {{$matkul->mata_kuliah->kode_mk}}    </p>
                                 <p class="text-sm-left">Nama Mata Kuliah : {{$matkul->mata_kuliah->nama_mk}}    </p>
                                 <p class="text-sm-left">Kelas :            {{$matkul->mata_kuliah->kelas_mk}}  </p>
@@ -55,11 +59,11 @@
                                         @foreach($listpeserta as $data)
                                         <tr>
                                         <td style="vertical-align:middle; text-align:center;">{{$no++}}</td>
-                                        <td style="vertical-align:middle;">{{$data->mahasiswa->nim_mahasiswa}}</td>
+                                        <td style="vertical-align:middle;">{{$data->mahasiswa->nim_mahasiswa}} <input name="id_mahasiswa[]" type="hidden" value="{{$data->mahasiswa->id}}"></td>
                                             <td style="vertical-align:middle;">{{$data->mahasiswa->nama_mahasiswa}}</td>
-                                            <td style="vertical-align:middle;"><img src="{{asset('storage/profil_images/'.$data->mahasiswa->foto_mahasiswa)}}"></td>
+                                            <td style="vertical-align:middle;"><img src="{{asset('storage/profil_images/'.$data->mahasiswa->foto_mahasiswa)}}" style="max-height: 130px; max-width: 95px;"></td>
                                             <td style="vertical-align:middle;">
-                                                <select name="kehadiran" class="btn btn-sm btn-outline-primary float-right"><i class="fa fa-angle-down m-l-5"></i>
+                                                <select name="status[]" class="btn btn-sm btn-outline-primary float-right"><i class="fa fa-angle-down m-l-5"></i>
                                                     <option class="dropdown-item" value="" style="background-color:white">Status</option>
                                                     <option class="dropdown-item" value="Tidak Hadir" style="background-color:white">Tidak Hadir</option>
                                                     <option class="dropdown-item" value="Izin" style="background-color:white">Izin</option>

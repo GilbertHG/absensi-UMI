@@ -294,7 +294,7 @@ class AbsensiController extends Controller
 		$jadwalajar = \App\MataKuliah::where('dosen_mk', $data)->where('tahun_ajaran', $filterta)->get();
 		
 		return view('admin.dashboard.jadwalajar',[
-			'title'				=> 'Tahun Ajaran | Aplikasi Monitoring Absensi',
+			'title'				=> 'Jadwal Mengajar | Aplikasi Monitoring Absensi',
 			'jadwalajar'		=> $jadwalajar,
 		]);
 	}
@@ -364,7 +364,18 @@ class AbsensiController extends Controller
 	}
 
 	public function inputabsen(Request $request){
-		//
+		$data = $request->all();
+		dd($data);
+		foreach ($data as $input) {
+            \App\Absen::create([
+				'id_mk' => $request->id_mk,
+				'pertemuan' => $request->pertemuan,
+				'id_mahasiswa' => $input->id_mahasiswa,
+				'status'	=> $input->status,
+				'tanggal_kuliah'	=> $request->tanggal_kuliah,
+        	]);
+		} 
+		return 'Data Berhasil diinput';
 	}
 
 	public function jadwalMK(Request $request) {
