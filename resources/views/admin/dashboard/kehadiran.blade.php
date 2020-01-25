@@ -36,17 +36,20 @@
                                         <tr>
                                             <th>No.</th>
                                             <th>Pertemuan</th>
-                                            <th>Tanggal</th>
-                                            <th>Keterangan</th>
+                                            <th>Tanggal Kuliah</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php $no = 1 ?>
+                                     @foreach($absen as $data)
                                         <tr>
-                                            <td style="vertical-align:middle; text-align:center;">1.</td>
-                                            <td style="vertical-align:middle;"></td>
-                                            <td style="vertical-align:middle;"></td>
-                                            <td style="vertical-align:middle;">Hadir</td>
+                                            <td style="vertical-align:middle; text-align:center;">{{$no++}}</td>
+                                            <td style="vertical-align:middle; text-align:center;">{{$data->pertemuan}}</td>
+                                            <td style="vertical-align:middle; text-align:center;">{{\Carbon\Carbon::parse($data->tanggal_kuliah)->format('d-m-Y')}}</td>
+                                            <td style="vertical-align:middle; text-align:center;">{{$data->status}}</td>
                                         </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

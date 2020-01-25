@@ -364,14 +364,16 @@ class AbsensiController extends Controller
 	}
 
 	public function inputabsen(Request $request){
-		$data = $request->all();
-		dd($data);
-		foreach ($data as $input) {
+		$idmahasiswa = $request->id_mahasiswa;
+		$status = $request->status;
+		$count = count($request->id_mahasiswa);
+		
+		for ($i = 0; $i < $count; $i++) {
             \App\Absen::create([
 				'id_mk' => $request->id_mk,
 				'pertemuan' => $request->pertemuan,
-				'id_mahasiswa' => $input->id_mahasiswa,
-				'status'	=> $input->status,
+				'id_mahasiswa' => $idmahasiswa[$i],
+				'status'	=> $status[$i],
 				'tanggal_kuliah'	=> $request->tanggal_kuliah,
         	]);
 		} 
@@ -389,7 +391,9 @@ class AbsensiController extends Controller
 	public function kehadiran(Request $request, $id) {
         $data_mkDiambil = \App\MkMahasiswa::find($id);
         $data_matkul = \App\MataKuliah::where('id', $data_mkDiambil->id_mk)->first();
+        $data_absen = \App\Absen::where('id_mahasiswa', $data_mkDiambil->id_mahasiswa)->where('id_mk', $data_mkDiambil->id_mk)->get();
         return view('admin.dashboard.kehadiran', [
+            'absen'                 => $data_absen,
             'matkul'                => $data_matkul,
 			'title'					=> 'Kehadiran | Aplikasi Monitoring Absensi'
 		]);
