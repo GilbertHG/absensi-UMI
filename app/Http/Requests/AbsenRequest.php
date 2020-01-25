@@ -27,7 +27,7 @@ class AbsenRequest extends FormRequest
             'id_mk'             => 'required',
             'pertemuan'         => 'required',
             'id_mahasiswa'      => 'required',
-            'status.*'            => 'required',
+            'status.*'          => 'required',
             'tanggal_kuliah'    => 'required',
         ];
     }

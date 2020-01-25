@@ -42,7 +42,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="/db-mk"><i class="mdi mdi-clipboard-text"></i> <span class="nav-text">Tambah Mata Kuliah</span></a>
+                    <li class="{{ (request()->is('tahun-ajaran*')) ? 'active' : '' }}"><a href="/db-mk"><i class="mdi mdi-clipboard-text"></i> <span class="nav-text">Tambah Mata Kuliah</span></a>
                     </li>
                     <li class="{{ (request()->is('data-krs-mahasiswa*')) || (request()->is('isi-krs-mahasiswa*'))  ? 'active' : '' }}"><a href="/krs-mahasiswa"><i class="mdi mdi-square-edit-outline"></i> <span class="nav-text">KRS Mahasiswa</span></a>
                     </li>
@@ -50,13 +50,13 @@
                     @if(auth()->user()->role == 'Dosen')
                     <li><a href="/jadwal-ajar"><i class="mdi mdi-calendar-blank"></i> <span class="nav-text">Jadwal Mengajar</span></a>
                     </li>
-                    <li><a href="/daftar-hadir"><i class="mdi mdi-checkbox-marked-circle-outline"></i> <span class="nav-text">Daftar Hadir Mahasiswa</span></a>
+                    <li class="{{(request()->is('daftar-hadir*')) || (request()->is('kehadiran*')) ? 'active' : '' }}"><a href="/daftar-hadir"><i class="mdi mdi-checkbox-marked-circle-outline"></i> <span class="nav-text">Daftar Hadir Mahasiswa</span></a>
                     </li>
                     <li><a href="/saran-masuk"><i class="mdi mdi-message-processing"></i> <span class="nav-text">Saran Masuk</span></a>
                     </li>
                     @endif
                     @if(auth()->user()->role == 'Mahasiswa')
-                    <li class="{{ (request()->is('kehadiran*')) ? 'active' : '' }}"><a href="/jadwal-mata-kuliah"><i class="mdi mdi-calendar-blank"></i> <span class="nav-text">Jadwal Mata Kuliah</span></a>
+                    <li class="{{(request()->is('kehadiran*')) ? 'active' : '' }}"><a href="/jadwal-mata-kuliah"><i class="mdi mdi-calendar-blank"></i> <span class="nav-text">Jadwal Mata Kuliah</span></a>
                     </li>
                     <li><a href="/saran"><i class="mdi mdi-message-reply"></i> <span class="nav-text">Saran</span></a>
                     </li>

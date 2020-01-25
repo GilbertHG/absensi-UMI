@@ -20,7 +20,7 @@
                     </div>
                     <div class="row float-right">
                         <div style="margin:auto;">
-                            <button type="button" onclick="window.location.href='/db-mk'" class="btn btn-outline-warning btn-sm" style="margin-right:40px;"><i class="mdi mdi-keyboard-backspace"></i></button>
+                            <button type="button" onclick="window.location.href='/daftar-hadir'" class="btn btn-outline-warning btn-sm" style="margin-right:40px;"><i class="mdi mdi-keyboard-backspace"></i></button>
                         </div>
                         <div class="bootstrap-modal" style="margin-right:40px;">
                             <!-- Button trigger modal -->
