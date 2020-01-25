@@ -294,7 +294,7 @@ class AbsensiController extends Controller
 		$jadwalajar = \App\MataKuliah::where('dosen_mk', $data)->where('tahun_ajaran', $filterta)->get();
 		
 		return view('admin.dashboard.jadwalajar',[
-			'title'				=> 'Tahun Ajaran | Aplikasi Monitoring Absensi',
+			'title'				=> 'Jadwal Mengajar | Aplikasi Monitoring Absensi',
 			'jadwalajar'		=> $jadwalajar,
 		]);
 	}
