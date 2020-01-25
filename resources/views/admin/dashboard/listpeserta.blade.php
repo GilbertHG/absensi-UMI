@@ -41,6 +41,7 @@
                                         <th>Nama Mahasiswa</th>
                                         <th>Foto</th>
                                         <th>Persentase Kehadiran</th>
+                                        <th>Keterangan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -54,6 +55,9 @@
                                                 src="{{asset('storage/profil_images/'.$data->mahasiswa->foto_mahasiswa)}}" style="max-height: 130px; max-width: 95px;">
                                         </td>
                                         <td style="vertical-align:middle;">{{$data->persentase}}</td>
+                                        <td style="vertical-align:middle; text-align:center;">
+                                             <button type="button" onclick="window.location.href='/kehadiran/{{$data->id}}'" class="btn btn-primary btn-sm">Cek Kehadiran</button>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
