@@ -10,6 +10,7 @@ use File;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\MkStoreRequest;
+use App\Http\Requests\AbsenRequest;
 use Session;
 
 class AbsensiController extends Controller
@@ -363,7 +364,11 @@ class AbsensiController extends Controller
 		]);
 	}
 
-	public function inputabsen(Request $request){
+	public function inputabsen(AbsenRequest $request){
+
+		// if(){
+			
+		// }
 		$idmahasiswa = $request->id_mahasiswa;
 		$status = $request->status;
 		$count = count($request->id_mahasiswa);
