@@ -38,7 +38,7 @@
                             </div>
                         </div>
                     </div>
-                    @elseif(auth()->user()->role == 'admin')
+                    @elseif(auth()->user()->role == 'Admin')
                     <div class="text-center container-profile">
                             <h4 class="m-t-15 m-b-2">{{auth()->user()->name}}</h4>
                             <p class="text-muted">Admin</p>
