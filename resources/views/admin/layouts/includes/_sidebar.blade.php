@@ -7,8 +7,8 @@
                         Aplikasi Monitoring Absensi Univeristas Muhammadiyah Makassar
                     </div>
                 </div>
-                <div class="col nav-text" style="text-align:center; margin-top:10px; border-bottom: 1px solid #f1f1f1; margin-bottom: 10px;">
-                        <form method="post" action="/tahunajaran">
+                <div class="col nav-text" style="text-align:center; margin-top:10px; margin-bottom: 10px; border-bottom: 1px solid #f1f1f1;">
+                        <form style="margin-bottom: 10px;" method="post" action="/tahunajaran">
                         {{csrf_field()}}
                         <select onchange="this.form.submit()" name="tahunajaran" class="btn btn-sm btn-outline-primary"><i class="fa fa-angle-down m-l-5"></i>
                             @if(Session::get('tahunajaran') == 'kosong')
