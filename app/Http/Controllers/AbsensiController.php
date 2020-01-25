@@ -364,6 +364,17 @@ class AbsensiController extends Controller
 	}
 
 	public function inputabsen(Request $request){
-		//
+		$data = $request->all();
+		dd($data);
+		foreach ($data as $input) {
+            \App\Absen::create([
+				'id_mk' => $request->id_mk,
+				'pertemuan' => $request->pertemuan,
+				'id_mahasiswa' => $input->id_mahasiswa,
+				'status'	=> $input->status,
+				'tanggal_kuliah'	=> $request->tanggal_kuliah,
+        	]);
+		} 
+		return 'Data Berhasil diinput';
 	}
 }
