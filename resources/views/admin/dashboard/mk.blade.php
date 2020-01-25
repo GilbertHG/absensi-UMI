@@ -34,14 +34,14 @@
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>
                                         <tr>
-                                            <th>No.</th>
-                                            <th>Kode Mata Kuliah</th>
-                                            <th>Nama</th>
-                                            <th>Kelas</th>
-                                            <th>Hari</th>
-                                            <th>Ruangan</th>
-                                            <th>waktu</th>
-                                            <th>Dosen</th>
+                                            <th style="vertical-align:middle;">No.</th>
+                                            <th style="vertical-align:middle;">Kode Mata Kuliah</th>
+                                            <th style="vertical-align:middle;">Nama</th>
+                                            <th style="vertical-align:middle;">Kelas</th>
+                                            <th style="vertical-align:middle;">Hari</th>
+                                            <th style="vertical-align:middle;">Ruangan</th>
+                                            <th style="vertical-align:middle;">waktu</th>
+                                            <th style="vertical-align:middle;">Dosen</th>
                                             <th style="vertical-align:middle; text-align:center;">Edit | Hapus</th>
                                         </tr>
                                     </thead>
