@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Absen extends Model
 {
     protected $table = 'absen';
-    protected $guarded = [];
+    protected $guarded = ['id'];
 
     public $timestamps = false;
 }
