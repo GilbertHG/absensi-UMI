@@ -11,7 +11,7 @@
                     @if(auth()->user()->role == 'Mahasiswa')
                     <div class="card-body" style="padding-bottom:60px;">
                         <div class="text-center container-profile">
-                            <img src="{{asset('storage/profil_images/'.userMahasiswa()->foto_mahasiswa)}}" class="rounded-circle m-t-15 w-75px" alt="">
+                            <img src="{{asset('storage/profil_images/'.userMahasiswa()->foto_mahasiswa)}}" class="rounded-circle m-t-15 w-75px" style="width:130px; height:130px; object-fit: cover;object-position: top;" alt="">
                             <h4 class="m-t-15 m-b-2">{{userMahasiswa()->nama_mahasiswa}}</h4>
                             <p class="text-muted">Mahasiswa</p>
                             <div class="row" style="margin:auto;">
@@ -25,28 +25,27 @@
                     @elseif(auth()->user()->role == 'Dosen')
                     <div class="card-body" style="padding-bottom:60px;">
                         <div class="text-center container-profile">
+                            <img src="{{asset('assets/images/default.png')}}" class="rounded-circle m-t-15 w-75px" style="width:130px" alt="">
                             <h4 class="m-t-15 m-b-2">{{userDosen()->nama_dosen}}</h4>
-                            <p class="text-muted">Dosen</p>
-                            <div class="row" style="margin:auto;">
+                            <p class="text-muted" style="margin-bottom: 0px !important;">Dosen</p>
+                            <p class="text-muted">
                                 @if(userDosen()->kode_dosen == 'NIP')
-                                <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">NIP : {{userDosen()->nip_nbm_dosen}}</span>
-                                </div>
+                                NIP : {{userDosen()->nip_nbm_dosen}}
                                 @else
-                                <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">NBM : {{userDosen()->nip_nbm_dosen}}</span>
-                                </div>
+                                NBM : {{userDosen()->nip_nbm_dosen}}
                                 @endif
-                            </div>
+                            </p>
                         </div>
                     </div>
                     @elseif(auth()->user()->role == 'Admin')
-                    <div class="text-center container-profile">
+                    <div class="card-body" style="padding-bottom:60px;">
+                        <div class="text-center container-profile">
+                            <img src="{{asset('assets/images/default.png')}}" class="rounded-circle m-t-15 w-75px" style="width:130px;" alt="">
                             <h4 class="m-t-15 m-b-2">{{auth()->user()->name}}</h4>
-                            <p class="text-muted">Admin</p>
-                            <div class="row" style="margin:auto;">
-                                <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">NIP : {{auth()->user()->username}}</span>
-                                </div>
-                            </div>
+                            <p class="text-muted" style="margin-bottom: 0px !important;">Admin</p>
+                            <p class="text-muted">Username : {{auth()->user()->username}}</p>
                         </div>
+                    </div>
                     @endif
                 </div>
             </div>
