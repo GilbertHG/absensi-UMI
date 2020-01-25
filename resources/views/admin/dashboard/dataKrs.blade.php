@@ -12,6 +12,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20"> KRS Mahasiswa</h4></div>
+                            <div class="float-right"><button type="button" onclick="window.location.href='/krs-mahasiswa'" class="btn btn-outline-warning btn-sm" style="margin-right:40px;"><i class="mdi mdi-keyboard-backspace"></i></button></div>
                             <!-- /# column -->
                         </div>
                         <div class="card-body">
