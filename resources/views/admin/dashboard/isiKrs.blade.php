@@ -8,7 +8,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20"> KRS Mahasiswa</h4></div>
+                            <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20"> Tambah KRS Mahasiswa</h4></div>
                             <!-- /# column -->
                         </div>
                         <div class="card-body">
