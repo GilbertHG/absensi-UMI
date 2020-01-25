@@ -18,16 +18,35 @@
                     <div class="float-left">
                         <h4 class="card-title mdi mdi-image-filter-none f-s-20">Daftar Hadir Mahasiswa</h4>
                     </div>
-                    <div class="floatright">
-                        <div class="bootstrap-modal">
+                    <div class="row float-right">
+                        <div style="margin:auto;">
+                            <button type="button" onclick="window.location.href='/db-mk'" class="btn btn-outline-warning btn-sm" style="margin-right:40px;"><i class="mdi mdi-keyboard-backspace"></i></button>
+                        </div>
+                        <div class="bootstrap-modal" style="margin-right:40px;">
                             <!-- Button trigger modal -->
                             <a href="{{route('absen',['mk' => $matkul->mata_kuliah->id])}}"
                                 class="btn btn-outline-primary float-right">Isi Absen</a>
                         </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                        <div class="col-8 table-responsive" style="margin:auto;">
+                            <table class="table table-hover">
+                                <tr>
+                                    <td>Kode Mata Kuliah</td>
+                                    <td>: {{$matkul->mata_kuliah->kode_mk}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Nama Mata Kuliah</td>
+                                    <td>: {{$matkul->mata_kuliah->nama_mk}}</td>
+                                </tr>
+                                <tr class="border-bottom-1">
+                                    <td>Kelas</td>
+                                    <td>: {{$matkul->mata_kuliah->kelas_mk}}</td>
+                                </tr>
+                            </table>
+                        </div>
                         <div class="table-responsive">
-                            <p class="text-sm-left">Kode Mata Kuliah : {{$matkul->mata_kuliah->kode_mk}} </p>
-                            <p class="text-sm-left">Nama Mata Kuliah : {{$matkul->mata_kuliah->nama_mk}} </p>
-                            <p class="text-sm-left">Kelas : {{$matkul->mata_kuliah->kelas_mk}} </p>
                             @else
                             <div class="alert alert-danger" role="alert">
                                 ANDA BELUM MEMILIKI MAHASISWA!
