@@ -8,10 +8,16 @@
                 <div class="col-12">
                     {{-- @if($message = Session::get('sukses'))
                         <div class="alert alert-success">{{$message}}</div>
-                    @endif
-                    @error('nip_nbm_dosen')
+                    @endif --}}
+                    @error('pertemuan')
                         <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror --}}
+                    @enderror 
+                    @error('status.*')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror 
+                    @error('tanggal_kuliah')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror 
                     <form method="POST" action="/daftar-hadir/list-peserta/absen/input">
                     @csrf
                     <div class="card">
@@ -36,7 +42,9 @@
                                     <option class="dropdown-item" value="14" style="background-color:white">14</option>
                                     <option class="dropdown-item" value="15" style="background-color:white">15</option>
                                     <option class="dropdown-item" value="16" style="background-color:white">16</option>
-                                </select><br><br>
+                                </select>
+                                <br><br>
+                                
 
                                 <input type="date" class="float-right" name="tanggal_kuliah">
                             <div class="table-responsive">
@@ -65,6 +73,7 @@
                                             <td style="vertical-align:middle;">
                                                 <select name="status[]" class="btn btn-sm btn-outline-primary float-right"><i class="fa fa-angle-down m-l-5"></i>
                                                     <option class="dropdown-item" value="" style="background-color:white">Status</option>
+                                                    <option class="dropdown-item" value="Tidak Hadir" style="background-color:white">Hadir</option>
                                                     <option class="dropdown-item" value="Tidak Hadir" style="background-color:white">Tidak Hadir</option>
                                                     <option class="dropdown-item" value="Izin" style="background-color:white">Izin</option>
                                                     <option class="dropdown-item" value="Sakit" style="background-color:white">Sakit</option>
