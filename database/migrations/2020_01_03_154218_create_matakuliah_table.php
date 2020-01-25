@@ -19,6 +19,7 @@ class CreateMatakuliahTable extends Migration
             $table->string('kode_mk');
             $table->string('nama_mk');
             $table->string('kelas_mk');
+            $table->string('ruangan_mk')->nullable();
             $table->string('hari_mk');
             $table->time('jam_mulai');
             $table->time('jam_selesai');

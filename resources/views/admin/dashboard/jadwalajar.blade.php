@@ -17,6 +17,7 @@
                                             <th>Kode Mata Kuliah</th>
                                             <th>Nama Mata Kuliah</th>
                                             <th>Kelas</th>
+                                            <th>Ruangan</th>
                                             <th>Hari</th>
                                             <th>Waktu</th>
                                             
@@ -30,6 +31,7 @@
                                             <td style="vertical-align:middle;">{{$data->kode_mk}}</td>
                                             <td style="vertical-align:middle;">{{$data->nama_mk}}</td>
                                             <td style="vertical-align:middle;text-align:center;">{{$data->kelas_mk}}</td>
+                                            <td style="vertical-align:middle;text-align:center;">{{$data->ruangan_mk}}</td>
                                             <td style="vertical-align:middle;text-align:center;">{{$data->hari_mk}}</td>
                                             <td style="vertical-align:middle;text-align:center;">{{\Carbon\Carbon::parse($data->jam_mulai)->format('H:i')}} - {{\Carbon\Carbon::parse($data->jam_selesai)->format('H:i')}}</td>
 

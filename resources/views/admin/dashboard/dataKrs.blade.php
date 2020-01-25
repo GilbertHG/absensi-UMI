@@ -42,13 +42,14 @@
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>
                                         <tr>
-                                            <th>No.</th>
-                                            <th>Kode Mata Kuliah</th>
-                                            <th>Nama Mata Kuliah</th>
-                                            <th>Kelas</th>
-                                            <th>Tahun Ajaran</th>
-                                            <th>Nama Dosen</th>
-                                            <th>Waktu</th>
+                                            <th style="vertical-align:middle;">No.</th>
+                                            <th style="vertical-align:middle;">Kode Mata Kuliah</th>
+                                            <th style="vertical-align:middle;">Nama Mata Kuliah</th>
+                                            <th style="vertical-align:middle;">Kelas</th>
+                                            <th style="vertical-align:middle;">Ruangan</th>
+                                            <th style="vertical-align:middle;">Tahun Ajaran</th>
+                                            <th style="vertical-align:middle;">Nama Dosen</th>
+                                            <th style="vertical-align:middle;">Waktu</th>
                                             <th style="vertical-align:middle; text-align:center;">Hapus</th>
                                         </tr>
                                     </thead>
@@ -62,6 +63,7 @@
                                             <td style="vertical-align:middle;">{{$data->mata_kuliah->kode_mk}}</td>
                                             <td style="vertical-align:middle;">{{$data->mata_kuliah->nama_mk}}</td>
                                             <td style="vertical-align:middle;">{{$data->mata_kuliah->kelas_mk}}</td>
+                                            <td style="vertical-align:middle;">{{$data->mata_kuliah->ruangan_mk}}</td>
                                             <td style="vertical-align:middle;">{{$data->mata_kuliah->tahun_ajaran}}</td>
                                             <td style="vertical-align:middle;">{{$data->mata_kuliah->dosen_mk}}</td>
                                             <td style="vertical-align:middle;">{{\Carbon\Carbon::parse($data->mata_kuliah->jam_mulai)->format('H:i')}} - {{\Carbon\Carbon::parse($data->mata_kuliah->jam_selesai)->format('H:i')}}</td>

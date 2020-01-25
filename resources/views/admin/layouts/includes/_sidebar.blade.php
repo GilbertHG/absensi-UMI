@@ -43,7 +43,7 @@
                     </li>
                     <li><a href="/db-mk"><i class="mdi mdi-clipboard-text"></i> <span class="nav-text">Tambah Mata Kuliah</span></a>
                     </li>
-                    <li><a href="/krs-mahasiswa"><i class="mdi mdi-square-edit-outline"></i> <span class="nav-text">KRS Mahasiswa</span></a>
+                    <li class="{{ (request()->is('data-krs-mahasiswa*')) || (request()->is('isi-krs-mahasiswa*'))  ? 'active' : '' }}"><a href="/krs-mahasiswa"><i class="mdi mdi-square-edit-outline"></i> <span class="nav-text">KRS Mahasiswa</span></a>
                     </li>
                     <li><a href="/jadwal-ajar"><i class="mdi mdi-calendar-blank"></i> <span class="nav-text">Jadwal Mengajar</span></a>
                     </li>
@@ -51,7 +51,7 @@
                     </li>
                     <li><a href="/saran-masuk"><i class="mdi mdi-message-processing"></i> <span class="nav-text">Saran Masuk</span></a>
                     </li>
-                    <li><a href="#"><i class="mdi mdi-calendar-blank"></i> <span class="nav-text">Jadwal Mata Kuliah</span></a>
+                    <li class="{{ (request()->is('kehadiran*')) ? 'active' : '' }}"><a href="/jadwal-mata-kuliah"><i class="mdi mdi-calendar-blank"></i> <span class="nav-text">Jadwal Mata Kuliah</span></a>
                     </li>
                     <li><a href="/saran"><i class="mdi mdi-message-reply"></i> <span class="nav-text">Saran</span></a>
                     </li>

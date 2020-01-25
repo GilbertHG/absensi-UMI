@@ -8,7 +8,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20"> KRS Mahasiswa</h4></div>
+                            <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20"> Jadwal Mata Kuliah</h4></div>
                             <!-- /# column -->
                         </div>
                         <div class="card-body">
@@ -17,27 +17,25 @@
                                     <table class="table table-hover">
                                             <tr>
                                                 <td>Nama</td>
-                                                <td>: {{$mahasiswa->nama_mahasiswa}}</td>
+                                                <td>: {{userMahasiswa()->nama_mahasiswa}}</td>
                                             </tr>
                                             <tr>
                                                 <td>NIM</td>
-                                                <td>: {{$mahasiswa->nim_mahasiswa}}</td>
+                                                <td>: {{userMahasiswa()->nim_mahasiswa}}</td>
                                             </tr>
                                             <tr class="border-bottom-1">
                                                 <td>Konsentrasi</td>
-                                                <td>: {{$mahasiswa->konsentrasi_mahasiswa}}</td>
+                                                <td>: {{userMahasiswa()->konsentrasi_mahasiswa}}</td>
                                             </tr>
                                     </table>
                                 </div>
                                 <div class="col-3 img-profile" style="margin:auto;">
-                                    <img src="{{asset('storage/profil_images/'.$mahasiswa->foto_mahasiswa)}}" class="rounded" style="max-height: 170px; max-width: 130px;" alt="">
+                                    <img src="{{asset('storage/profil_images/'.userMahasiswa()->foto_mahasiswa)}}" class="rounded" style="max-height: 170px; max-width: 130px;" alt="">
                                 </div>
                                 <!-- /# card -->
                             </div>
                             <!-- /# column -->
                             <div class="table-responsive">
-                            <form method="post" action="/isi-krs-mahasiswa/add">
-                            {{csrf_field()}}
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>
                                         <tr>
@@ -46,36 +44,35 @@
                                             <th style="vertical-align:middle;">Nama Mata Kuliah</th>
                                             <th style="vertical-align:middle;">Kelas</th>
                                             <th style="vertical-align:middle;">Ruangan</th>
+                                            <th style="vertical-align:middle;">Hari</th>
                                             <th style="vertical-align:middle;">Nama Dosen</th>
                                             <th style="vertical-align:middle;">Waktu</th>
-                                            <th style="vertical-align:middle; text-align:center;">Pilih</th>
+                                            <th style="vertical-align:middle; text-align:center;">Kehadiran</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $no = 1 ?>
-                                        @foreach($matkul as $data)
+                                    <?php $no = 1 ?>
+                                    <?php $filterta = \Session::get('tahunajaran'); ?>
+                                    @foreach($matkul as $data)
+                                        @if($data->mata_kuliah->tahun_ajaran == $filterta)
                                         <tr>
                                             <td style="vertical-align:middle; text-align:center;">{{$no++}}</td>
-                                            <td style="vertical-align:middle;">{{$data->kode_mk}}</td>
-                                            <td style="vertical-align:middle;">{{$data->nama_mk}}</td>
-                                            <td style="vertical-align:middle;">{{$data->kelas_mk}}</td>
-                                            <td style="vertical-align:middle;">{{$data->ruangan_mk}}</td>
-                                            <td style="vertical-align:middle;">{{$data->dosen_mk}}</td>
-                                            <td style="vertical-align:middle;">{{\Carbon\Carbon::parse($data->jam_mulai)->format('H:i')}} - {{\Carbon\Carbon::parse($data->jam_selesai)->format('H:i')}}</td>
+                                            <td style="vertical-align:middle;">{{$data->mata_kuliah->kode_mk}}</td>
+                                            <td style="vertical-align:middle;">{{$data->mata_kuliah->nama_mk}}</td>
+                                            <td style="vertical-align:middle;">{{$data->mata_kuliah->kelas_mk}}</td>
+                                            <td style="vertical-align:middle;">{{$data->mata_kuliah->ruangan_mk}}</td>
+                                            <td style="vertical-align:middle;">{{$data->mata_kuliah->hari_mk}}</td>
+                                            <td style="vertical-align:middle;">{{$data->mata_kuliah->dosen_mk}}</td>
+                                            <td style="vertical-align:middle;">{{\Carbon\Carbon::parse($data->mata_kuliah->jam_mulai)->format('H:i')}} - {{\Carbon\Carbon::parse($data->mata_kuliah->jam_selesai)->format('H:i')}}</td>
                                             <td style="vertical-align:middle; text-align:center;">
-                                                <input type="checkbox" name="mataKuliah[]" value="{{$data->id}}" aria-label="Checkbox for following text input">
-                                                <input type="hidden" value="{{$mahasiswa->id}}" name="id_mahasiswa">
+                                                <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/kehadiran/{{$data->id}}'">Lihat Kehadiran</i></button>
                                             </td>
                                         </tr>
-                                        @endforeach
+                                        @endif
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="row float-right" style="margin-top:20px;">
-                                <button type="button" onclick="window.location.href='/data-krs-mahasiswa/{{$mahasiswa->id}}'" class="col btn btn-outline-danger" style="margin-right:10px;">Batal</button>
-                                <button type="submit" class="col btn btn-outline-primary" style="margin-right:40px;">Tambah</button>
-                            </div>
-                            </form>
                         </div>
                     </div>
                 </div>

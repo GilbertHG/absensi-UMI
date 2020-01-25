@@ -16,7 +16,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="float-left">
-                    <h4 class="card-title mdi mdi-image-filter-none f-s-20">Ganti Password</h4>
+                    <h4 class="card-title mdi mdi-image-filter-none f-s-20"> Ganti Password</h4>
                 </div>
                 <div class="floatright">
                     <div class="row">
@@ -40,8 +40,7 @@
 
                                         <div
                                             class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }}">
-                                            <label for="new-password" class="col-md-4 control-label">Current
-                                                Password</label>
+                                            <label for="new-password" class="col-md-4 control-label">Password Lama</label>
 
                                             <div class="col-md-6">
                                                 <input id="current-password" type="password" class="form-control"
@@ -56,8 +55,7 @@
                                         </div>
 
                                         <div class="form-group{{ $errors->has('new-password') ? ' has-error' : '' }}">
-                                            <label for="new-password" class="col-md-4 control-label">New
-                                                Password</label>
+                                            <label for="new-password" class="col-md-4 control-label">Password Baru</label>
 
                                             <div class="col-md-6">
                                                 <input id="new-password" type="password" class="form-control"
@@ -72,8 +70,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="new-password-confirm" class="col-md-4 control-label">Confirm New
-                                                Password</label>
+                                            <label for="new-password-confirm" class="col-md-4 control-label">Ulang Password Baru</label>
 
                                             <div class="col-md-6">
                                                 <input id="new-password-confirm" type="password" class="form-control"
@@ -84,7 +81,7 @@
                                         <div class="form-group">
                                             <div class="col-md-6 col-md-offset-4">
                                                 <button type="submit" class="btn btn-primary">
-                                                    Change Password
+                                                    Ubah Password
                                                 </button>
                                             </div>
                                         </div>
