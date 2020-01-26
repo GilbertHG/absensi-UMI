@@ -19,11 +19,12 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror 
                     <form method="POST" action="/daftar-hadir/list-peserta/absen/input">
-                    @csrf
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20">Daftar Hadir Mahasiswa</h4></div>
-                            <div class="floatright">
+                        @csrf
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20">Daftar Hadir Mahasiswa</h4></div>
+                                <div class="floatright">
+                                <input class="btn btn-sm btn-outline-primary float-right" type="date" class="float-right" name="tanggal_kuliah"><br><br>
                                 <select name="pertemuan" class="btn btn-sm btn-outline-primary float-right"><i class="fa fa-angle-down m-l-5"></i>
                                     <option class="dropdown-item" value="" style="background-color:white">Pertemuan</option>
                                     <option class="dropdown-item" value="1" style="background-color:white">1</option>
@@ -44,14 +45,25 @@
                                     <option class="dropdown-item" value="16" style="background-color:white">16</option>
                                 </select>
                                 <br><br>
-                                
-
-                                <input type="date" class="float-right" name="tanggal_kuliah">
                             <div class="table-responsive">
                                 <input name="id_mk" type="hidden" value="{{$matkul->mata_kuliah->id}}">
-                                <p class="text-sm-left">Kode Mata Kuliah : {{$matkul->mata_kuliah->kode_mk}}    </p>
-                                <p class="text-sm-left">Nama Mata Kuliah : {{$matkul->mata_kuliah->nama_mk}}    </p>
-                                <p class="text-sm-left">Kelas :            {{$matkul->mata_kuliah->kelas_mk}}  </p>
+                                <div class="col-8 table-responsive" style="margin:auto;">
+                                    <table class="table table-hover">
+                                        <tr>
+                                            <td>Kode Mata Kuliah</td>
+                                            <td>: {{$matkul->mata_kuliah->kode_mk}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nama Mata Kuliah</td>
+                                            <td>: {{$matkul->mata_kuliah->nama_mk}}</td>
+                                        </tr>
+                                        <tr class="border-bottom-1">
+                                            <td>Kelas</td>
+                                            <td>: {{$matkul->mata_kuliah->kelas_mk}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>
                                         <tr>
@@ -73,10 +85,10 @@
                                             <td style="vertical-align:middle;">
                                                 <select name="status[]" class="btn btn-sm btn-outline-primary float-right"><i class="fa fa-angle-down m-l-5"></i>
                                                     <option class="dropdown-item" value="" style="background-color:white">Status</option>
-                                                    <option class="dropdown-item" value="Tidak Hadir" style="background-color:white">Hadir</option>
-                                                    <option class="dropdown-item" value="Tidak Hadir" style="background-color:white">Tidak Hadir</option>
-                                                    <option class="dropdown-item" value="Izin" style="background-color:white">Izin</option>
-                                                    <option class="dropdown-item" value="Sakit" style="background-color:white">Sakit</option>
+                                                    <option class="dropdown-item" value="1" style="background-color:white">Hadir</option>
+                                                    <option class="dropdown-item" value="2" style="background-color:white">Tidak Hadir</option>
+                                                    <option class="dropdown-item" value="3" style="background-color:white">Izin</option>
+                                                    <option class="dropdown-item" value="4" style="background-color:white">Sakit</option>
                                                 </select>
                                             </td>
                                         </tr>

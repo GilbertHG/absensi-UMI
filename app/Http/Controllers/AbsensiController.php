@@ -346,10 +346,12 @@ class AbsensiController extends Controller
 		$data = $request->mk;
 		$listpeserta = \App\MkMahasiswa::with('mahasiswa')->where('id_mk', '=', $data)->get(); //important
 		$matkul = \App\MkMahasiswa::with('mata_kuliah')->where('id_mk', $data)->first();
+		$absen = \App\Absen::where('id_mk', $data);
 		return view('admin.dashboard.listpeserta',[
 			'title'                 => 'Daftar Hadir Mahasiswa | Aplikasi Monitoring Absensi',
 			'listpeserta'			=> $listpeserta,
-			'matkul'				=> $matkul
+			'matkul'				=> $matkul,
+			'absen'					=> $absen
 		]);
 	}
 
@@ -365,9 +367,10 @@ class AbsensiController extends Controller
 	}
 
 	public function inputabsen(AbsenRequest $request){
-
-		// if(){
-			
+		// $pertemuan = $request->pertemuan; 
+		// $matkul = $request->id_mk;
+		// if(\App\Absen::where('pertemuan', '=' , $pertemuan)->exist()){
+		// 	return 'Data Telah Ada';
 		// }
 		$idmahasiswa = $request->id_mahasiswa;
 		$status = $request->status;
@@ -382,7 +385,7 @@ class AbsensiController extends Controller
 				'tanggal_kuliah'	=> $request->tanggal_kuliah,
         	]);
 		} 
-		return 'Data Berhasil diinput';
+		return redirect('/daftar-hadir/list-peserta?mk='.$request->id_mk)->with('sukses', 'Absensi Berhasil Terisi!');
 	}
 
 	public function jadwalMK(Request $request) {
