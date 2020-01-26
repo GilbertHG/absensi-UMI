@@ -73,10 +73,10 @@
                                             <td style="vertical-align:middle;">
                                                 <select name="status[]" class="btn btn-sm btn-outline-primary float-right"><i class="fa fa-angle-down m-l-5"></i>
                                                     <option class="dropdown-item" value="" style="background-color:white">Status</option>
-                                                    <option class="dropdown-item" value="Tidak Hadir" style="background-color:white">Hadir</option>
-                                                    <option class="dropdown-item" value="Tidak Hadir" style="background-color:white">Tidak Hadir</option>
-                                                    <option class="dropdown-item" value="Izin" style="background-color:white">Izin</option>
-                                                    <option class="dropdown-item" value="Sakit" style="background-color:white">Sakit</option>
+                                                    <option class="dropdown-item" value="1" style="background-color:white">Hadir</option>
+                                                    <option class="dropdown-item" value="2" style="background-color:white">Tidak Hadir</option>
+                                                    <option class="dropdown-item" value="3" style="background-color:white">Izin</option>
+                                                    <option class="dropdown-item" value="4" style="background-color:white">Sakit</option>
                                                 </select>
                                             </td>
                                         </tr>
