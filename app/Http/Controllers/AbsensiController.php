@@ -346,26 +346,31 @@ class AbsensiController extends Controller
 		$data = $request->mk;
 		$listpeserta = \App\MkMahasiswa::with('mahasiswa')->where('id_mk', '=', $data)->get(); //important
 		$matkul = \App\MkMahasiswa::with('mata_kuliah')->where('id_mk', $data)->first();
-		// $absen = \App\Absen::where('id_mk', $data)->select(\DB::raw('count(*) as hadir, id_mahasiswa'))
-		// 	// ->with('mahasiswa')
-		// 	->groupBy('id_mahasiswa')
-		// 	->where('status', 1)
-		// 	->get();
+		$absen = \App\Absen::where('id_mk', $data)->select(\DB::raw('count(*) as hadir, id_mahasiswa'))
+			// ->with('mahasiswa')
+			->groupBy('id_mahasiswa')
+			->where('status', 1)
+			->get();
 		
-		// $jumlah_pertemuan = \App\Absen::where('id_mk', $data)->groupBy('pertemuan')->count();
-		
-		// foreach($absen as $absen_mahasiswa){
-		// 	$absen_mahasiswa['persentase'] = $absen_mahasiswa['hadir'] * 100/ $jumlah_pertemuan;
-		// }
+			
+		foreach($absen as $absen_mahasiswa){
+			$jumlah_pertemuan = \App\Absen::where('id_mk', $data)->where('id_mahasiswa', $absen_mahasiswa->id_mahasiswa)->groupBy('pertemuan')->count();
+			$nama_mahasiswa = \App\MkMahasiswa::with('mahasiswa')->where('id_mahasiswa', $absen_mahasiswa->id_mahasiswa)->where('id_mk', '=', $data)->get()->pluck('mahasiswa.nama_mahasiswa')->first();
+			$nim_mahasiswa = \App\MkMahasiswa::with('mahasiswa')->where('id_mahasiswa', $absen_mahasiswa->id_mahasiswa)->where('id_mk', '=', $data)->get()->pluck('mahasiswa.nim_mahasiswa')->first();
+			$foto_mahasiswa = \App\MkMahasiswa::with('mahasiswa')->where('id_mahasiswa', $absen_mahasiswa->id_mahasiswa)->where('id_mk', '=', $data)->get()->pluck('mahasiswa.foto_mahasiswa')->first();
+			$absen_mahasiswa['persentase'] = $absen_mahasiswa['hadir'] * 100/ $jumlah_pertemuan;
+			$absen_mahasiswa['nama'] = $nama_mahasiswa;
+			$absen_mahasiswa['nim'] = $nim_mahasiswa;
+			$absen_mahasiswa['foto'] = $foto_mahasiswa;
+		}
 
-		// dd($absen->toArray());
-		
+		//dd($absen->toArray());
 		
 		return view('admin.dashboard.listpeserta',[
 			'title'                 => 'Daftar Hadir Mahasiswa | Aplikasi Monitoring Absensi',
-			'listpeserta'			=> $listpeserta,
+			// 'listpeserta'			=> $listpeserta,
 			'matkul'				=> $matkul,
-			//'absen'					=> $absen
+			'absen'					=> $absen
 		]);
 	}
 

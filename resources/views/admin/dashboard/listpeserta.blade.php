@@ -14,7 +14,7 @@
             @enderror --}}
             <div class="card">
                 <div class="card-body">
-                    @if($matkul != NULL && $listpeserta != NULL)
+                    @if($matkul != NULL && $absen != NULL)
                     <div class="float-left">
                         <h4 class="card-title mdi mdi-image-filter-none f-s-20">Daftar Hadir Mahasiswa</h4>
                     </div>
@@ -65,16 +65,16 @@
                                 </thead>
                                 <tbody>
                                     <?php $no = 1 ?>
-                                    @foreach($listpeserta as $data)
+                                    @foreach($absen as $data)
                                     <tr>
                                         {{-- {{$idmahasiswa=$data->mahasiswa->id}} --}}
                                         <td style="vertical-align:middle; text-align:center;">{{$no++}}</td>
-                                        <td style="vertical-align:middle;">{{$data->mahasiswa->nim_mahasiswa}}</td>
-                                        <td style="vertical-align:middle;">{{$data->mahasiswa->nama_mahasiswa}}</td>
+                                        <td style="vertical-align:middle;">{{$data->nim}}</td>
+                                        <td style="vertical-align:middle;">{{$data->nama}}</td>
                                         <td style="vertical-align:middle;"><img
-                                                src="{{asset('storage/profil_images/'.$data->mahasiswa->foto_mahasiswa)}}" style="max-height: 130px; max-width: 95px;">
+                                                src="{{asset('storage/profil_images/'.$data->foto)}}" style="max-height: 130px; max-width: 95px;">
                                         </td>
-                                        {{-- <td style="vertical-align:middle;">{{$absen->where('id_mahasiswa', $data->mahasiswa->id)->where('status', 1)->count()}}</td> --}}
+                                        <td style="vertical-align:middle;">{{$data->persentase}}</td>
                                         <td style="vertical-align:middle; text-align:center;">
                                             <button type="button" onclick="window.location.href='/kehadiran/{{$data->id}}'" class="btn btn-primary btn-sm">Cek Kehadiran</button>
                                         </td>
