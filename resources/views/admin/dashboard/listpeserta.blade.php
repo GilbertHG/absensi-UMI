@@ -74,7 +74,7 @@
                                         <td style="vertical-align:middle;"><img
                                                 src="{{asset('storage/profil_images/'.$data->foto)}}" style="max-height: 130px; max-width: 95px;">
                                         </td>
-                                        <td style="vertical-align:middle;">{{$data->persentase}}</td>
+                                        <td style="vertical-align:middle;">{{$data->persentase}} %</td>
                                         <td style="vertical-align:middle; text-align:center;">
                                             <button type="button" onclick="window.location.href='/kehadiran/{{$data->id}}'" class="btn btn-primary btn-sm">Cek Kehadiran</button>
                                         </td>
