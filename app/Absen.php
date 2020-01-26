@@ -22,4 +22,8 @@ class Absen extends Model
             return 'Sakit';
         }
     }
+
+    public function mahasiswa(){
+        return $this->belongTo('App/Mahasiswa', 'id_mahasiswa');
+    }
 }

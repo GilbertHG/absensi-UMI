@@ -6,9 +6,9 @@
             <!-- row -->
             <div class="row">
                 <div class="col-12">
-                    {{-- @if($message = Session::get('sukses'))
-                        <div class="alert alert-success">{{$message}}</div>
-                    @endif --}}
+                    @if($message = Session::get('error'))
+                        <div class="alert alert-danger">{{$message}}</div>
+                    @endif
                     @error('pertemuan')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror 

@@ -346,12 +346,26 @@ class AbsensiController extends Controller
 		$data = $request->mk;
 		$listpeserta = \App\MkMahasiswa::with('mahasiswa')->where('id_mk', '=', $data)->get(); //important
 		$matkul = \App\MkMahasiswa::with('mata_kuliah')->where('id_mk', $data)->first();
-		$absen = \App\Absen::where('id_mk', $data);
+		// $absen = \App\Absen::where('id_mk', $data)->select(\DB::raw('count(*) as hadir, id_mahasiswa'))
+		// 	// ->with('mahasiswa')
+		// 	->groupBy('id_mahasiswa')
+		// 	->where('status', 1)
+		// 	->get();
+		
+		// $jumlah_pertemuan = \App\Absen::where('id_mk', $data)->groupBy('pertemuan')->count();
+		
+		// foreach($absen as $absen_mahasiswa){
+		// 	$absen_mahasiswa['persentase'] = $absen_mahasiswa['hadir'] * 100/ $jumlah_pertemuan;
+		// }
+
+		// dd($absen->toArray());
+		
+		
 		return view('admin.dashboard.listpeserta',[
 			'title'                 => 'Daftar Hadir Mahasiswa | Aplikasi Monitoring Absensi',
 			'listpeserta'			=> $listpeserta,
 			'matkul'				=> $matkul,
-			'absen'					=> $absen
+			//'absen'					=> $absen
 		]);
 	}
 
@@ -367,16 +381,22 @@ class AbsensiController extends Controller
 	}
 
 	public function inputabsen(AbsenRequest $request){
-		// $pertemuan = $request->pertemuan; 
+		$pertemuan = $request->pertemuan; 
 		// $matkul = $request->id_mk;
 		// if(\App\Absen::where('pertemuan', '=' , $pertemuan)->exist()){
 		// 	return 'Data Telah Ada';
 		// }
+		// dd($request->all());
 		$idmahasiswa = $request->id_mahasiswa;
 		$status = $request->status;
 		$count = count($request->id_mahasiswa);
 		
 		for ($i = 0; $i < $count; $i++) {
+			if(\App\Absen::where('pertemuan', '=' , $pertemuan)
+			->where('id_mahasiswa', $idmahasiswa[$i])
+			->first()) {
+				return redirect('/daftar-hadir/list-peserta/absen?mk='.$request->id_mk)->with('error', 'Pertemuan Telah Terisi!');;
+			}
             \App\Absen::create([
 				'id_mk' => $request->id_mk,
 				'pertemuan' => $request->pertemuan,
