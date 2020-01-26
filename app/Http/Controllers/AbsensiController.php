@@ -406,4 +406,14 @@ class AbsensiController extends Controller
 		]);
 	}
 
+    public function kehadiranEdit(Request $request, $id){
+        $data_absen = \App\Absen::find($id);
+
+        $data_absen->update([
+                'status'              => $request->status,
+                ]);
+
+        return redirect('/kehadiran/'.$request->id_mkDiambil)->with('sukses', "Status Kehadiran Berhasil di Ubah.");
+    }
+
 }

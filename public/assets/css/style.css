@@ -5433,7 +5433,7 @@ input[type=checkbox]:not(:disabled) ~ .lever:active::after {
 }
 
 #login-page1 body {
-  background: url(../../assets/images/background/login-register.jpg);
+  background: url(../../assets/images/background/unismuh-bg.jpg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

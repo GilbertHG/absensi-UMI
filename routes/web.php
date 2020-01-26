@@ -77,6 +77,7 @@ Route::group(['middleware' => ['auth', 'checkRole:Mahasiswa']],function(){
 });
 Route::group(['middleware' => ['auth', 'checkRole:Mahasiswa,Dosen']],function(){
 	Route::get('/kehadiran/{id}', 'AbsensiController@kehadiran')->middleware('auth');
+	Route::post('/kehadiran/edit/{id}', 'AbsensiController@kehadiranEdit')->middleware('auth');
 });
 
 
