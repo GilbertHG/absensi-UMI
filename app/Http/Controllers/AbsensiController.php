@@ -273,7 +273,7 @@ class AbsensiController extends Controller
         $mataKuliah = \App\MkMahasiswa::find($id);
         $mataKuliah->delete();
 
-        $absen = \App\Absen::where('id_mk', $mataKuliah->id_mk)->get();
+        $absen = \App\Absen::where('id_mk', $mataKuliah->id_mk)->where('id_mahasiswa', $mataKuliah->id_mahasiswa)->get();
 
         foreach($absen as $absen){
             $absen->delete();
