@@ -124,10 +124,10 @@
                                 <div class="col-auto my-1">
                                     <label>Status</label>
                                     <select class="custom-select mb-2 mr-sm-2" name="status">
-                                        <option value="Hadir" @if($data->status == 'Hadir') selected @endif>Hadir</option>
-                                        <option value="Tidak Hadir" @if($data->status == 'Tidak Hadir') selected @endif>Tidak Hadir</option>
-                                        <option value="Sakit" @if($data->status == 'Sakit') selected @endif>Sakit</option>
-                                        <option value="Izin" @if($data->status == 'Izin') selected @endif>Izin</option>
+                                        <option value="1" @if($data->status == 'Hadir') selected @endif>Hadir</option>
+                                        <option value="2" @if($data->status == 'Tidak Hadir') selected @endif>Tidak Hadir</option>
+                                        <option value="3" @if($data->status == 'Izin') selected @endif>Izin</option>
+                                        <option value="4" @if($data->status == 'Sakit') selected @endif>Sakit</option>
                                     </select>
                                 </div>
                                 <input type="hidden" name="id_mkDiambil" value="{{Request::segment(2)}}">
