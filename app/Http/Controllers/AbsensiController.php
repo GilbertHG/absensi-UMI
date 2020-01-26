@@ -237,6 +237,18 @@ class AbsensiController extends Controller
     	$mataKuliah = \App\MataKuliah::find($id);
     	$mataKuliah->delete();
 
+        $mk_diambil = \App\MkMahasiswa::where('id_mk', $id)->get();
+
+        foreach($mk_diambil as $mkdiambil){
+            $mkdiambil->delete();    
+        }
+
+        $absen = \App\Absen::where('id_mk', $id)->get();
+
+        foreach($absen as $absen){
+            $absen->delete();
+        }
+        
     	return redirect('/db-mk')->with('sukses', "Mata Kuliah berhasil di hapus.");
     }
 
@@ -260,6 +272,12 @@ class AbsensiController extends Controller
     public function dataKrsMahasiswaDelete(Request $request, $id){
         $mataKuliah = \App\MkMahasiswa::find($id);
         $mataKuliah->delete();
+
+        $absen = \App\Absen::where('id_mk', $mataKuliah->id_mk)->get();
+
+        foreach($absen as $absen){
+            $absen->delete();
+        }
 
         return redirect('/data-krs-mahasiswa/'.$request->id_mahasiswa)->with('sukses', "Mata Kuliah berhasil di hapus.");
     }
