@@ -15,11 +15,15 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20"> Tahun Ajaran</h4></div>
-                            <div class="floatright">
-                                    <div class="bootstrap-modal">
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#tambahModal">Tambah</button>
-                                    </div>
+                            <div class="row float-right">
+                                <div style="margin:auto;">
+                                    <button type="button" onclick="window.location.href='/db-mk'" class="btn btn-outline-warning btn-sm" style="margin-right:40px;"><i class="mdi mdi-keyboard-backspace"></i></button>
+                                </div>
+                                <div class="bootstrap-modal" style="margin-right:40px;">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-outline-primary col" data-toggle="modal" data-target="#tambahModal">Tambah</button>
+                                </div>
+                            </div>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>

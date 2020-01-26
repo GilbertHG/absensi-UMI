@@ -9,6 +9,11 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20"> Jadwal Mata Kuliah</h4></div>
+                            @if(auth()->user()->role == 'Mahasiswa')
+                            <div class="float-right"><button type="button" onclick="window.location.href='/jadwal-mata-kuliah'" class="btn btn-outline-warning btn-sm" style="margin-right:40px;"><i class="mdi mdi-keyboard-backspace"></i></button></div>
+                            @elseif(auth()->user()->role == 'Dosen')
+                            <div class="float-right"><button type="button" onclick="window.location.href='{{route('persentase',['mk' => $matkul->id])}}'" class="btn btn-outline-warning btn-sm" style="margin-right:40px;"><i class="mdi mdi-keyboard-backspace"></i></button></div>
+                            @endif
                             <!-- /# column -->
                         </div>
                         <div class="card-body">

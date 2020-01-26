@@ -110,7 +110,7 @@
                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                         </button>
                     </div>
-                    <form method="post" action="/db-mahasiswa/edit/{{$mahasiswa->id}}">
+                    <form method="post" enctype="multipart/form-data" action="/db-mahasiswa/edit/{{$mahasiswa->id}}">
                     {{csrf_field()}}
                         <div class="modal-body">
                             <div class="form-group">
