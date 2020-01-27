@@ -46,7 +46,7 @@
                                 </select>
                                 <br><br>
                             <div class="table-responsive">
-                                <input name="id_mk" type="hidden" value="{{$matkul->mata_kuliah->id}}">
+                                <input name="id_mk" type="hidden" value="{{$matkul->id_mk}}">
                                 <div class="col-8 table-responsive" style="margin:auto;">
                                     <table class="table table-hover">
                                         <tr>

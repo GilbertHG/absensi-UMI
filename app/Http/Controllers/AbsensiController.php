@@ -363,31 +363,15 @@ class AbsensiController extends Controller
 	public function listpeserta(Request $request){
 		$data = $request->mk;
 		$listpeserta = \App\MkMahasiswa::with('mahasiswa')->where('id_mk', '=', $data)->get(); //important
-		$matkul = \App\MkMahasiswa::with('mata_kuliah')->where('id_mk', $data)->first();
-		$absen = \App\Absen::where('id_mk', $data)->select(\DB::raw('count(*) as hadir, id_mahasiswa'))
-			// ->with('mahasiswa')
-			->groupBy('id_mahasiswa')
-			->where('status', 1)
-			->get();
-		
-			
-		foreach($absen as $absen_mahasiswa){
-			$jumlah_pertemuan = \App\Absen::where('id_mk', $data)->where('id_mahasiswa', $absen_mahasiswa->id_mahasiswa)->groupBy('pertemuan')->count();
-			$nama_mahasiswa = \App\MkMahasiswa::with('mahasiswa')->where('id_mahasiswa', $absen_mahasiswa->id_mahasiswa)->where('id_mk', '=', $data)->get()->pluck('mahasiswa.nama_mahasiswa')->first();
-			$nim_mahasiswa = \App\MkMahasiswa::with('mahasiswa')->where('id_mahasiswa', $absen_mahasiswa->id_mahasiswa)->where('id_mk', '=', $data)->get()->pluck('mahasiswa.nim_mahasiswa')->first();
-			$foto_mahasiswa = \App\MkMahasiswa::with('mahasiswa')->where('id_mahasiswa', $absen_mahasiswa->id_mahasiswa)->where('id_mk', '=', $data)->get()->pluck('mahasiswa.foto_mahasiswa')->first();
-			$absen_mahasiswa['persentase'] = $absen_mahasiswa['hadir'] * 100/ $jumlah_pertemuan;
-			$absen_mahasiswa['nama'] = $nama_mahasiswa;
-			$absen_mahasiswa['nim'] = $nim_mahasiswa;
-			$absen_mahasiswa['foto'] = $foto_mahasiswa;
-		}
-
-		//dd($absen->toArray());
+        $mataKuliah = \App\MkMahasiswa::where('id_mk', $data)->first();
+		$matkul = \App\MataKuliah::where('id', $data)->first();
+        $absen = \App\Absen::where('id_mk', $data);
 		
 		return view('admin.dashboard.listpeserta',[
 			'title'                 => 'Daftar Hadir Mahasiswa | Aplikasi Monitoring Absensi',
-			// 'listpeserta'			=> $listpeserta,
+			'listpeserta'			=> $listpeserta,
 			'matkul'				=> $matkul,
+            'mataKuliah'            => $mataKuliah,
 			'absen'					=> $absen
 		]);
 	}
@@ -417,6 +401,7 @@ class AbsensiController extends Controller
 		for ($i = 0; $i < $count; $i++) {
 			if(\App\Absen::where('pertemuan', '=' , $pertemuan)
 			->where('id_mahasiswa', $idmahasiswa[$i])
+            ->where('id_mk', $request->id_mk)
 			->first()) {
 				return redirect('/daftar-hadir/list-peserta/absen?mk='.$request->id_mk)->with('error', 'Pertemuan Telah Terisi!');;
 			}
@@ -427,7 +412,25 @@ class AbsensiController extends Controller
 				'status'	=> $status[$i],
 				'tanggal_kuliah'	=> $request->tanggal_kuliah,
         	]);
-		} 
+		}
+
+        //Persentase
+        $data_mahasiswa = \App\MkMahasiswa::where('id_mk', $request->id_mk)->get();
+
+        foreach($data_mahasiswa as $mahasiswa){
+            $data_absensi = \App\Absen::where('id_mk', $request->id_mk)->where('id_mahasiswa', $mahasiswa->id_mahasiswa)->where('status', 1)->count();
+            $jumlah_absensi = \App\Absen::where('id_mk', $request->id_mk)->where('id_mahasiswa', $mahasiswa->id_mahasiswa)->count();
+
+            $data_persentase = \App\MkMahasiswa::where('id_mk', $request->id_mk)->where('id_mahasiswa', $mahasiswa->id_mahasiswa)->first();
+
+            $persentase = $data_absensi / $jumlah_absensi * 100;
+
+            $data_persentase->update([
+                'persentase'           => $persentase,
+                ]);
+
+        }
+
 		return redirect('/daftar-hadir/list-peserta?mk='.$request->id_mk)->with('sukses', 'Absensi Berhasil Terisi!');
 	}
 
@@ -457,6 +460,17 @@ class AbsensiController extends Controller
 
         $data_absen->update([
                 'status'              => $request->status,
+                ]);
+
+        $data_absensi = \App\Absen::where('id_mk', $data_absen->id_mk)->where('id_mahasiswa', $data_absen->id_mahasiswa)->where('status', 1)->count();
+        $jumlah_absensi = \App\Absen::where('id_mk', $data_absen->id_mk)->where('id_mahasiswa', $data_absen->id_mahasiswa)->count();
+
+        $data_persentase = \App\MkMahasiswa::where('id_mk', $data_absen->id_mk)->where('id_mahasiswa', $data_absen->id_mahasiswa)->first();
+
+        $persentase = $data_absensi / $jumlah_absensi * 100;
+
+        $data_persentase->update([
+                'persentase'           => $persentase,
                 ]);
 
         return redirect('/kehadiran/'.$request->id_mkDiambil)->with('sukses', "Status Kehadiran Berhasil di Ubah.");
