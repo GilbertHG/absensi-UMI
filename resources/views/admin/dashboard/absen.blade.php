@@ -45,6 +45,8 @@
                                         </table>
                                     </div>
                                 </div>
+                                <form method="POST" action="/daftar-hadir/list-peserta/absen/input">
+                                    @csrf
                                 <div class="card-body" style="margin-top:-30px;margin-bottom:-30px !important;">
                                     <select name="pertemuan" class="btn btn-sm btn-outline-primary float-right"><i class="fa fa-angle-down m-l-5"></i>
                                         <option class="dropdown-item" value="" style="background-color:white">Pertemuan</option>
