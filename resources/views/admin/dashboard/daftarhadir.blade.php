@@ -37,10 +37,10 @@
                                             <td style="vertical-align:middle; text-align:center;">{{$no++}}</td>
                                             <td style="vertical-align:middle;">{{$data->kode_mk}}</td>
                                             <td style="vertical-align:middle;">{{$data->nama_mk}}</td>
-                                            <td style="vertical-align:middle;">{{$data->kelas_mk}}</td>
-                                            <td style="vertical-align:middle;">{{$data->mkmahasiswas->where('id_mk', '=', $data->id)->count()}}</td>
+                                            <td style="vertical-align:middle; text-align:center;">{{$data->kelas_mk}}</td>
+                                            <td style="vertical-align:middle; text-align:center;">{{$data->mkmahasiswas->where('id_mk', '=', $data->id)->count()}}</td>
                                             <td style="vertical-align:middle; text-align:center;">
-                                            <a href="{{route('persentase',['mk' => $data->id])}}" class="btn btn-secondary btn-sm">Lihat Absensi</a>
+                                            <a href="{{route('persentase',['mk' => $data->id])}}" class="btn btn-secondary btn-sm">Lihat Kelas</a>
                                             </td>
 
                                         </tr>
