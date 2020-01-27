@@ -399,8 +399,7 @@ class AbsensiController extends Controller
 		$count = count($request->id_mahasiswa);
 		
 		for ($i = 0; $i < $count; $i++) {
-			if(\App\Absen::where('id_mk',$idmk)
-			->having('pertemuan', $pertemuan)
+			if(\App\Absen::where('pertemuan', '=', $pertemuan)
 			->where('id_mahasiswa', $idmahasiswa[$i])
             ->where('id_mk', $request->id_mk)
 			->first()) {
