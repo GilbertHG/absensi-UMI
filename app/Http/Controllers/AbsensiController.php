@@ -297,11 +297,13 @@ class AbsensiController extends Controller
     public function isiKrsMahasiswaAdd(Request $request){
         $mataKuliah = $request->mataKuliah;
 
-        foreach ($mataKuliah as $mataKuliah_id) {
-            \App\MkMahasiswa::create([
-            'id_mk' => $mataKuliah_id,
-            'id_mahasiswa' => $request->id_mahasiswa,
-        ]);
+        if($mataKuliah != NULL){
+            foreach ($mataKuliah as $mataKuliah_id) {
+                \App\MkMahasiswa::create([
+                'id_mk' => $mataKuliah_id,
+                'id_mahasiswa' => $request->id_mahasiswa,
+            ]);
+            }
         } 
         return redirect('/data-krs-mahasiswa/'.$request->id_mahasiswa)->with('sukses', "Mata Kuliah berhasil di tambah.");
 
