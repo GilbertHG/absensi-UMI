@@ -304,8 +304,9 @@ class AbsensiController extends Controller
                 'id_mahasiswa' => $request->id_mahasiswa,
             ]);
             }
-        } 
         return redirect('/data-krs-mahasiswa/'.$request->id_mahasiswa)->with('sukses', "Mata Kuliah berhasil di tambah.");
+        } 
+        return redirect('/data-krs-mahasiswa/'.$request->id_mahasiswa)->with('sukses', "Tidak Ada Mata Kuliah yang di Tambahkan.");
 
     }
 
