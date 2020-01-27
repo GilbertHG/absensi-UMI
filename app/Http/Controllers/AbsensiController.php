@@ -415,10 +415,11 @@ class AbsensiController extends Controller
 		$count = count($request->id_mahasiswa);
 		
 		for ($i = 0; $i < $count; $i++) {
-			if(\App\Absen::where('pertemuan', '=' , $pertemuan)
+			if(\App\Absen::where('id_mk',$idmk)
+			->having('pertemuan', $pertemuan)
 			->where('id_mahasiswa', $idmahasiswa[$i])
 			->first()) {
-				return redirect('/daftar-hadir/list-peserta/absen?mk='.$request->id_mk)->with('error', 'Pertemuan Telah Terisi!');;
+				return redirect('/daftar-hadir/list-peserta/absen?mk='.$request->id_mk)->with('error', 'Pertemuan Telah Terisi!');
 			}
             \App\Absen::create([
 				'id_mk' => $request->id_mk,
