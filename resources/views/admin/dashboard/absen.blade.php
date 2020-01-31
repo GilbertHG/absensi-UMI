@@ -18,7 +18,8 @@
                     @error('tanggal_kuliah')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror 
-                        
+                    <form method="POST" action="/daftar-hadir/list-peserta/absen/input">
+                        @csrf
                             <div class="card">
                                 <div class="card-body">
                                     <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20"> Daftar Hadir Mahasiswa</h4></div>
@@ -45,8 +46,7 @@
                                         </table>
                                     </div>
                                 </div>
-                                <form method="POST" action="/daftar-hadir/list-peserta/absen/input">
-                                    @csrf
+                               
                                 <div class="card-body" style="margin-top:-30px;margin-bottom:-30px !important;">
                                     <select name="pertemuan" class="btn btn-sm btn-outline-primary float-right"><i class="fa fa-angle-down m-l-5"></i>
                                         <option class="dropdown-item" value="" style="background-color:white">Pertemuan</option>

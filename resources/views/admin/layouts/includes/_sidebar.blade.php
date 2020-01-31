@@ -1,16 +1,16 @@
         <!-- sidebar -->
         <div class="nk-sidebar">
             <div class="nk-nav-scroll">
-                <div class="nav-text" style="text-align:center; margin-top:10px; border-bottom: 1px solid #f1f1f1; padding-bottom: 5px;">
+                <div class="nav-text" style="text-align:center; margin-top:10px; border-bottom: 1px solid #bd5056; padding-bottom: 5px;">
                     <img src="{{asset('assets/images/unismuh.png')}}" height="100" width="100" alt="">
-                    <div style="margin-top:10px;">
+                    <div class="clr-w" style="margin-top:10px;">
                         Aplikasi Monitoring Absensi Univeristas Muhammadiyah Makassar
                     </div>
                 </div>
-                <div class="col nav-text" style="text-align:center; margin-top:10px; margin-bottom: 10px; border-bottom: 1px solid #f1f1f1;">
+                <div class="col nav-text" style="text-align:center; margin-top:10px; margin-bottom: 10px; border-bottom: 1px solid #bd5056;">
                         <form style="margin-bottom: 10px;" method="post" action="/tahunajaran">
                         {{csrf_field()}}
-                        <select onchange="this.form.submit()" name="tahunajaran" class="btn btn-sm btn-outline-primary"><i class="fa fa-angle-down m-l-5"></i>
+                        <select onchange="this.form.submit()" name="tahunajaran" class="btn btn-sm btn-outline-light"><i class="fa fa-angle-down m-l-5"></i>
                             @if(Session::get('tahunajaran') == 'kosong')
                             <option class="dropdown-item" selected disabled value="" style="background-color:white">-----</option>
                             @endif
