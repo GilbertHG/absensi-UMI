@@ -20,6 +20,7 @@
                                             <th>Ruangan</th>
                                             <th>Hari</th>
                                             <th>Waktu</th>
+                                            <th>File</th>
                                             
                                         </tr>
                                     </thead>
@@ -34,7 +35,9 @@
                                             <td style="vertical-align:middle;text-align:center;">{{$data->ruangan_mk}}</td>
                                             <td style="vertical-align:middle;text-align:center;">{{$data->hari_mk}}</td>
                                             <td style="vertical-align:middle;text-align:center;">{{\Carbon\Carbon::parse($data->jam_mulai)->format('H:i')}} - {{\Carbon\Carbon::parse($data->jam_selesai)->format('H:i')}}</td>
-
+                                            <td style="vertical-align:middle; text-align:center;">
+                                                <button type="button" class="btn btn-secondary btn-sm">File</button>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

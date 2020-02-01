@@ -31,7 +31,7 @@
                                         <img src="{{asset('assets/images/unismuh.png')}}" height="70" width="70" alt="">
                                     </a>
                                 </div>
-                                <h4 class="text-center m-t-15">Aplikasi Monitoring Absensi Universitas Muhammadiyah Makassar</h4>
+                                <h4 class="text-center m-t-15">Aplikasi Monitoring Absensi dan Activity Control Fakultas Teknik Univeristas Muhammadiyah Makassar</h4>
                                 <form class="m-t-30 m-b-30" action="/postlogin" method="post">
                                 {{csrf_field()}}
                                     <div class="form-group">
