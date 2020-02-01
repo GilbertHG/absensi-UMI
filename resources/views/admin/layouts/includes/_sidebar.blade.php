@@ -4,7 +4,7 @@
                 <div class="nav-text" style="text-align:center; margin-top:10px; border-bottom: 1px solid #bd5056; padding-bottom: 5px;">
                     <img src="{{asset('assets/images/unismuh.png')}}" height="100" width="100" alt="">
                     <div class="clr-w" style="margin-top:10px;">
-                        Aplikasi Monitoring Absensi Univeristas Muhammadiyah Makassar
+                        Aplikasi Monitoring Absensi dan Activity Control Fakultas Teknik Univeristas Muhammadiyah Makassar
                     </div>
                 </div>
                 <div class="col nav-text" style="text-align:center; margin-top:10px; margin-bottom: 10px; border-bottom: 1px solid #bd5056;">
