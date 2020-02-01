@@ -253,9 +253,13 @@ class AbsensiController extends Controller
     }
 
     public function krsMahasiswa(){
+        $filterta = \Session::get('tahunajaran');
 		$data_mahasiswa = \App\Mahasiswa::all();
+        $data_matkul = \App\MataKuliah::where('tahun_ajaran', $filterta)->pluck('id');
+        $data_matkul_ambil    = \App\MkMahasiswa::whereIn('id_mk', $data_matkul)->get();
         return view('admin.dashboard.krs', [
 			'data_mahasiswa'		=> $data_mahasiswa,
+            'data_matkul_ambil'     => $data_matkul_ambil,
 			'title'					=> 'KRS Mahasiswa | Aplikasi Monitoring Absensi'
 		]);
 	}
