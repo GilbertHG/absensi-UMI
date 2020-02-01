@@ -36,6 +36,12 @@
                                     </tr>
                                 </table>
                             </div>
+                            <div class="floatright">
+                                <div class="bootstrap-modal">
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#tambahModal" style="margin-right:40px;">Tambah</button>
+                                </div>
+                            </div>
                             <!-- /# card -->
                             <!-- /# column -->
                             <div class="table-responsive">
@@ -43,12 +49,10 @@
                                     <thead>
                                         <tr>
                                             <th style="vertical-align:middle; text-align:center;">No.</th>
-                                            <th style="vertical-align:middle; text-align:center;">Pertemuan</th>
-                                            <th style="vertical-align:middle; text-align:center;">Tanggal Kuliah</th>
-                                            <th style="vertical-align:middle; text-align:center;">Status</th>
-                                            @if(auth()->user()->role == 'Dosen')
-                                            <th style="vertical-align:middle; text-align:center;">Ubah</th>
-                                            @endif
+                                            <th style="vertical-align:middle; text-align:center;">Judul File</th>
+                                            <th style="vertical-align:middle; text-align:center;">Deskripsi File</th>
+                                            <th style="vertical-align:middle; text-align:center;">Tanggal Upload</th>
+                                            <th style="vertical-align:middle; text-align:center;">Download | Hapus</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -59,9 +63,9 @@
                                             <td style="vertical-align:middle; text-align:center;"></td>
                                             <td style="vertical-align:middle; text-align:center;"></td>
                                             <td style="vertical-align:middle; text-align:center;"></td>
-                                            
                                             <td style="vertical-align:middle; text-align:center;">
-                                                <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#editModal"><i class="mdi mdi-lead-pencil"></i></button>
+                                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#editModal"><i class="mdi mdi-download"></i></button>
+                                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#editModal"><i class="mdi mdi-delete"></i></button>
                                             </td>
                                             
                                         </tr>
@@ -77,4 +81,39 @@
         <!-- #/ container -->
     </div>
     <!-- #/ content body -->
+    <!-- Modal Tambah-->
+    <div class="modal fade" id="tambahModal" style="margin-top: 50px;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tambah File</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                    </button>
+                </div>
+                <form method="post" action="/db-dosen/add">
+                {{csrf_field()}}
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Judul:</label>
+                            <input type="text" class="form-control input-default">
+                        </div>
+                        <div class="form-group">
+                            <label>Deskrpisi:</label>
+                            <textarea class="form-control h-150px" rows="6" id="comment"></textarea>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input">
+                                <label class="custom-file-label">Choose file</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Tambah File</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     @endsection
