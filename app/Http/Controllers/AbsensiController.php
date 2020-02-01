@@ -483,4 +483,12 @@ class AbsensiController extends Controller
         return redirect('/kehadiran/'.$request->id_mkDiambil)->with('sukses', "Status Kehadiran Berhasil di Ubah.");
     }
 
+    public function file($id){
+        $data_matkul = \App\MataKuliah::find($id);
+        return view('admin.dashboard.file', [
+            'matkul'                => $data_matkul,
+            'title'                 => 'File Perkuliahan | Aplikasi Monitoring Absensi'
+        ]);
+    }
+
 }

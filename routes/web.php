@@ -80,7 +80,6 @@ Route::group(['middleware' => ['auth', 'checkRole:Mahasiswa,Dosen']],function(){
 	Route::post('/kehadiran/edit/{id}', 'AbsensiController@kehadiranEdit')->middleware('auth');
 });
 
-
 //Saran
 Route::group(['middleware' => ['auth', 'checkRole:Mahasiswa']],function(){
 	Route::get('/saran', 'AbsensiController@saran')->middleware('auth');
@@ -91,3 +90,5 @@ Route::group(['middleware' => ['auth', 'checkRole:Dosen']],function(){
 	Route::post('/saran-masuk/delete/{id}', 'AbsensiController@saranMasukDelete')->middleware('auth');
 });
 
+//File Kuliah
+Route::get('/file-kuliah/{id}', 'AbsensiController@file')->middleware('auth');
