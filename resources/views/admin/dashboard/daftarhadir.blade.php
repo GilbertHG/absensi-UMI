@@ -14,7 +14,7 @@
                     @enderror --}}
                     <div class="card">
                         <div class="card-body">
-                            <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20">Daftar Hadir Mahasiswa</h4></div>
+                            <div class="float-left"><h4 class="card-title mdi mdi-image-filter-none f-s-20"> Daftar Hadir Mahasiswa</h4></div>
                             <div class="floatright">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration">
