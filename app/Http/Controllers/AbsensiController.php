@@ -248,6 +248,16 @@ class AbsensiController extends Controller
         foreach($absen as $absen){
             $absen->delete();
         }
+
+        $file = \App\FileKuliah::where('id_mk', $id)->get();
+
+        foreach($file as $data){
+            // hapus file
+            $file = $data->file;
+            $destinationPath = 'file_kuliah';
+            File::delete($destinationPath.'/'.$file);
+            $data->delete();
+        }
         
     	return redirect('/db-mk')->with('sukses', "Mata Kuliah berhasil di hapus.");
     }
