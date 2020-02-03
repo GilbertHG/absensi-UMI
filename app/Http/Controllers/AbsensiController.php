@@ -485,10 +485,88 @@ class AbsensiController extends Controller
 
     public function file($id){
         $data_matkul = \App\MataKuliah::find($id);
+        $data_file = \App\FileKuliah::where('id_mk', $id)->get();
         return view('admin.dashboard.file', [
+            'file'                  => $data_file,
             'matkul'                => $data_matkul,
             'title'                 => 'File Perkuliahan | Aplikasi Monitoring Absensi'
         ]);
+    }
+
+    public function fileAdd(Request $request){
+        // menyimpan data file yang diupload ke variabel $file
+        $file = $request->file('file');
+ 
+        $nama_file = time()."_".$file->getClientOriginalName();
+ 
+        // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'file_kuliah';
+        $file->move($tujuan_upload,$nama_file);
+        
+        $dt = Carbon::now();
+        \App\FileKuliah::create([
+            'file' => $nama_file,
+            'deskripsi_file' => $request->deskripsi_file,
+            'judul_file'     => $request->judul_file,
+            'id_mk'          => $request->id_mk,
+            'tanggal_upload' => $dt,
+        ]);
+ 
+        return redirect('/file-kuliah/'.$request->id_mk)->with('sukses', "File Berhasil di Tambahkan.");
+    }
+
+    public function fileEdit(Request $request, $id){
+        $data_file = \App\FileKuliah::find($id);
+        if($request->hasFile('file')) {
+            // menyimpan data file yang diupload ke variabel $file
+            $file = $request->file('file');
+ 
+            $nama_file = time()."_".$file->getClientOriginalName();
+ 
+            // hapus file yang sudah ada
+            $file_lama = $request->file_lama;
+            $destinationPath = 'file_kuliah';
+            File::delete($destinationPath.'/'.$file_lama);
+            //Upload File
+            $tujuan_upload = 'file_kuliah';
+            $file->move($tujuan_upload,$nama_file);
+            
+            $data_file->update([
+                'file' => $nama_file,
+                'deskripsi_file' => $request->deskripsi_file,
+                'judul_file'     => $request->judul_file,
+                ]);  
+
+            return redirect('/file-kuliah/'.$request->id_mk)->with('sukses', "File Berhasil di Edit.");
+        }
+        else{
+             $data_file->update([
+                'deskripsi_file' => $request->deskripsi_file,
+                'judul_file'     => $request->judul_file,
+                ]);  
+
+            return redirect('/file-kuliah/'.$request->id_mk)->with('sukses', "File Berhasil di Edit.");
+        }
+    }
+
+    public function fileDelete(Request $request, $id){
+        // hapus file
+        $file = $request->file;
+        $destinationPath = 'file_kuliah';
+        File::delete($destinationPath.'/'.$file);
+
+        $data_file = \App\FileKuliah::find($id);
+        $data_file->delete();
+
+        return redirect('/file-kuliah/'.$request->id_mk)->with('sukses', "File Berhasil di Hapus.");
+    }
+
+    public function fileDownload($id){
+        $data_file = \App\FileKuliah::find($id);
+        $file_name = $data_file->file;
+
+        $file_path = public_path('file_kuliah/'.$file_name);
+        return response()->download($file_path);
     }
 
 }

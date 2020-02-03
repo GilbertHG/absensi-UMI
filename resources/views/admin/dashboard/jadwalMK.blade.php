@@ -47,6 +47,7 @@
                                             <th style="vertical-align:middle;">Hari</th>
                                             <th style="vertical-align:middle;">Nama Dosen</th>
                                             <th style="vertical-align:middle;">Waktu</th>
+                                            <th style="vertical-align:middle; text-align:center;">File Kuliah</th>
                                             <th style="vertical-align:middle; text-align:center;">Kehadiran</th>
                                         </tr>
                                     </thead>
@@ -64,6 +65,9 @@
                                             <td style="vertical-align:middle;">{{$data->mata_kuliah->hari_mk}}</td>
                                             <td style="vertical-align:middle;">{{$data->mata_kuliah->dosen_mk}}</td>
                                             <td style="vertical-align:middle;">{{\Carbon\Carbon::parse($data->mata_kuliah->jam_mulai)->format('H:i')}} - {{\Carbon\Carbon::parse($data->mata_kuliah->jam_selesai)->format('H:i')}}</td>
+                                            <td style="vertical-align:middle; text-align:center;">
+                                                <button onclick="window.location.href='/file-kuliah/{{$data->id_mk}}'" type="button" class="btn btn-secondary btn-sm">File</button>
+                                            </td>
                                             <td style="vertical-align:middle; text-align:center;">
                                                 <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/kehadiran/{{$data->id}}'">Lihat Kehadiran</i></button>
                                             </td>

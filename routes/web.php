@@ -92,3 +92,7 @@ Route::group(['middleware' => ['auth', 'checkRole:Dosen']],function(){
 
 //File Kuliah
 Route::get('/file-kuliah/{id}', 'AbsensiController@file')->middleware('auth');
+Route::post('/file-kuliah/add', 'AbsensiController@fileAdd')->middleware('auth');
+Route::post('/file-kuliah/edit/{id}', 'AbsensiController@fileEdit')->middleware('auth');
+Route::post('file-kuliah/delete/{id}', 'AbsensiController@fileDelete')->middleware('auth');
+Route::get('/file-kuliah/download/{id}', 'AbsensiController@fileDownload')->middleware('auth');

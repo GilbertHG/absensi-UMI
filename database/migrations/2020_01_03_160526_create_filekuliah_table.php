@@ -18,7 +18,7 @@ class CreateFilekuliahTable extends Migration
             $table->integer('id_mk');
             $table->string('judul_file');
             $table->string('file');
-            $table->text('deksripsi_file');
+            $table->text('deskripsi_file');
             $table->date('tanggal_upload');
             $table->timestamps();
         });
