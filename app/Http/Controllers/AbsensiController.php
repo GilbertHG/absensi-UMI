@@ -436,11 +436,14 @@ class AbsensiController extends Controller
 
         foreach($data_mahasiswa as $mahasiswa){
             $data_absensi = \App\Absen::where('id_mk', $request->id_mk)->where('id_mahasiswa', $mahasiswa->id_mahasiswa)->where('status', 1)->count();
+            $data_izin = \App\Absen::where('id_mk', $request->id_mk)->where('id_mahasiswa', $mahasiswa->id_mahasiswa)->where('status', 3)->count();
+            $data_sakit = \App\Absen::where('id_mk', $request->id_mk)->where('id_mahasiswa', $mahasiswa->id_mahasiswa)->where('status', 4)->count();
+
             $jumlah_absensi = \App\Absen::where('id_mk', $request->id_mk)->where('id_mahasiswa', $mahasiswa->id_mahasiswa)->count();
 
             $data_persentase = \App\MkMahasiswa::where('id_mk', $request->id_mk)->where('id_mahasiswa', $mahasiswa->id_mahasiswa)->first();
 
-            $persentase = $data_absensi / $jumlah_absensi * 100;
+            $persentase = ($data_absensi + ($data_izin/2) + ($data_sakit/2))  / $jumlah_absensi * 100;
 
             $data_persentase->update([
                 'persentase'           => $persentase,
@@ -480,11 +483,13 @@ class AbsensiController extends Controller
                 ]);
 
         $data_absensi = \App\Absen::where('id_mk', $data_absen->id_mk)->where('id_mahasiswa', $data_absen->id_mahasiswa)->where('status', 1)->count();
+        $data_izin = \App\Absen::where('id_mk', $data_absen->id_mk)->where('id_mahasiswa', $data_absen->id_mahasiswa)->where('status', 3)->count();
+        $data_sakit = \App\Absen::where('id_mk', $data_absen->id_mk)->where('id_mahasiswa', $data_absen->id_mahasiswa)->where('status', 4)->count();
         $jumlah_absensi = \App\Absen::where('id_mk', $data_absen->id_mk)->where('id_mahasiswa', $data_absen->id_mahasiswa)->count();
 
         $data_persentase = \App\MkMahasiswa::where('id_mk', $data_absen->id_mk)->where('id_mahasiswa', $data_absen->id_mahasiswa)->first();
 
-        $persentase = $data_absensi / $jumlah_absensi * 100;
+        $persentase = ($data_absensi + ($data_izin/2) + ($data_sakit/2))  / $jumlah_absensi * 100;
 
         $data_persentase->update([
                 'persentase'           => $persentase,
