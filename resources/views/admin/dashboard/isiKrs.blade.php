@@ -64,13 +64,13 @@
                                             <td style="vertical-align:middle;">{{\Carbon\Carbon::parse($data->jam_mulai)->format('H:i')}} - {{\Carbon\Carbon::parse($data->jam_selesai)->format('H:i')}}</td>
                                             <td style="vertical-align:middle; text-align:center;">
                                                 <input type="checkbox" name="mataKuliah[]" value="{{$data->id}}" aria-label="Checkbox for following text input">
-                                                <input type="hidden" value="{{$mahasiswa->id}}" name="id_mahasiswa">
                                             </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
+                            <input type="hidden" value="{{$mahasiswa->id}}" name="id_mahasiswa">
                             <div class="row float-right" style="margin-top:20px;">
                                 <button type="button" onclick="window.location.href='/data-krs-mahasiswa/{{$mahasiswa->id}}'" class="col btn btn-outline-danger" style="margin-right:10px;">Batal</button>
                                 <button type="submit" class="col btn btn-outline-primary" style="margin-right:40px;">Tambah</button>
