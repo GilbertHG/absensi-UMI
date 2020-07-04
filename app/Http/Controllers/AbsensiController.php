@@ -27,7 +27,7 @@ class AbsensiController extends Controller
         	'title'				=> 'Database Dosen | Aplikasi Monitoring Absensi'
         	]);
     }
-
+	
     public function dosenAdd(UserStoreRequest $request){
 
     	//Insert table User
